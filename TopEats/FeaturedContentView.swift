@@ -10,6 +10,8 @@ import UIKit
 
 class FeaturedContentView: UIView {
 
+    @IBOutlet weak var featuredLabel: UILabel!
+    @IBOutlet weak var featuredImage: UIImageView!
     /*
     // Only override draw() if you perform custom drawing.
     // An empty implementation adversely affects performance during animation.

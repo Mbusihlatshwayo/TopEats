@@ -10,6 +10,8 @@ import UIKit
 
 class CarousellTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var scrollView: UIScrollView!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

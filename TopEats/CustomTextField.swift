@@ -8,14 +8,39 @@
 
 import UIKit
 
+@IBDesignable
 class CustomTextField: UITextField {
 
-    /*
-    // Only override draw() if you perform custom drawing.
-    // An empty implementation adversely affects performance during animation.
-    override func draw(_ rect: CGRect) {
-        // Drawing code
+    @IBInspectable var leftImage: UIImage? {
+        didSet{
+            updateView()
+        }
     }
-    */
+    
+    func updateView() {
+        if let image = leftImage {
+            
+            leftViewMode = .always
+            
+            let imageView = UIImageView(frame: CGRect(x: 10, y: 0, width: 20, height: 20))
+            
+            imageView.contentMode = .scaleAspectFit
+            
+            imageView.alpha = 0.75
+            
+            imageView.image = image
+            
+            let view = UIView(frame: CGRect(x: 0, y: 0, width: 30, height: 20))
+            
+            view.addSubview(imageView)
+            
+            leftView = view
+            
+        } else {
+            leftViewMode = .never
+        }
+        
+        attributedText = NSAttributedString(string: placeholder != nil ? placeholder! : "", attributes: [NSForegroundColorAttributeName : tintColor])
+    }
 
 }
