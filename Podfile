@@ -8,5 +8,8 @@ target 'TopEats' do
   # Pods for TopEats
 
     pod 'Firebase/Core'
+    pod 'Firebase/Auth'
+    pod 'Firebase/Database'
+    pod 'Firebase/Storage'
 
 end
