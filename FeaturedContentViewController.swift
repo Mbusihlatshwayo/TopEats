@@ -55,7 +55,7 @@ class FeaturedContentViewController: UIViewController, UITableViewDataSource, UI
     }
     
     func runTimedCode() {
-        print("TIMER FIRED go to page \(currentPage)")
+//        print("TIMER FIRED go to page \(currentPage)")
         let itemCount = newsArray.count // how many items are in the news reel
         if currentPage < itemCount {
             newX = CGFloat(currentPage) * self.view.frame.width // calculate next page position

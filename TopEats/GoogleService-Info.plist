@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>AD_UNIT_ID_FOR_BANNER_TEST</key>
+	<string>ca-app-pub-3940256099942544/2934735716</string>
+	<key>AD_UNIT_ID_FOR_INTERSTITIAL_TEST</key>
+	<string>ca-app-pub-3940256099942544/4411468910</string>
+	<key>CLIENT_ID</key>
+	<string>345146664961-i1c6jg5tjm9vo75le7k3gnjck4iap2cb.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.345146664961-i1c6jg5tjm9vo75le7k3gnjck4iap2cb</string>
+	<key>API_KEY</key>
+	<string>AIzaSyDq5FT2Sdq3khBr1KfgVQJlqQx4azOjq44</string>
+	<key>GCM_SENDER_ID</key>
+	<string>345146664961</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.pacificcoastapps.TopEats</string>
+	<key>PROJECT_ID</key>
+	<string>topeats-8e944</string>
+	<key>STORAGE_BUCKET</key>
+	<string>topeats-8e944.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<true/>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false/>
+	<key>IS_APPINVITE_ENABLED</key>
+	<false/>
+	<key>IS_GCM_ENABLED</key>
+	<true/>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true/>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:345146664961:ios:7c7b4e5315d73871</string>
+	<key>DATABASE_URL</key>
+	<string>https://topeats-8e944.firebaseio.com</string>
+</dict>
+</plist>

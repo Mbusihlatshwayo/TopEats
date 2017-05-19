@@ -11,22 +11,29 @@
 		CCB874411ECD568600A246F7 /* FeaturedContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCB874401ECD568600A246F7 /* FeaturedContentViewController.swift */; };
 		CCB8B28F1ECA30820080EB1A /* FeaturedContent.xib in Resources */ = {isa = PBXBuildFile; fileRef = CCB8B28E1ECA30820080EB1A /* FeaturedContent.xib */; };
 		CCB8B2911ECA325F0080EB1A /* FeaturedContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCB8B2901ECA325F0080EB1A /* FeaturedContentView.swift */; };
+		CCE4B3071ECF67DE00FF0C75 /* CommunityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCE4B3061ECF67DE00FF0C75 /* CommunityViewController.swift */; };
+		CCE4B3091ECF939400FF0C75 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = CCE4B3081ECF939400FF0C75 /* GoogleService-Info.plist */; };
 		CCF573241EC8315D000B91D8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCF573231EC8315D000B91D8 /* AppDelegate.swift */; };
 		CCF573261EC8315D000B91D8 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCF573251EC8315D000B91D8 /* ViewController.swift */; };
 		CCF573291EC8315D000B91D8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CCF573271EC8315D000B91D8 /* Main.storyboard */; };
 		CCF5732B1EC8315D000B91D8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CCF5732A1EC8315D000B91D8 /* Assets.xcassets */; };
 		CCF5732E1EC8315D000B91D8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CCF5732C1EC8315D000B91D8 /* LaunchScreen.storyboard */; };
 		CCF573361EC840FC000B91D8 /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCF573351EC840FC000B91D8 /* CustomTextField.swift */; };
+		CCFD24281ECE89DD00F9FFB6 /* SavedContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCFD24271ECE89DD00F9FFB6 /* SavedContentViewController.swift */; };
 		CCFF4C601EC991DC00CB19A0 /* NewsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCFF4C5F1EC991DC00CB19A0 /* NewsTableViewCell.swift */; };
 		CCFF4C621EC9920900CB19A0 /* NewsObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCFF4C611EC9920900CB19A0 /* NewsObject.swift */; };
 		CCFF4C641EC9928400CB19A0 /* CarousellTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCFF4C631EC9928400CB19A0 /* CarousellTableViewCell.swift */; };
+		CD23901030C872F52E77F446 /* Pods_TopEats.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D6200C9C30409DC1F16DC550 /* Pods_TopEats.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3946A1B233717E8860F543E1 /* Pods-TopEats.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TopEats.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TopEats/Pods-TopEats.debug.xcconfig"; sourceTree = "<group>"; };
 		CCB8743E1ECD2D7900A246F7 /* MasterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MasterViewController.swift; sourceTree = "<group>"; };
 		CCB874401ECD568600A246F7 /* FeaturedContentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FeaturedContentViewController.swift; path = ../FeaturedContentViewController.swift; sourceTree = "<group>"; };
 		CCB8B28E1ECA30820080EB1A /* FeaturedContent.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FeaturedContent.xib; sourceTree = "<group>"; };
 		CCB8B2901ECA325F0080EB1A /* FeaturedContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeaturedContentView.swift; sourceTree = "<group>"; };
+		CCE4B3061ECF67DE00FF0C75 /* CommunityViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommunityViewController.swift; sourceTree = "<group>"; };
+		CCE4B3081ECF939400FF0C75 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		CCF573201EC8315D000B91D8 /* TopEats.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TopEats.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CCF573231EC8315D000B91D8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CCF573251EC8315D000B91D8 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -35,9 +42,12 @@
 		CCF5732D1EC8315D000B91D8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CCF5732F1EC8315D000B91D8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CCF573351EC840FC000B91D8 /* CustomTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
+		CCFD24271ECE89DD00F9FFB6 /* SavedContentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SavedContentViewController.swift; path = ../SavedContentViewController.swift; sourceTree = "<group>"; };
 		CCFF4C5F1EC991DC00CB19A0 /* NewsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsTableViewCell.swift; sourceTree = "<group>"; };
 		CCFF4C611EC9920900CB19A0 /* NewsObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsObject.swift; sourceTree = "<group>"; };
 		CCFF4C631EC9928400CB19A0 /* CarousellTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CarousellTableViewCell.swift; sourceTree = "<group>"; };
+		D6200C9C30409DC1F16DC550 /* Pods_TopEats.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TopEats.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F8DF733B595D467FF033E0B6 /* Pods-TopEats.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TopEats.release.xcconfig"; path = "Pods/Target Support Files/Pods-TopEats/Pods-TopEats.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -45,17 +55,37 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CD23901030C872F52E77F446 /* Pods_TopEats.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3117E73CF5C33B3FF24C4A48 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				3946A1B233717E8860F543E1 /* Pods-TopEats.debug.xcconfig */,
+				F8DF733B595D467FF033E0B6 /* Pods-TopEats.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		505E12F8FB86B511D73D4B78 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				D6200C9C30409DC1F16DC550 /* Pods_TopEats.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		CCF573171EC8315D000B91D8 = {
 			isa = PBXGroup;
 			children = (
 				CCF573221EC8315D000B91D8 /* TopEats */,
 				CCF573211EC8315D000B91D8 /* Products */,
+				3117E73CF5C33B3FF24C4A48 /* Pods */,
+				505E12F8FB86B511D73D4B78 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -77,6 +107,7 @@
 				CCF573231EC8315D000B91D8 /* AppDelegate.swift */,
 				CCF5732A1EC8315D000B91D8 /* Assets.xcassets */,
 				CCF5732F1EC8315D000B91D8 /* Info.plist */,
+				CCE4B3081ECF939400FF0C75 /* GoogleService-Info.plist */,
 			);
 			path = TopEats;
 			sourceTree = "<group>";
@@ -105,6 +136,8 @@
 				CCF573251EC8315D000B91D8 /* ViewController.swift */,
 				CCB874401ECD568600A246F7 /* FeaturedContentViewController.swift */,
 				CCB8743E1ECD2D7900A246F7 /* MasterViewController.swift */,
+				CCFD24271ECE89DD00F9FFB6 /* SavedContentViewController.swift */,
+				CCE4B3061ECF67DE00FF0C75 /* CommunityViewController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -127,9 +160,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = CCF573321EC8315D000B91D8 /* Build configuration list for PBXNativeTarget "TopEats" */;
 			buildPhases = (
+				4EAF78EB920CC3836EA987DB /* [CP] Check Pods Manifest.lock */,
 				CCF5731C1EC8315D000B91D8 /* Sources */,
 				CCF5731D1EC8315D000B91D8 /* Frameworks */,
 				CCF5731E1EC8315D000B91D8 /* Resources */,
+				45A80ADA45630557D4959B87 /* [CP] Embed Pods Frameworks */,
+				789314DB68CBC75163E4E969 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -182,12 +218,61 @@
 			files = (
 				CCF5732E1EC8315D000B91D8 /* LaunchScreen.storyboard in Resources */,
 				CCF5732B1EC8315D000B91D8 /* Assets.xcassets in Resources */,
+				CCE4B3091ECF939400FF0C75 /* GoogleService-Info.plist in Resources */,
 				CCF573291EC8315D000B91D8 /* Main.storyboard in Resources */,
 				CCB8B28F1ECA30820080EB1A /* FeaturedContent.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		45A80ADA45630557D4959B87 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TopEats/Pods-TopEats-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		4EAF78EB920CC3836EA987DB /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		789314DB68CBC75163E4E969 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TopEats/Pods-TopEats-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		CCF5731C1EC8315D000B91D8 /* Sources */ = {
@@ -196,12 +281,14 @@
 			files = (
 				CCB874411ECD568600A246F7 /* FeaturedContentViewController.swift in Sources */,
 				CCF573261EC8315D000B91D8 /* ViewController.swift in Sources */,
+				CCFD24281ECE89DD00F9FFB6 /* SavedContentViewController.swift in Sources */,
 				CCF573241EC8315D000B91D8 /* AppDelegate.swift in Sources */,
 				CCB8B2911ECA325F0080EB1A /* FeaturedContentView.swift in Sources */,
 				CCFF4C601EC991DC00CB19A0 /* NewsTableViewCell.swift in Sources */,
 				CCFF4C641EC9928400CB19A0 /* CarousellTableViewCell.swift in Sources */,
 				CCB8743F1ECD2D7900A246F7 /* MasterViewController.swift in Sources */,
 				CCFF4C621EC9920900CB19A0 /* NewsObject.swift in Sources */,
+				CCE4B3071ECF67DE00FF0C75 /* CommunityViewController.swift in Sources */,
 				CCF573361EC840FC000B91D8 /* CustomTextField.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -323,6 +410,7 @@
 		};
 		CCF573331EC8315D000B91D8 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3946A1B233717E8860F543E1 /* Pods-TopEats.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = CM33HK3T4N;
@@ -337,6 +425,7 @@
 		};
 		CCF573341EC8315D000B91D8 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = F8DF733B595D467FF033E0B6 /* Pods-TopEats.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = CM33HK3T4N;
