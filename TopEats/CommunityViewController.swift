@@ -17,19 +17,30 @@ class CommunityViewController: UIViewController, UITableViewDataSource, UITableV
         super.viewDidLoad()
         tableView.delegate = self
         tableView.dataSource = self
-        
+        tableView.separatorColor = UIColor.green
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cuisineCell")
-        cell?.textLabel?.text = cuisinearray[indexPath.row]
-        return cell!
+        if let cell = tableView.dequeueReusableCell(withIdentifier: "cuisineCell") as? CuisineTableViewCell {
+            //cell?.textLabel?.text = cuisinearray[indexPath.row]
+            //return cell!
+            cell.cuisineImage.image = UIImage(named: "\(indexPath.row+1)")
+            print("Imagename: \(indexPath.row+1)")
+            cell.cuisineLabel.text = cuisinearray[indexPath.row]
+            return cell
+        } else {
+            return UITableViewCell()
+        }
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        print("\(cuisinearray.count)")
         return cuisinearray.count
+    }
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 100
     }
     /*
     // MARK: - Navigation

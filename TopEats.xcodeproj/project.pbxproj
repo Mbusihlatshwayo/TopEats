@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CC19B3DC1ECF96CE003171EB /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CC19B3DB1ECF96CE003171EB /* Login.storyboard */; };
+		CC19B3DE1ECF9709003171EB /* SignUp.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CC19B3DD1ECF9709003171EB /* SignUp.storyboard */; };
+		CC19B3E01ECF9884003171EB /* CuisineTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC19B3DF1ECF9884003171EB /* CuisineTableViewCell.swift */; };
 		CCB8743F1ECD2D7900A246F7 /* MasterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCB8743E1ECD2D7900A246F7 /* MasterViewController.swift */; };
 		CCB874411ECD568600A246F7 /* FeaturedContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCB874401ECD568600A246F7 /* FeaturedContentViewController.swift */; };
 		CCB8B28F1ECA30820080EB1A /* FeaturedContent.xib in Resources */ = {isa = PBXBuildFile; fileRef = CCB8B28E1ECA30820080EB1A /* FeaturedContent.xib */; };
@@ -28,6 +31,9 @@
 
 /* Begin PBXFileReference section */
 		3946A1B233717E8860F543E1 /* Pods-TopEats.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TopEats.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TopEats/Pods-TopEats.debug.xcconfig"; sourceTree = "<group>"; };
+		CC19B3DB1ECF96CE003171EB /* Login.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
+		CC19B3DD1ECF9709003171EB /* SignUp.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = SignUp.storyboard; sourceTree = "<group>"; };
+		CC19B3DF1ECF9884003171EB /* CuisineTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CuisineTableViewCell.swift; sourceTree = "<group>"; };
 		CCB8743E1ECD2D7900A246F7 /* MasterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MasterViewController.swift; sourceTree = "<group>"; };
 		CCB874401ECD568600A246F7 /* FeaturedContentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FeaturedContentViewController.swift; path = ../FeaturedContentViewController.swift; sourceTree = "<group>"; };
 		CCB8B28E1ECA30820080EB1A /* FeaturedContent.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FeaturedContent.xib; sourceTree = "<group>"; };
@@ -126,6 +132,8 @@
 				CCB8B28E1ECA30820080EB1A /* FeaturedContent.xib */,
 				CCF5732C1EC8315D000B91D8 /* LaunchScreen.storyboard */,
 				CCF573271EC8315D000B91D8 /* Main.storyboard */,
+				CC19B3DB1ECF96CE003171EB /* Login.storyboard */,
+				CC19B3DD1ECF9709003171EB /* SignUp.storyboard */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -149,6 +157,7 @@
 				CCFF4C631EC9928400CB19A0 /* CarousellTableViewCell.swift */,
 				CCB8B2901ECA325F0080EB1A /* FeaturedContentView.swift */,
 				CCFF4C5F1EC991DC00CB19A0 /* NewsTableViewCell.swift */,
+				CC19B3DF1ECF9884003171EB /* CuisineTableViewCell.swift */,
 			);
 			name = "Custom UI";
 			sourceTree = "<group>";
@@ -218,6 +227,8 @@
 			files = (
 				CCF5732E1EC8315D000B91D8 /* LaunchScreen.storyboard in Resources */,
 				CCF5732B1EC8315D000B91D8 /* Assets.xcassets in Resources */,
+				CC19B3DC1ECF96CE003171EB /* Login.storyboard in Resources */,
+				CC19B3DE1ECF9709003171EB /* SignUp.storyboard in Resources */,
 				CCE4B3091ECF939400FF0C75 /* GoogleService-Info.plist in Resources */,
 				CCF573291EC8315D000B91D8 /* Main.storyboard in Resources */,
 				CCB8B28F1ECA30820080EB1A /* FeaturedContent.xib in Resources */,
@@ -287,6 +298,7 @@
 				CCFF4C601EC991DC00CB19A0 /* NewsTableViewCell.swift in Sources */,
 				CCFF4C641EC9928400CB19A0 /* CarousellTableViewCell.swift in Sources */,
 				CCB8743F1ECD2D7900A246F7 /* MasterViewController.swift in Sources */,
+				CC19B3E01ECF9884003171EB /* CuisineTableViewCell.swift in Sources */,
 				CCFF4C621EC9920900CB19A0 /* NewsObject.swift in Sources */,
 				CCE4B3071ECF67DE00FF0C75 /* CommunityViewController.swift in Sources */,
 				CCF573361EC840FC000B91D8 /* CustomTextField.swift in Sources */,

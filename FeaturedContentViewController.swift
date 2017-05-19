@@ -25,6 +25,13 @@ class FeaturedContentViewController: UIViewController, UITableViewDataSource, UI
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        initializeViewContent()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+    }
+    
+    func initializeViewContent() {
         tableView.delegate = self
         tableView.dataSource = self
         tableView.separatorColor = UIColor.green
@@ -36,9 +43,6 @@ class FeaturedContentViewController: UIViewController, UITableViewDataSource, UI
         // Do any additional setup after loading the view.
         setupDummyData()
         loadFeaturedItems() // send it off to load all data into featured view
-    }
-    override func viewDidAppear(_ animated: Bool) {
-        print("big one appeared")
     }
     func setupDummyData() {
         /* create objects for table view dummy data */
@@ -68,13 +72,10 @@ class FeaturedContentViewController: UIViewController, UITableViewDataSource, UI
             featuredScrollView.setContentOffset(CGPoint(x: newX, y: 0), animated: true)
         }
     }
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
     
     func loadFeaturedItems() {
         
+        // set up featured content for scroll view
         for (index, featuredNews) in newsArray.enumerated() {
             if let featuredNewsView = Bundle.main.loadNibNamed("FeaturedContent", owner: self, options: nil)?.first as? FeaturedContentView {
                 featuredNewsView.featuredImage.image = UIImage(named: featuredNews.headlineImage)
