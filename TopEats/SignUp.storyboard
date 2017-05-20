@@ -9,10 +9,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--signUpView-->
         <scene sceneID="MIQ-tb-XMn">
             <objects>
-                <viewController id="f9T-r2-gP3" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="signUpView" title="signUpView" id="f9T-r2-gP3" customClass="SignUpViewController" customModule="TopEats" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="4zm-DM-CI9"/>
                         <viewControllerLayoutGuide type="bottom" id="S7Y-cB-ioi"/>
@@ -93,6 +93,9 @@
                                 <state key="normal" title="Already have an account? Sign In.">
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
+                                <connections>
+                                    <action selector="signInPressed:" destination="f9T-r2-gP3" eventType="touchUpInside" id="t0d-hM-etk"/>
+                                </connections>
                             </button>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="     Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4Cb-xz-wCb" customClass="CustomTextField" customModule="TopEats" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="240" width="375" height="40"/>
@@ -139,6 +142,9 @@
                                 <state key="normal" title="Create Account">
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
+                                <connections>
+                                    <action selector="createAccountPressed:" destination="f9T-r2-gP3" eventType="touchUpInside" id="Fw6-Sz-sP0"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -178,6 +184,12 @@
                             <constraint firstItem="mdv-XD-yO8" firstAttribute="centerX" secondItem="BbQ-W4-6DN" secondAttribute="centerX" id="yL2-bT-5T0"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="confirmPasswordLabel" destination="YXX-4t-JSg" id="18C-Kd-CnX"/>
+                        <outlet property="emailLabel" destination="4Cb-xz-wCb" id="Oc5-ef-GWz"/>
+                        <outlet property="passwordLabel" destination="l0S-Zb-lrj" id="9Nk-ab-5Lr"/>
+                        <outlet property="usernameLabel" destination="kjG-fc-JdX" id="3XG-YS-zJW"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NLG-Ad-BC6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
