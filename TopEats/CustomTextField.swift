@@ -30,7 +30,7 @@ class CustomTextField: UITextField {
             
             imageView.image = image
             
-            let view = UIView(frame: CGRect(x: 0, y: 0, width: 30, height: 20))
+            let view = UIView(frame: CGRect(x: 0, y: 0, width: 60, height: 20))
             
             view.addSubview(imageView)
             

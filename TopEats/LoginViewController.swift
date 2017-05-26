@@ -9,19 +9,32 @@
 import UIKit
 import Firebase
 
-class LoginViewController: UIViewController {
+class LoginViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var usernameLabel: UITextField!
     @IBOutlet weak var passwordLabel: CustomTextField!
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        usernameLabel.delegate = self
+        passwordLabel.delegate = self
+        
+        let firebaseAuth = Auth.auth()
+        do {
+            try firebaseAuth.signOut()
+        } catch let signOutError as NSError {
+            print ("Error signing out: %@", signOutError)
+        }
+        // if user is signed in bypass login
+        Auth.auth().addStateDidChangeListener() { auth, user in
+            if user != nil {
+                print("USER: \(user)")
+                self.performSegue(withIdentifier: "loginToMaster", sender: nil)
+            }
+        }
         
     }
     @IBAction func createAccountPressed(_ sender: Any) {
-        let storyboard = UIStoryboard(name: "SignUp", bundle: nil)
-        let signUpController = storyboard.instantiateViewController(withIdentifier: "signUpView") as! SignUpViewController
-        
-        self.present(signUpController, animated: true, completion: nil)
+        performSegue(withIdentifier: "signUpSegue", sender: nil)
     }
     
     func showAlert(alertTitle: String, alertMessage: String) {
@@ -36,10 +49,11 @@ class LoginViewController: UIViewController {
         if let email = usernameLabel.text, let password = passwordLabel.text {
             if email != "" {
                 print("email: \(email)")
-                FIRAuth.auth()?.signIn(withEmail: email, password: password) { (user, error) in
+                Auth.auth().signIn(withEmail: email, password: password) { (user, error) in
                     if let fireUser = user {
                         // user was found sign them in and go forward
                         print("USER: \(fireUser)")
+                        self.performSegue(withIdentifier: "loginToMaster", sender: nil)
                     } else {
                         // error
                         print("\(String(describing: error))")
@@ -53,6 +67,10 @@ class LoginViewController: UIViewController {
         }
     }
 
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        self.view.endEditing(true)
+        return false
+    }
 
 }
 

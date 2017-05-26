@@ -11,7 +11,7 @@ import Firebase
 
 class NetworkingServices {
     static func createUser(email: String!, password: String!) {
-        FIRAuth.auth()?.createUser(withEmail: email, password: password, completion: {(user, error) in
+        Auth.auth().createUser(withEmail: email, password: password, completion: {(user, error) in
             if error != nil {
                 print("Error")
                 return
