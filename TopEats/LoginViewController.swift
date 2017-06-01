@@ -18,12 +18,12 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         usernameLabel.delegate = self
         passwordLabel.delegate = self
         
-        let firebaseAuth = Auth.auth()
-        do {
-            try firebaseAuth.signOut()
-        } catch let signOutError as NSError {
-            print ("Error signing out: %@", signOutError)
-        }
+//        let firebaseAuth = Auth.auth()
+//        do {
+//            try firebaseAuth.signOut()
+//        } catch let signOutError as NSError {
+//            print ("Error signing out: %@", signOutError)
+//        }
         // if user is signed in bypass login
         Auth.auth().addStateDidChangeListener() { auth, user in
             if user != nil {

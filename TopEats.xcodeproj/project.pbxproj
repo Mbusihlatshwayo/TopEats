@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CC182D451EDE5CB900165731 /* MasterChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC182D441EDE5CB900165731 /* MasterChatViewController.swift */; };
 		CC19B3DC1ECF96CE003171EB /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CC19B3DB1ECF96CE003171EB /* Login.storyboard */; };
 		CC19B3E01ECF9884003171EB /* CuisineTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC19B3DF1ECF9884003171EB /* CuisineTableViewCell.swift */; };
 		CC19B3E21ECFA9C8003171EB /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC19B3E11ECFA9C8003171EB /* SignUpViewController.swift */; };
@@ -37,6 +38,7 @@
 /* Begin PBXFileReference section */
 		13AFAA7EC4B55519DE75A088 /* Pods_TopEats.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TopEats.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3D5B50CD8D25393AD6271DEA /* Pods-TopEats.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TopEats.release.xcconfig"; path = "Pods/Target Support Files/Pods-TopEats/Pods-TopEats.release.xcconfig"; sourceTree = "<group>"; };
+		CC182D441EDE5CB900165731 /* MasterChatViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MasterChatViewController.swift; sourceTree = "<group>"; };
 		CC19B3DB1ECF96CE003171EB /* Login.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
 		CC19B3DF1ECF9884003171EB /* CuisineTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CuisineTableViewCell.swift; sourceTree = "<group>"; };
 		CC19B3E11ECFA9C8003171EB /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
@@ -165,6 +167,7 @@
 				CCFD24271ECE89DD00F9FFB6 /* SavedContentViewController.swift */,
 				CCE4B3061ECF67DE00FF0C75 /* CommunityViewController.swift */,
 				CC58E56A1ED7C905001443AA /* ChatViewController.swift */,
+				CC182D441EDE5CB900165731 /* MasterChatViewController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -325,6 +328,7 @@
 				CCB8743F1ECD2D7900A246F7 /* MasterViewController.swift in Sources */,
 				CC19B3E01ECF9884003171EB /* CuisineTableViewCell.swift in Sources */,
 				CCFF4C621EC9920900CB19A0 /* NewsObject.swift in Sources */,
+				CC182D451EDE5CB900165731 /* MasterChatViewController.swift in Sources */,
 				CCE4B3071ECF67DE00FF0C75 /* CommunityViewController.swift in Sources */,
 				CC19B3E21ECFA9C8003171EB /* SignUpViewController.swift in Sources */,
 				CC58E56B1ED7C905001443AA /* ChatViewController.swift in Sources */,
