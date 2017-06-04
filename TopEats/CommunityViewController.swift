@@ -52,8 +52,8 @@ class CommunityViewController: UIViewController, UITableViewDataSource, UITableV
             for index in 0...self.sections.count-1 {
                 print("Section: \(self.sections[index].id) : \(self.sections[index].name)")
             }
+            self.tableView.reloadData()
         })
-        self.tableView.reloadData()
     }
     
     deinit {
@@ -63,7 +63,7 @@ class CommunityViewController: UIViewController, UITableViewDataSource, UITableV
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let section = cuisinearray[indexPath.row]
+        let section = sections[indexPath.row]
         self.performSegue(withIdentifier: "showSection", sender: section)
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -91,15 +91,17 @@ class CommunityViewController: UIViewController, UITableViewDataSource, UITableV
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
 
         super.prepare(for: segue, sender: sender)
-        let titleString: String = sender as! String
-        print("SENDER SEGUE = \(titleString)")
         if let section = sender as? Section {
             let MasterChatVc = segue.destination as! MasterChatViewController
             let chatVc = ChatViewController()
-            MasterChatVc.titleString = titleString
+//            MasterChatVc.titleString = titleString
+            MasterChatVc.section = sender as! Section
+            MasterChatVc.communitySectionsRef = communitySectionsRef.child(section.id)
             print("SECTION REF: \(communitySectionsRef)")
             print("WHAT IS NIL : \(communitySectionsRef.child(section.id))")
             chatVc.communitySectionsRef = communitySectionsRef.child(section.id)
+            print("SECTION ID = \(section.id)")
+            print("SECTION REF PASSED: \(communitySectionsRef.child(section.id))")
         }
         
     }

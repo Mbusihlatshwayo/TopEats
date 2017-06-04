@@ -7,18 +7,22 @@
 //
 
 import UIKit
+import Firebase
 
 class MasterChatViewController: UIViewController {
 
-    // PROPERTIES
+    //MARK: - PROPERTIES
     
     @IBOutlet weak var titleLabel: UILabel!
     
-    var titleString: String!
+    var section: Section!
+    var communitySectionsRef: DatabaseReference?
     
+    //MARK:  VC Methods
     override func viewDidLoad() {
         super.viewDidLoad()
-        titleLabel.text = titleString
+        titleLabel.text = section.name
+        
         // Do any additional setup after loading the view.
     }
 
@@ -28,14 +32,15 @@ class MasterChatViewController: UIViewController {
     }
     
 
-    /*
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+        if segue.identifier == "detailChatSegue" {
+            let chatVC = segue.destination as! ChatViewController
+            chatVC.communitySectionsRef = communitySectionsRef
+            print("detail CHAT VC Ref = \(String(describing: chatVC.communitySectionsRef!))")
+        }
     }
-    */
 
 }

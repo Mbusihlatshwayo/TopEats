@@ -16,8 +16,6 @@ final class ChatViewController: JSQMessagesViewController {
     
     // reference to cuisine sections
     var communitySectionsRef: DatabaseReference?
-//    private lazy var communitySectionsRef: DatabaseReference = Database.database().reference().child("Sections")
-//    private lazy var communitySectionsRefBanana: DatabaseReference = Database.database().reference().child("BANANAS")
     // reference to section messages
     private lazy var messageRef: DatabaseReference = self.communitySectionsRef!.child("messages")
     // reference to firebase storage for images
@@ -57,7 +55,6 @@ final class ChatViewController: JSQMessagesViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
         // get the jsq sender id from the firebase user id
         self.senderId = Auth.auth().currentUser?.uid
         self.senderDisplayName = Auth.auth().currentUser?.displayName
@@ -65,7 +62,7 @@ final class ChatViewController: JSQMessagesViewController {
         
         observeMessages()
         
-        // No avatars change later?
+        // No avatars change later maybe?
         collectionView!.collectionViewLayout.incomingAvatarViewSize = CGSize.zero
         collectionView!.collectionViewLayout.outgoingAvatarViewSize = CGSize.zero
 
@@ -74,6 +71,11 @@ final class ChatViewController: JSQMessagesViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         observeTyping()
+    }
+    
+    override func textViewDidChange(_ textView: UITextView) {
+        super.textViewDidChange(textView)
+        isTyping = textView.text != ""
     }
     
     deinit {
@@ -98,16 +100,11 @@ final class ChatViewController: JSQMessagesViewController {
     
     override func collectionView(_ collectionView: JSQMessagesCollectionView?, attributedTextForMessageBubbleTopLabelAt indexPath: IndexPath!) -> NSAttributedString? {
         let message = messages[indexPath.item]
-        switch message.senderId {
-        case senderId:
+        guard let senderDisplayName = message.senderDisplayName else {
+            assertionFailure()
             return nil
-        default:
-            guard let senderDisplayName = message.senderDisplayName else {
-                assertionFailure()
-                return nil
-            }
-            return NSAttributedString(string: senderDisplayName)
         }
+        return NSAttributedString(string: senderDisplayName)
     }
     override func collectionView(_ collectionView: JSQMessagesCollectionView!, messageDataForItemAt indexPath: IndexPath!) -> JSQMessageData! {
         return messages[indexPath.item]
@@ -175,7 +172,7 @@ final class ChatViewController: JSQMessagesViewController {
     
     private func observeMessages() {
         
-        print("sec ref: \(communitySectionsRef)")
+        print("sec ref: \(String(describing: communitySectionsRef!))")
         print("mess ref: \(messageRef)")
         messageRef = communitySectionsRef!.child("messages")
 
@@ -217,6 +214,18 @@ final class ChatViewController: JSQMessagesViewController {
         finishSendingMessage()
         isTyping = false
     }
+    
+
+//    func collectionView(_ collectionView: JSQMessagesCollectionView!, attributedTextForMessageBubbleTopLabelAt indexPath: IndexPath!) -> NSAttributedString! {
+//        let message = messages[indexPath.item]
+//
+//        guard let senderDisplayName = message.senderDisplayName else {
+//            assertionFailure()
+//            return nil
+//        }
+//        return NSAttributedString(string: senderDisplayName)
+//        
+//    }
     
     
 }
