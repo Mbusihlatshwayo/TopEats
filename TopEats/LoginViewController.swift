@@ -18,6 +18,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         usernameLabel.delegate = self
         passwordLabel.delegate = self
         
+//        code to sign out
 //        let firebaseAuth = Auth.auth()
 //        do {
 //            try firebaseAuth.signOut()

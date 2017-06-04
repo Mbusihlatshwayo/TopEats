@@ -615,6 +615,9 @@
                                             <constraint firstAttribute="width" constant="37" id="HeQ-xN-AUm"/>
                                         </constraints>
                                         <state key="normal" image="backbutton"/>
+                                        <connections>
+                                            <action selector="didPressBackButton:" destination="5VI-Bp-tKv" eventType="touchUpInside" id="1Rw-pC-eug"/>
+                                        </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IGo-TL-0wW">
                                         <rect key="frame" x="151.5" y="31.5" width="72.5" height="25.5"/>

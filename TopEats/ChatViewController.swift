@@ -65,6 +65,7 @@ final class ChatViewController: JSQMessagesViewController {
         // No avatars change later maybe?
         collectionView!.collectionViewLayout.incomingAvatarViewSize = CGSize.zero
         collectionView!.collectionViewLayout.outgoingAvatarViewSize = CGSize.zero
+        self.inputToolbar.contentView.leftBarButtonItem = nil
 
     }
     
