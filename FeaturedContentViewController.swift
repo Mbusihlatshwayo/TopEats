@@ -7,12 +7,16 @@
 //
 
 import UIKit
+import GooglePlaces
+import CoreLocation
 
-class FeaturedContentViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UIScrollViewDelegate  {
+class FeaturedContentViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UIScrollViewDelegate,CLLocationManagerDelegate  {
 
+    //MARK: - OUTLETS
     @IBOutlet weak var featuredScrollView: UIScrollView!
     @IBOutlet weak var tableView: UITableView!
     
+    //MARK: - PROPERTIES
     var newsObject: News!
     var newsObject1: News!
     var newsObject2: News!
@@ -22,13 +26,78 @@ class FeaturedContentViewController: UIViewController, UITableViewDataSource, UI
     var previousX: CGFloat!
     var newX: CGFloat!
     var myTimer: Timer!
+    var placesClient: GMSPlacesClient!
+    let locationMgr = CLLocationManager()
     
+    // MARK: - VIEW METHODSF
     override func viewDidLoad() {
         super.viewDidLoad()
         initializeViewContent()
+        placesClient = GMSPlacesClient.shared()
+        getGooglePlace()
+        requestLocServices()
     }
     
     override func viewDidAppear(_ animated: Bool) {
+    }
+    
+    // MARK: - LOCATION METHODS
+    func requestLocServices() {
+        // 1
+        let status  = CLLocationManager.authorizationStatus()
+        
+        // 2
+        if status == .notDetermined {
+            locationMgr.requestWhenInUseAuthorization()
+            return
+        }
+        
+        // 3
+        if status == .denied || status == .restricted {
+            let alert = UIAlertController(title: "Location Services Disabled", message: "Please enable Location Services in Settings", preferredStyle: .alert)
+            
+            let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+            alert.addAction(okAction)
+            
+            present(alert, animated: true, completion: nil)
+            return
+        }
+        
+        // 4
+        locationMgr.delegate = self
+        locationMgr.startUpdatingLocation()
+    }
+    func getGooglePlace() {
+        placesClient.currentPlace(callback: { (placeLikelihoodList, error) -> Void in
+            if let error = error {
+                print("Pick Place error: \(error.localizedDescription)")
+                return
+            }
+            
+//            self.nameLabel.text = "No current place"
+//            self.addressLabel.text = ""
+            
+            if let placeLikelihoodList = placeLikelihoodList {
+                let place = placeLikelihoodList.likelihoods.first?.place
+                if let place = place {
+                    print("PLACE NAME: \(place.name)")
+                    print("PLACE ADDRESS: \(String(describing: place.formattedAddress?.components(separatedBy: ", ")))")
+//                    self.nameLabel.text = place.name
+//                    self.addressLabel.text = place.formattedAddress?.components(separatedBy: ", ")
+//                        .joined(separator: "\n")
+                }
+            }
+        })
+    }
+    
+    func locationManager(manager: CLLocationManager!, didChangeAuthorizationStatus status: CLAuthorizationStatus) {
+        if status == .authorizedWhenInUse {
+            // authorized location status when app is in use; update current location
+//            locationManager.startUpdatingLocation()
+            print("LOCATION SUCCESS")
+            // implement additional logic if needed...
+        }
+        // implement logic for other status values if needed...
     }
     
     func initializeViewContent() {

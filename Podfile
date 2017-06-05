@@ -12,5 +12,8 @@ target 'TopEats' do
     pod 'Firebase/Database'
     pod 'Firebase/Storage'
     pod 'JSQMessagesViewController'
+    pod 'GooglePlaces'
+    pod 'Alamofire'
+    pod 'SwiftyJSON'
 
 end
