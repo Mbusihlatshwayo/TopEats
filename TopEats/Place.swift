@@ -10,11 +10,68 @@ import Foundation
 
 class Place {
     
-    var _name: String!
-    var _open: Bool!
-    var _photoRef: String! // sunny, cloudy, overcast...
-    var _rating: Int!
-    var _address: String!
+    private var _name: String!
+    private var _open: Bool!
+    private var _photoRef: String! // sunny, cloudy, overcast...
+    private var _rating: Int!
+    private var _address: String!
+    
+    var name: String {
+        if _name != nil {
+            return _name
+        } else {
+            _name = "No name available"
+            return _name
+        }
+    }
+    
+    var open: String {
+        if _open != nil {
+            switch _open {
+            case false:
+                return "Closed"
+            default:
+                return "Open"
+            }
+        } else {
+            return "Hours unavailable"
+        }
+    }
+    
+    var photoRef: String {
+        if _photoRef != nil {
+            return _photoRef
+        } else {
+            return "CnRtAAAATLZNl354RwP_9UKbQ_5Psy40texXePv4oAlgP4qNEkdIrkyse7rPXYGd9D_Uj1rVsQdWT4oRz4QrYAJNpFX7rzqqMlZw2h2E2y5IKMUZ7ouD_SlcHxYq1yL4KbKUv3qtWgTK0A6QbGh87GB3sscrHRIQiG2RrmU_jF4tENr9wGS_YxoUSSDrYjWmrNfeEHSGSc3FyhNLlBU"
+        }
+    }
+    
+    var rating: String {
+        switch _rating {
+        case 0:
+            return "0"
+        case 1:
+            return "1"
+        case 2:
+            return "2"
+        case 3:
+            return "3"
+        case 4:
+            return "4"
+        case 5:
+            return "5"
+        default:
+            return "No ratings yet"
+        }
+    }
+    
+    var address: String {
+        if _address != nil {
+            return _address
+        } else {
+            return "No address available"
+        }
+    }
     
     init(name: String!, open: Bool?, photoRef: String?, rating: Int?, address: String!) {
         // we always have a name

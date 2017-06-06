@@ -113,6 +113,7 @@
 		CC2A78CA1EE64CF600AA1E2A /* SupportingFunctionality */ = {
 			isa = PBXGroup;
 			children = (
+				CC19B3E31ECFD1D7003171EB /* NetworkingServices.swift */,
 				CC2A78CB1EE64D1500AA1E2A /* Networking.swift */,
 			);
 			name = SupportingFunctionality;
@@ -149,7 +150,6 @@
 				CCF5732A1EC8315D000B91D8 /* Assets.xcassets */,
 				CCF5732F1EC8315D000B91D8 /* Info.plist */,
 				CCE4B3081ECF939400FF0C75 /* GoogleService-Info.plist */,
-				CC19B3E31ECFD1D7003171EB /* NetworkingServices.swift */,
 			);
 			path = TopEats;
 			sourceTree = "<group>";

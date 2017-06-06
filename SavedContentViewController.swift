@@ -12,7 +12,7 @@ class SavedContentViewController: UIViewController, UITableViewDelegate, UITable
 
     @IBOutlet weak var tableView: UITableView!
     
-    var newsArray = [News]()
+    var places = [Place]()
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.delegate = self
@@ -25,13 +25,13 @@ class SavedContentViewController: UIViewController, UITableViewDelegate, UITable
     }
     func setupDummyData() {
         /* create objects for table view dummy data */
-        let newsObject = News(image: "restaurant1", headText: "A one", articleText: "It is a great place try it")
-        let newsObject1 = News(image: "restaurant2", headText: "A twooo", articleText: "Really listen and give it a shot")
-        let newsObject2 = News(image: "restaurant3", headText: "Threeee", articleText: "We have nice food try it sometime")
-        newsArray.append(newsObject)
-        newsArray.append(newsObject1)
-        newsArray.append(newsObject2)
-        newsArray.append(newsObject1)
+//        let newsObject = News(image: "restaurant1", headText: "A one", articleText: "It is a great place try it")
+//        let newsObject1 = News(image: "restaurant2", headText: "A twooo", articleText: "Really listen and give it a shot")
+//        let newsObject2 = News(image: "restaurant3", headText: "Threeee", articleText: "We have nice food try it sometime")
+//        newsArray.append(newsObject)
+//        newsArray.append(newsObject1)
+//        newsArray.append(newsObject2)
+//        newsArray.append(newsObject1)
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -39,7 +39,7 @@ class SavedContentViewController: UIViewController, UITableViewDelegate, UITable
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return newsArray.count
+        return places.count
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -48,7 +48,7 @@ class SavedContentViewController: UIViewController, UITableViewDelegate, UITable
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let newsCell = tableView.dequeueReusableCell(withIdentifier: "newsCell") as? NewsTableViewCell {
-            newsCell.configCell(news: newsArray[indexPath.row])
+            newsCell.configCell(place: places[indexPath.row])
             print("already setting up cells")
             return newsCell
         }

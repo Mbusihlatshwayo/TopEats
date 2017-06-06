@@ -14,6 +14,7 @@ target 'TopEats' do
     pod 'JSQMessagesViewController'
     pod 'GooglePlaces'
     pod 'Alamofire'
-    pod 'SwiftyJSON'
+    pod 'SDWebImage'
+    pod 'NVActivityIndicatorView'
 
 end

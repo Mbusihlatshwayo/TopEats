@@ -108,7 +108,7 @@ class FeaturedContentViewController: UIViewController, UITableViewDataSource, UI
         NetworkingFunctionality.downloadPlaces(completion: { [weak self] data in
             self?.places = data
             print("PLACES COUNT = \(self?.places.count)")
-//            self?.tableView.reloadData()
+            self?.tableView.reloadData()
         })
     }
     
@@ -205,7 +205,7 @@ class FeaturedContentViewController: UIViewController, UITableViewDataSource, UI
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return newsArray.count
+        return places.count
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -214,7 +214,7 @@ class FeaturedContentViewController: UIViewController, UITableViewDataSource, UI
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let newsCell = tableView.dequeueReusableCell(withIdentifier: "newsCell") as? NewsTableViewCell {
-            newsCell.configCell(news: newsArray[indexPath.row])
+            newsCell.configCell(place: places[indexPath.row])
             return newsCell
         }
         else {
