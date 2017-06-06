@@ -12,6 +12,8 @@
 		CC19B3E01ECF9884003171EB /* CuisineTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC19B3DF1ECF9884003171EB /* CuisineTableViewCell.swift */; };
 		CC19B3E21ECFA9C8003171EB /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC19B3E11ECFA9C8003171EB /* SignUpViewController.swift */; };
 		CC19B3E41ECFD1D7003171EB /* NetworkingServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC19B3E31ECFD1D7003171EB /* NetworkingServices.swift */; };
+		CC2A78C91EE64BD900AA1E2A /* Place.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC2A78C81EE64BD900AA1E2A /* Place.swift */; };
+		CC2A78CC1EE64D1500AA1E2A /* Networking.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC2A78CB1EE64D1500AA1E2A /* Networking.swift */; };
 		CC4CEC011ED7CD89001FE6BA /* JSQMessagesViewController.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CC4CEBFF1ED7CD89001FE6BA /* JSQMessagesViewController.framework */; };
 		CC4CEC021ED7CD89001FE6BA /* JSQSystemSoundPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CC4CEC001ED7CD89001FE6BA /* JSQSystemSoundPlayer.framework */; };
 		CC4CEC041ED7CEA2001FE6BA /* Section.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC4CEC031ED7CEA2001FE6BA /* Section.swift */; };
@@ -20,6 +22,8 @@
 		CCB874411ECD568600A246F7 /* FeaturedContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCB874401ECD568600A246F7 /* FeaturedContentViewController.swift */; };
 		CCB8B28F1ECA30820080EB1A /* FeaturedContent.xib in Resources */ = {isa = PBXBuildFile; fileRef = CCB8B28E1ECA30820080EB1A /* FeaturedContent.xib */; };
 		CCB8B2911ECA325F0080EB1A /* FeaturedContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCB8B2901ECA325F0080EB1A /* FeaturedContentView.swift */; };
+		CCBB89091EE634B5007898D1 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCBB89081EE634B5007898D1 /* Location.swift */; };
+		CCBB890B1EE634D7007898D1 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCBB890A1EE634D7007898D1 /* Constants.swift */; };
 		CCE4B3071ECF67DE00FF0C75 /* CommunityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCE4B3061ECF67DE00FF0C75 /* CommunityViewController.swift */; };
 		CCE4B3091ECF939400FF0C75 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = CCE4B3081ECF939400FF0C75 /* GoogleService-Info.plist */; };
 		CCF573241EC8315D000B91D8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCF573231EC8315D000B91D8 /* AppDelegate.swift */; };
@@ -43,6 +47,8 @@
 		CC19B3DF1ECF9884003171EB /* CuisineTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CuisineTableViewCell.swift; sourceTree = "<group>"; };
 		CC19B3E11ECFA9C8003171EB /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		CC19B3E31ECFD1D7003171EB /* NetworkingServices.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkingServices.swift; sourceTree = "<group>"; };
+		CC2A78C81EE64BD900AA1E2A /* Place.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Place.swift; sourceTree = "<group>"; };
+		CC2A78CB1EE64D1500AA1E2A /* Networking.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Networking.swift; sourceTree = "<group>"; };
 		CC4CEBFE1ED7CB05001FE6BA /* TopEats.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = TopEats.entitlements; sourceTree = "<group>"; };
 		CC4CEBFF1ED7CD89001FE6BA /* JSQMessagesViewController.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JSQMessagesViewController.framework; path = "../../../../Users/mbusihlatshwayo/Library/Developer/Xcode/DerivedData/TopEats-cwfzjinqmeqccubvbhluaxbvrlvl/Build/Products/Debug-iphoneos/JSQMessagesViewController/JSQMessagesViewController.framework"; sourceTree = "<group>"; };
 		CC4CEC001ED7CD89001FE6BA /* JSQSystemSoundPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JSQSystemSoundPlayer.framework; path = "../../../../Users/mbusihlatshwayo/Library/Developer/Xcode/DerivedData/TopEats-cwfzjinqmeqccubvbhluaxbvrlvl/Build/Products/Debug-iphoneos/JSQSystemSoundPlayer/JSQSystemSoundPlayer.framework"; sourceTree = "<group>"; };
@@ -52,6 +58,8 @@
 		CCB874401ECD568600A246F7 /* FeaturedContentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FeaturedContentViewController.swift; path = ../FeaturedContentViewController.swift; sourceTree = "<group>"; };
 		CCB8B28E1ECA30820080EB1A /* FeaturedContent.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FeaturedContent.xib; sourceTree = "<group>"; };
 		CCB8B2901ECA325F0080EB1A /* FeaturedContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeaturedContentView.swift; sourceTree = "<group>"; };
+		CCBB89081EE634B5007898D1 /* Location.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
+		CCBB890A1EE634D7007898D1 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		CCE4B3061ECF67DE00FF0C75 /* CommunityViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommunityViewController.swift; sourceTree = "<group>"; };
 		CCE4B3081ECF939400FF0C75 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		CCF573201EC8315D000B91D8 /* TopEats.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TopEats.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -102,6 +110,14 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		CC2A78CA1EE64CF600AA1E2A /* SupportingFunctionality */ = {
+			isa = PBXGroup;
+			children = (
+				CC2A78CB1EE64D1500AA1E2A /* Networking.swift */,
+			);
+			name = SupportingFunctionality;
+			sourceTree = "<group>";
+		};
 		CCF573171EC8315D000B91D8 = {
 			isa = PBXGroup;
 			children = (
@@ -123,6 +139,7 @@
 		CCF573221EC8315D000B91D8 /* TopEats */ = {
 			isa = PBXGroup;
 			children = (
+				CC2A78CA1EE64CF600AA1E2A /* SupportingFunctionality */,
 				CC4CEBFE1ED7CB05001FE6BA /* TopEats.entitlements */,
 				CCFF4C651EC9940900CB19A0 /* Custom UI */,
 				CCFF4C5A1EC95FB500CB19A0 /* Controller */,
@@ -142,6 +159,9 @@
 			children = (
 				CC4CEC031ED7CEA2001FE6BA /* Section.swift */,
 				CCFF4C611EC9920900CB19A0 /* NewsObject.swift */,
+				CCBB89081EE634B5007898D1 /* Location.swift */,
+				CCBB890A1EE634D7007898D1 /* Constants.swift */,
+				CC2A78C81EE64BD900AA1E2A /* Place.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -317,9 +337,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				CCB874411ECD568600A246F7 /* FeaturedContentViewController.swift in Sources */,
+				CCBB890B1EE634D7007898D1 /* Constants.swift in Sources */,
 				CC4CEC041ED7CEA2001FE6BA /* Section.swift in Sources */,
 				CCF573261EC8315D000B91D8 /* LoginViewController.swift in Sources */,
 				CCFD24281ECE89DD00F9FFB6 /* SavedContentViewController.swift in Sources */,
+				CCBB89091EE634B5007898D1 /* Location.swift in Sources */,
+				CC2A78CC1EE64D1500AA1E2A /* Networking.swift in Sources */,
 				CC19B3E41ECFD1D7003171EB /* NetworkingServices.swift in Sources */,
 				CCF573241EC8315D000B91D8 /* AppDelegate.swift in Sources */,
 				CCB8B2911ECA325F0080EB1A /* FeaturedContentView.swift in Sources */,
@@ -333,6 +356,7 @@
 				CC19B3E21ECFA9C8003171EB /* SignUpViewController.swift in Sources */,
 				CC58E56B1ED7C905001443AA /* ChatViewController.swift in Sources */,
 				CCF573361EC840FC000B91D8 /* CustomTextField.swift in Sources */,
+				CC2A78C91EE64BD900AA1E2A /* Place.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

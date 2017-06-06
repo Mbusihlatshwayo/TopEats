@@ -9,6 +9,7 @@
 import UIKit
 import GooglePlaces
 import CoreLocation
+import Alamofire
 
 class FeaturedContentViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UIScrollViewDelegate,CLLocationManagerDelegate  {
 
@@ -28,6 +29,9 @@ class FeaturedContentViewController: UIViewController, UITableViewDataSource, UI
     var myTimer: Timer!
     var placesClient: GMSPlacesClient!
     let locationMgr = CLLocationManager()
+    var currentLocation: CLLocation!
+    var places = [Place]()
+    let networkInstance = NetworkingFunctionality()
     
     // MARK: - VIEW METHODSF
     override func viewDidLoad() {
@@ -36,6 +40,8 @@ class FeaturedContentViewController: UIViewController, UITableViewDataSource, UI
         placesClient = GMSPlacesClient.shared()
         getGooglePlace()
         requestLocServices()
+        downloadPlaces()
+        
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -65,12 +71,19 @@ class FeaturedContentViewController: UIViewController, UITableViewDataSource, UI
         
         // 4
         locationMgr.delegate = self
+        locationMgr.desiredAccuracy = kCLLocationAccuracyBest // want coordinates to be very accurate
+        locationMgr.requestWhenInUseAuthorization() // only want location when looking for weather
+        locationMgr.startMonitoringSignificantLocationChanges()
         locationMgr.startUpdatingLocation()
+        // get location for shared instance
+        currentLocation = locationMgr.location
+        Location.sharedInstance.latitude = currentLocation.coordinate.latitude
+        Location.sharedInstance.longitude = currentLocation.coordinate.longitude
     }
     func getGooglePlace() {
         placesClient.currentPlace(callback: { (placeLikelihoodList, error) -> Void in
             if let error = error {
-                print("Pick Place error: \(error.localizedDescription)")
+//                print("Pick Place error: \(error.localizedDescription)")
                 return
             }
             
@@ -80,8 +93,8 @@ class FeaturedContentViewController: UIViewController, UITableViewDataSource, UI
             if let placeLikelihoodList = placeLikelihoodList {
                 let place = placeLikelihoodList.likelihoods.first?.place
                 if let place = place {
-                    print("PLACE NAME: \(place.name)")
-                    print("PLACE ADDRESS: \(String(describing: place.formattedAddress?.components(separatedBy: ", ")))")
+//                    print("PLACE NAME: \(place.name)")
+//                    print("PLACE ADDRESS: \(String(describing: place.formattedAddress?.components(separatedBy: ", ")))")
 //                    self.nameLabel.text = place.name
 //                    self.addressLabel.text = place.formattedAddress?.components(separatedBy: ", ")
 //                        .joined(separator: "\n")
@@ -90,12 +103,27 @@ class FeaturedContentViewController: UIViewController, UITableViewDataSource, UI
         })
     }
     
+    func downloadPlaces() {
+        print("INSIDE DOWNLOAD FUNC")
+        NetworkingFunctionality.downloadPlaces(completion: { [weak self] data in
+            self?.places = data
+            print("PLACES COUNT = \(self?.places.count)")
+//            self?.tableView.reloadData()
+        })
+    }
+    
     func locationManager(manager: CLLocationManager!, didChangeAuthorizationStatus status: CLAuthorizationStatus) {
         if status == .authorizedWhenInUse {
             // authorized location status when app is in use; update current location
 //            locationManager.startUpdatingLocation()
             print("LOCATION SUCCESS")
-            // implement additional logic if needed...
+            currentLocation = locationMgr.location
+            Location.sharedInstance.latitude = currentLocation.coordinate.latitude
+            print("INSTANCE LAT = \(Location.sharedInstance.latitude)")
+            Location.sharedInstance.longitude = currentLocation.coordinate.longitude
+            print("INSTANCE LON = \(Location.sharedInstance.longitude)")
+            print("location : \(Location.sharedInstance.latitude!) \(Location.sharedInstance.longitude!)")
+            // implement download function for data here...
         }
         // implement logic for other status values if needed...
     }
@@ -113,6 +141,7 @@ class FeaturedContentViewController: UIViewController, UITableViewDataSource, UI
         setupDummyData()
         loadFeaturedItems() // send it off to load all data into featured view
     }
+    
     func setupDummyData() {
         /* create objects for table view dummy data */
         newsObject = News(image: "restaurant1", headText: "Dummy Headline", articleText: "It is a great place try it")
@@ -123,6 +152,7 @@ class FeaturedContentViewController: UIViewController, UITableViewDataSource, UI
         newsArray.append(newsObject2)
         newsArray.append(newsObject1)
     }
+    
     override func viewWillDisappear(_ animated: Bool) {
         myTimer.invalidate()
     }

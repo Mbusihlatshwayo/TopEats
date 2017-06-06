@@ -30,7 +30,6 @@ class CommunityViewController: UIViewController, UITableViewDataSource, UITableV
         tableView.separatorColor = UIColor.green
      
         setUpData()
-        downloadPlaces()
     }
     
     func setUpData() {
@@ -58,37 +57,7 @@ class CommunityViewController: UIViewController, UITableViewDataSource, UITableV
         })
     }
     
-    func downloadPlaces() {
-        let requestURL = URL(string: "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=-33.8670,151.1957&radius=500&types=restaurant&name=cruise&key=AIzaSyACJKXW98TFV6nb0YHqksfJJ3_Y8gkDib0")
 
-        Alamofire.request(requestURL!).responseJSON { response in
-            let result = response.result
-            print("RESULT: \(result)")
-            if let resultDict = result.value as? Dictionary<String, AnyObject> {
-//                print(resultDict["results"])
-//                print(resultDict["status"])
-//                print(resultDict["html_attributions"])
-                if let status = resultDict["status"] {
-                    print("STATUS: \(status)")
-                }
-                if let results = resultDict["results"] {
-                    print("RESULTS: \(results)")
-                    print("count = \(results.count)")
-                }
-                if let attributes = resultDict["html_attributions"] {
-                    print("HTML : \(attributes)")
-                }
-                if let err = resultDict["error_message"] {
-                    print(err)
-                }
-//                for object in resultDict {
-//                    print("OBJECT: \(object)")
-//                }
-            }
-
-        }
-    }
-    
     deinit {
         if let refHandle = communitySectionsRefHandle {
             communitySectionsRef.removeObserver(withHandle: refHandle)
