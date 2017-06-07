@@ -18,6 +18,9 @@ class SavedContentViewController: UIViewController, UITableViewDelegate, UITable
         tableView.delegate = self
         tableView.dataSource = self
         setupDummyData()
+        if places.count == 0 {
+            tableView.isHidden = true
+        }
     }
     
     override func viewDidAppear(_ animated: Bool) {

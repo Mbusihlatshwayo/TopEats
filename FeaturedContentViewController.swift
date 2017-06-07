@@ -10,12 +10,13 @@ import UIKit
 import GooglePlaces
 import CoreLocation
 import Alamofire
+import NVActivityIndicatorView
 
 class FeaturedContentViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UIScrollViewDelegate,CLLocationManagerDelegate  {
 
     //MARK: - OUTLETS
-    @IBOutlet weak var featuredScrollView: UIScrollView!
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var featuredScrollView: UIScrollView!
     
     //MARK: - PROPERTIES
     var newsObject: News!
@@ -31,16 +32,16 @@ class FeaturedContentViewController: UIViewController, UITableViewDataSource, UI
     let locationMgr = CLLocationManager()
     var currentLocation: CLLocation!
     var places = [Place]()
-    let networkInstance = NetworkingFunctionality()
+    var activityIndicator: NVActivityIndicatorView?
     
     // MARK: - VIEW METHODSF
     override func viewDidLoad() {
         super.viewDidLoad()
         initializeViewContent()
         placesClient = GMSPlacesClient.shared()
-        getGooglePlace()
         requestLocServices()
         downloadPlaces()
+//        activityIndicator.isHidden = true
         
     }
     
@@ -80,36 +81,24 @@ class FeaturedContentViewController: UIViewController, UITableViewDataSource, UI
         Location.sharedInstance.latitude = currentLocation.coordinate.latitude
         Location.sharedInstance.longitude = currentLocation.coordinate.longitude
     }
-    func getGooglePlace() {
-        placesClient.currentPlace(callback: { (placeLikelihoodList, error) -> Void in
-            if let error = error {
-//                print("Pick Place error: \(error.localizedDescription)")
-                return
-            }
-            
-//            self.nameLabel.text = "No current place"
-//            self.addressLabel.text = ""
-            
-            if let placeLikelihoodList = placeLikelihoodList {
-                let place = placeLikelihoodList.likelihoods.first?.place
-                if let place = place {
-//                    print("PLACE NAME: \(place.name)")
-//                    print("PLACE ADDRESS: \(String(describing: place.formattedAddress?.components(separatedBy: ", ")))")
-//                    self.nameLabel.text = place.name
-//                    self.addressLabel.text = place.formattedAddress?.components(separatedBy: ", ")
-//                        .joined(separator: "\n")
-                }
-            }
-        })
-    }
     
     func downloadPlaces() {
         print("INSIDE DOWNLOAD FUNC")
+        tableView.isHidden = true
+//        let centerFrame = CGRect(x: self.view.frame.size.width/2, y: self.view.frame.size.height/2, width: 40, height: 40)
+        let centerFrame = CGRect(x: 0, y: 0, width: 40, height: 40)
+        activityIndicator = NVActivityIndicatorView(frame: centerFrame, type: .ballPulseSync, color: UIColor.green)
+        activityIndicator?.center = view.center
+        view.addSubview(activityIndicator!)
+        activityIndicator?.startAnimating()
         NetworkingFunctionality.downloadPlaces(completion: { [weak self] data in
             self?.places = data
-            print("PLACES COUNT = \(self?.places.count)")
             self?.tableView.reloadData()
+//            self?.tableview.isHidden = false
+            self?.tableView.isHidden = false
+            self?.activityIndicator?.stopAnimating()
         })
+        
     }
     
     func locationManager(manager: CLLocationManager!, didChangeAuthorizationStatus status: CLAuthorizationStatus) {

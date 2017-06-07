@@ -496,6 +496,7 @@
                                                     <state key="selected" image="favoriteditemenabled"/>
                                                 </button>
                                             </subviews>
+                                            <color key="backgroundColor" red="0.20000000300000001" green="0.20000000300000001" blue="0.20000000300000001" alpha="1" colorSpace="calibratedRGB"/>
                                             <constraints>
                                                 <constraint firstItem="4KC-dk-tsZ" firstAttribute="leading" secondItem="X4R-64-7JK" secondAttribute="leading" id="4FT-bn-E84"/>
                                                 <constraint firstAttribute="trailing" secondItem="FdS-CY-6az" secondAttribute="trailing" id="5Ym-6K-hHd"/>
@@ -528,31 +529,13 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="featuredScrollView" destination="W0S-6r-aSZ" id="nDW-zC-ey5"/>
+                        <outlet property="featuredScrollView" destination="W0S-6r-aSZ" id="2tp-bi-dlF"/>
                         <outlet property="tableView" destination="N0D-ep-Kpf" id="xlh-jJ-ksn"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JsH-zw-jbt" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2464.8000000000002" y="136.73163418290855"/>
-        </scene>
-        <!--View Controller-->
-        <scene sceneID="7iU-Bg-Jtg">
-            <objects>
-                <viewController id="X7Q-r1-1uI" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="mFJ-EC-FYO"/>
-                        <viewControllerLayoutGuide type="bottom" id="o0M-za-DjF"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="XJl-Nv-Hi6">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="IPr-oU-cb3" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="3227" y="223"/>
         </scene>
         <!--Community View Controller-->
         <scene sceneID="EFa-PE-Hga">
