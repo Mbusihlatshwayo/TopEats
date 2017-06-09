@@ -34,12 +34,13 @@ class FeaturedContentViewController: UIViewController, UITableViewDataSource, UI
     var places = [Place]()
     var activityIndicator: NVActivityIndicatorView?
     
-    // MARK: - VIEW METHODSF
+    // MARK: - VIEW METHODS
     override func viewDidLoad() {
         super.viewDidLoad()
         initializeViewContent()
         placesClient = GMSPlacesClient.shared()
         requestLocServices()
+        places.removeAll()
         downloadPlaces()
 //        activityIndicator.isHidden = true
         
@@ -217,6 +218,8 @@ class FeaturedContentViewController: UIViewController, UITableViewDataSource, UI
             return NewsTableViewCell()
         }
     }
+    
+    
     
     // MARK: - Navigation
     

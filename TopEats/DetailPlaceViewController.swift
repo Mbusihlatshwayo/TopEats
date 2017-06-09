@@ -18,6 +18,8 @@ class DetailPlaceViewController: UIViewController {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var addressLabel: UILabel!
     @IBOutlet weak var hoursLabel: UILabel!
+    @IBOutlet weak var detailScrollView: UIScrollView!
+    @IBOutlet weak var addresText: UITextView!
     
     // MARK: - PROPERTIES
     var place: Place?
@@ -38,11 +40,14 @@ class DetailPlaceViewController: UIViewController {
         animateImageView()
     }
     
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        print("SCROLLED")
+    }
     func animateImageView() {
         // set image asynchronously with animation
         placeImageView.sd_setImage(with: URL(string: "https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=\(self.place!.photoRef)&key=AIzaSyACJKXW98TFV6nb0YHqksfJJ3_Y8gkDib0"), placeholderImage: UIImage(named: "restaurant"), options: .continueInBackground) { (_, _, _, _ ) in
             // image download complete fade in image
-            print("COMPLETED SD SET IMAGE")
+//            print("COMPLETED SD SET IMAGE")
             UIView.animate(withDuration: 1, animations: {
                 self.placeImageView.alpha = 1
                 print("ANIMATED HEREEEEE")
@@ -62,6 +67,7 @@ class DetailPlaceViewController: UIViewController {
         // init address label text with location address 
         addressLabel.adjustsFontSizeToFitWidth = true
         addressLabel.text = place!.address
+        addresText.text = place!.address
         // init hours label with location open status
         hoursLabel.text = place!.open
     }
