@@ -16,5 +16,6 @@ target 'TopEats' do
     pod 'Alamofire'
     pod 'SDWebImage'
     pod 'NVActivityIndicatorView'
+    pod 'SwiftyStarRatingView'
 
 end

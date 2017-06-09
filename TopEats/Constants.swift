@@ -8,5 +8,5 @@
 
 import Foundation
 
-let PLACES_URL = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=\(Location.sharedInstance.latitude!),\(Location.sharedInstance.longitude!)&radius=16093&types=restaurant&key=AIzaSyACJKXW98TFV6nb0YHqksfJJ3_Y8gkDib0"
+let PLACES_URL = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=\(Location.sharedInstance.latitude!),\(Location.sharedInstance.longitude!)&radius=805&types=restaurant&key=AIzaSyACJKXW98TFV6nb0YHqksfJJ3_Y8gkDib0"
 

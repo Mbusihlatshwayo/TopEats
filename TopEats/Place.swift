@@ -13,8 +13,18 @@ class Place {
     private var _name: String!
     private var _open: Bool!
     private var _photoRef: String! // sunny, cloudy, overcast...
-    private var _rating: Int!
+    private var _rating: Float!
     private var _address: String!
+    private var _shouldAnimate: Bool!
+    
+    var shouldAnimate: Bool {
+        set {
+            _shouldAnimate = newValue
+        }
+        get {
+            return _shouldAnimate
+        }
+    }
     
     var name: String {
         if _name != nil {
@@ -46,23 +56,8 @@ class Place {
         }
     }
     
-    var rating: String {
-        switch _rating {
-        case 0:
-            return "0"
-        case 1:
-            return "1"
-        case 2:
-            return "2"
-        case 3:
-            return "3"
-        case 4:
-            return "4"
-        case 5:
-            return "5"
-        default:
-            return "No ratings yet"
-        }
+    var rating: Float {
+        return _rating
     }
     
     var address: String {
@@ -73,7 +68,7 @@ class Place {
         }
     }
     
-    init(name: String!, open: Bool?, photoRef: String?, rating: Int?, address: String!) {
+    init(name: String!, open: Bool?, photoRef: String?, rating: Float?, address: String!, animated: Bool!) {
         // we always have a name
         self._name = name
         
@@ -92,9 +87,10 @@ class Place {
         if rating != nil {
             self._rating = rating
         } else {
-            // handle empty rating
+            self._rating = 0
         }
         
+        self._shouldAnimate = animated
         // we always have an address
         self._address = address
     }

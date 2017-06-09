@@ -82,6 +82,23 @@ class FeaturedContentViewController: UIViewController, UITableViewDataSource, UI
         Location.sharedInstance.longitude = currentLocation.coordinate.longitude
     }
     
+    private func locationManager(manager: CLLocationManager!, didChangeAuthorizationStatus status: CLAuthorizationStatus) {
+        if status == .authorizedWhenInUse {
+            // authorized location status when app is in use; update current location
+            //            locationManager.startUpdatingLocation()
+            print("LOCATION SUCCESS")
+            currentLocation = locationMgr.location
+            Location.sharedInstance.latitude = currentLocation.coordinate.latitude
+            print("INSTANCE LAT = \(Location.sharedInstance.latitude)")
+            Location.sharedInstance.longitude = currentLocation.coordinate.longitude
+            print("INSTANCE LON = \(Location.sharedInstance.longitude)")
+            print("location : \(Location.sharedInstance.latitude!) \(Location.sharedInstance.longitude!)")
+            // implement download function for data here...
+        }
+        // implement logic for other status values if needed...
+    }
+    
+    
     func downloadPlaces() {
         print("INSIDE DOWNLOAD FUNC")
         tableView.isHidden = true
@@ -99,22 +116,6 @@ class FeaturedContentViewController: UIViewController, UITableViewDataSource, UI
             self?.activityIndicator?.stopAnimating()
         })
         
-    }
-    
-    func locationManager(manager: CLLocationManager!, didChangeAuthorizationStatus status: CLAuthorizationStatus) {
-        if status == .authorizedWhenInUse {
-            // authorized location status when app is in use; update current location
-//            locationManager.startUpdatingLocation()
-            print("LOCATION SUCCESS")
-            currentLocation = locationMgr.location
-            Location.sharedInstance.latitude = currentLocation.coordinate.latitude
-            print("INSTANCE LAT = \(Location.sharedInstance.latitude)")
-            Location.sharedInstance.longitude = currentLocation.coordinate.longitude
-            print("INSTANCE LON = \(Location.sharedInstance.longitude)")
-            print("location : \(Location.sharedInstance.latitude!) \(Location.sharedInstance.longitude!)")
-            // implement download function for data here...
-        }
-        // implement logic for other status values if needed...
     }
     
     func initializeViewContent() {
@@ -146,6 +147,7 @@ class FeaturedContentViewController: UIViewController, UITableViewDataSource, UI
         myTimer.invalidate()
     }
     
+    // MARK: - FEATURED SCROLL VIEW METHODS
     func runTimedCode() {
 //        print("TIMER FIRED go to page \(currentPage)")
         let itemCount = newsArray.count // how many items are in the news reel
@@ -189,8 +191,12 @@ class FeaturedContentViewController: UIViewController, UITableViewDataSource, UI
             }
         }
     }
+    
+    // MARK: - TABLE VIEW METHODS
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
+        let place = places[indexPath.row]
+        tableView.deselectRow(at: indexPath, animated: true)
+        self.performSegue(withIdentifier: "showPlaceDetail", sender: place)
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -204,10 +210,23 @@ class FeaturedContentViewController: UIViewController, UITableViewDataSource, UI
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let newsCell = tableView.dequeueReusableCell(withIdentifier: "newsCell") as? NewsTableViewCell {
             newsCell.configCell(place: places[indexPath.row])
+//            places[indexPath.row].shouldAnimate = false // animate the image only once on initial load
             return newsCell
         }
         else {
             return NewsTableViewCell()
+        }
+    }
+    
+    // MARK: - Navigation
+    
+    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        super.prepare(for: segue, sender: sender)
+        if let place = sender as? Place {
+            let detailPlaceVC = segue.destination as! DetailPlaceViewController
+            detailPlaceVC.place = place
         }
     }
     

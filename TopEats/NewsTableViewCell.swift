@@ -17,20 +17,24 @@ class NewsTableViewCell: UITableViewCell {
     
     // function to configure custom table view cell
     func configCell(place: Place) {
-        // hide image and label before image is loaded
-        headlineImage.alpha = 0
-        headlineLabel.alpha = 0
-        saveButton.alpha = 0
-        headlineLabel.text = place.name
-        // set image asynchronously
-        headlineImage.sd_setImage(with: URL(string: "https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=\(place.photoRef)&key=AIzaSyACJKXW98TFV6nb0YHqksfJJ3_Y8gkDib0"), placeholderImage: UIImage(named: "restaurant"), options: .continueInBackground) { (_, _, _, _ ) in
+        // only animate on initial load
+        if place.shouldAnimate {
+            // hide image and label before image is loaded
+            headlineImage.alpha = 0
+            headlineLabel.alpha = 0
+            saveButton.alpha = 0
+            headlineLabel.text = place.name
+            // set image asynchronously
+            headlineImage.sd_setImage(with: URL(string: "https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=\(place.photoRef)&key=AIzaSyACJKXW98TFV6nb0YHqksfJJ3_Y8gkDib0"), placeholderImage: UIImage(named: "restaurant"), options: .continueInBackground) { (_, _, _, _ ) in
                 // image download complete fade in image
                 print("COMPLETED SD SET IMAGE")
                 UIView.animate(withDuration: 1.5, animations: {
                     self.headlineImage.alpha = 1
                     self.headlineLabel.alpha = 1
                     self.saveButton.alpha = 1
+                    place.shouldAnimate = false
                 })
+            }
         }
         
     }

@@ -32,7 +32,7 @@ class NetworkingFunctionality {
                                 var place_name: String!
                                 var place_open_or_not: Bool?
                                 var place_photo_ref: String?
-                                var place_rating: Int?
+                                var place_rating: Float?
                                 var place_address: String!
                                 if let name = object["name"] as? String {
                                     print("NAME: \(name)")
@@ -55,7 +55,7 @@ class NetworkingFunctionality {
                                     print("UNABLE TO GET PHOTO REF")
                                     place_photo_ref = nil
                                 }
-                                if let rating = object["rating"] as? Int {
+                                if let rating = object["rating"] as? Float {
                                     print("RATING: \(rating)")
                                     place_rating = rating
                                 } else {
@@ -66,7 +66,7 @@ class NetworkingFunctionality {
                                     print("ADDRESS: \(address)")
                                     place_address = address
                                 }
-                                placeInstance = Place(name: place_name, open: place_open_or_not, photoRef: place_photo_ref, rating: place_rating, address: place_address)
+                                placeInstance = Place(name: place_name, open: place_open_or_not, photoRef: place_photo_ref, rating: place_rating, address: place_address, animated: true)
                                 places.append(placeInstance)
                                 }
                         }
