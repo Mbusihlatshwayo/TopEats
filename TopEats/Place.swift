@@ -7,15 +7,21 @@
 //
 
 import Foundation
+import MapKit
 
 class Place {
     
     private var _name: String!
     private var _open: Bool!
-    private var _photoRef: String! // sunny, cloudy, overcast...
+    private var _photoRef: String!
     private var _rating: Float!
     private var _address: String!
     private var _shouldAnimate: Bool!
+    private var _location: CLLocation!
+    
+    var location: CLLocation {
+        return _location
+    }
     
     var shouldAnimate: Bool {
         set {
@@ -68,7 +74,7 @@ class Place {
         }
     }
     
-    init(name: String!, open: Bool?, photoRef: String?, rating: Float?, address: String!, animated: Bool!) {
+    init(name: String!, open: Bool?, photoRef: String?, rating: Float?, address: String!, animated: Bool!, location: CLLocation) {
         // we always have a name
         self._name = name
         
@@ -93,6 +99,7 @@ class Place {
         self._shouldAnimate = animated
         // we always have an address
         self._address = address
+        self._location = location
     }
     
 }

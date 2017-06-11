@@ -146,9 +146,9 @@
 		CCF573221EC8315D000B91D8 /* TopEats */ = {
 			isa = PBXGroup;
 			children = (
-				CC2A78CA1EE64CF600AA1E2A /* SupportingFunctionality */,
 				CC4CEBFE1ED7CB05001FE6BA /* TopEats.entitlements */,
 				CCFF4C651EC9940900CB19A0 /* Custom UI */,
+				CC2A78CA1EE64CF600AA1E2A /* SupportingFunctionality */,
 				CCFF4C5A1EC95FB500CB19A0 /* Controller */,
 				CCFF4C591EC95FB000CB19A0 /* View */,
 				CCFF4C581EC95FAA00CB19A0 /* Model */,

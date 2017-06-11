@@ -8,6 +8,7 @@
 
 import Foundation
 import Alamofire
+import MapKit
 
 class NetworkingFunctionality {
     
@@ -34,6 +35,8 @@ class NetworkingFunctionality {
                                 var place_photo_ref: String?
                                 var place_rating: Float?
                                 var place_address: String!
+                                var place_location: CLLocation!
+                                
                                 if let name = object["name"] as? String {
                                     print("NAME: \(name)")
                                     place_name = name
@@ -66,7 +69,11 @@ class NetworkingFunctionality {
                                     print("ADDRESS: \(address)")
                                     place_address = address
                                 }
-                                placeInstance = Place(name: place_name, open: place_open_or_not, photoRef: place_photo_ref, rating: place_rating, address: place_address, animated: true)
+                                if let geometry = object["geometry"] as? Dictionary<String, AnyObject>, let location = geometry["location"] as? Dictionary<String, AnyObject>, let latitude = location["lat"] as? Double, let longitude = location["lng"] as? Double {
+                                    place_location = CLLocation(latitude: latitude, longitude: longitude)
+                                }
+                                
+                                placeInstance = Place(name: place_name, open: place_open_or_not, photoRef: place_photo_ref, rating: place_rating, address: place_address, animated: true, location: place_location)
                                 places.append(placeInstance)
                                 }
                         }

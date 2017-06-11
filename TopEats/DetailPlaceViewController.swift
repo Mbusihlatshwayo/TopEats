@@ -9,8 +9,9 @@
 import UIKit
 import SwiftyStarRatingView
 import SDWebImage
+import MapKit
 
-class DetailPlaceViewController: UIViewController {
+class DetailPlaceViewController: UIViewController, MKMapViewDelegate {
 
     // MARK: - OUTLETS
     @IBOutlet weak var placeImageView: UIImageView!
@@ -19,7 +20,7 @@ class DetailPlaceViewController: UIViewController {
     @IBOutlet weak var addressLabel: UILabel!
     @IBOutlet weak var hoursLabel: UILabel!
     @IBOutlet weak var detailScrollView: UIScrollView!
-    @IBOutlet weak var addresText: UITextView!
+    @IBOutlet weak var mapView: MKMapView!
     
     // MARK: - PROPERTIES
     var place: Place?
@@ -62,13 +63,85 @@ class DetailPlaceViewController: UIViewController {
         titleLabel.text = place!.name
         // init star rating view with location rating value
         starRatingView.value = CGFloat(place!.rating)
-        let topEatsGreen = UIColor(red:0.00, green:0.60, blue:0.33, alpha:1.0)
         starRatingView.tintColor = topEatsGreen
-        // init address label text with location address 
+        // init address label text with location address
         addressLabel.adjustsFontSizeToFitWidth = true
         addressLabel.text = place!.address
-        addresText.text = place!.address
         // init hours label with location open status
         hoursLabel.text = place!.open
+        setUpMap()
+    }
+    
+    func setUpMap() {
+        mapView.delegate = self
+        centerMapOnLocation(location: place!.location)
+        let annotation = MKPointAnnotation()
+        annotation.coordinate = place!.location.coordinate
+        annotation.title = place!.name
+        mapView.addAnnotation(annotation)
+        mapView.isScrollEnabled = false
+        mapView.isZoomEnabled = false
+        mapView.showsUserLocation = true
+        drawRoute()
+    }
+    
+    // MARK: - MAP VIEW METHODS
+    let regionRadius: CLLocationDistance = 700
+    func centerMapOnLocation(location: CLLocation) {
+        let coordinateRegion = MKCoordinateRegionMakeWithDistance(location.coordinate,
+                                                                  regionRadius * 2.0, regionRadius * 2.0)
+        mapView.setRegion(coordinateRegion, animated: true)
+    }
+    
+    
+    
+    func drawRoute() {
+        // get the user and destination location coordinates
+        let userLocation = CLLocationCoordinate2D(latitude: Location.sharedInstance.latitude, longitude: Location.sharedInstance.longitude)
+        let destinationLocation = CLLocationCoordinate2D(latitude: place!.location.coordinate.latitude, longitude: place!.location.coordinate.longitude)
+        
+        // create placemarks from the locations
+        let userPlacemark = MKPlacemark(coordinate: userLocation, addressDictionary: nil)
+        let destinationPlacemark = MKPlacemark(coordinate: destinationLocation, addressDictionary: nil)
+        
+        // get map items to handle routing
+        let sourceMapItem = MKMapItem(placemark: userPlacemark)
+        let destinationMapItem = MKMapItem(placemark: destinationPlacemark)
+        
+        // compute the route to the destination
+        let directionRequest = MKDirectionsRequest()
+        directionRequest.source = sourceMapItem
+        directionRequest.destination = destinationMapItem
+        directionRequest.transportType = .automobile
+        
+        // Calculate the directions
+        let directions = MKDirections(request: directionRequest)
+        
+
+        directions.calculate {
+            (response, error) -> Void in
+            
+            guard let response = response else {
+                if let error = error {
+                    print("DIRECTIONS ERROR: \(error)")
+                }
+                
+                return
+            }
+            
+            let route = response.routes[0]
+            self.mapView.add((route.polyline), level: MKOverlayLevel.aboveRoads)
+            
+            let rect = route.polyline.boundingMapRect
+            self.mapView.setRegion(MKCoordinateRegionForMapRect(rect), animated: true)
+        }
+    }
+    
+    func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
+        let renderer = MKPolylineRenderer(overlay: overlay)
+        renderer.strokeColor = topEatsGreen
+        renderer.lineWidth = 6.0
+        
+        return renderer
     }
 }
