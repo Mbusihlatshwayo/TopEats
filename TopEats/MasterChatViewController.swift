@@ -21,13 +21,15 @@ class MasterChatViewController: UIViewController {
     //MARK:  VC Methods
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.navigationController?.navigationBar.isHidden = true
         titleLabel.text = section.name
         
         // Do any additional setup after loading the view.
     }
 
     @IBAction func didPressBackButton(_ sender: Any) {
-        self.dismiss(animated: true, completion: nil)
+//        self.dismiss(animated: true, completion: nil)
+        self.navigationController?.popViewController(animated: true)
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

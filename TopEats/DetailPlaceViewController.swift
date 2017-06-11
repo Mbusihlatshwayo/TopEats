@@ -29,12 +29,13 @@ class DetailPlaceViewController: UIViewController, MKMapViewDelegate, CLLocation
     // MARK: - IBACTIONS
     
     @IBAction func didPressBackButton(_ sender: Any) {
-        self.dismiss(animated: true, completion: nil)
+        self.navigationController?.popViewController(animated: true)
     }
     
     // MARK: - VIEW METHODS
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.navigationController?.navigationBar.isHidden = true
         setUpView()
         locationMgr.delegate = self
         locationMgr.desiredAccuracy = kCLLocationAccuracyBest
