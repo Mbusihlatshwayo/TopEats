@@ -11,7 +11,7 @@ import SwiftyStarRatingView
 import SDWebImage
 import MapKit
 
-class DetailPlaceViewController: UIViewController, MKMapViewDelegate {
+class DetailPlaceViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate {
 
     // MARK: - OUTLETS
     @IBOutlet weak var placeImageView: UIImageView!
@@ -24,6 +24,7 @@ class DetailPlaceViewController: UIViewController, MKMapViewDelegate {
     
     // MARK: - PROPERTIES
     var place: Place?
+    let locationMgr = CLLocationManager()
     
     // MARK: - IBACTIONS
     
@@ -35,6 +36,9 @@ class DetailPlaceViewController: UIViewController, MKMapViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpView()
+        locationMgr.delegate = self
+        locationMgr.desiredAccuracy = kCLLocationAccuracyBest
+        locationMgr.startUpdatingLocation()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -137,11 +141,18 @@ class DetailPlaceViewController: UIViewController, MKMapViewDelegate {
         }
     }
     
+    
     func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
+
         let renderer = MKPolylineRenderer(overlay: overlay)
         renderer.strokeColor = topEatsGreen
         renderer.lineWidth = 6.0
         
         return renderer
     }
+    
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        
+    }
+
 }
