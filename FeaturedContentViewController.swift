@@ -34,6 +34,7 @@ class FeaturedContentViewController: UIViewController, UITableViewDataSource, UI
     var places = [Place]()
     var activityIndicator: NVActivityIndicatorView?
     var shouldReloadData = true
+    var updateLocationCount = 0
     
     // MARK: - VIEW METHODS
     override func viewDidLoad() {
@@ -85,7 +86,7 @@ class FeaturedContentViewController: UIViewController, UITableViewDataSource, UI
     }
     
     private func locationManager(manager: CLLocationManager!, didChangeAuthorizationStatus status: CLAuthorizationStatus) {
-        if status == .authorizedWhenInUse {
+        if status == .authorizedWhenInUse || status == .authorizedAlways {
             // authorized location status when app is in use; update current location
             locationMgr.startUpdatingLocation()
             print("LOCATION SUCCESS")
@@ -111,15 +112,21 @@ class FeaturedContentViewController: UIViewController, UITableViewDataSource, UI
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         print("UPDATED LOCATION")
-        if shouldReloadData {
+        // workaround for simulator delaying location manager coordinates. Come back and fix.
+        updateLocationCount = updateLocationCount + 1
+        if shouldReloadData && updateLocationCount == 3 {
             // set the location
-            currentLocation = locationMgr.location
+//            currentLocation = locationMgr.location
+            currentLocation = manager.location
             Location.sharedInstance.latitude = currentLocation.coordinate.latitude
             Location.sharedInstance.longitude = currentLocation.coordinate.longitude
+            print("LATITUDE \(Location.sharedInstance.latitude)")
+            print("LONGITUDE \(Location.sharedInstance.longitude)")
             // we only load the intial data once
             downloadPlaces()
             shouldReloadData = false // change the flag to not update data
         }
+        print(manager.location)
     }
     
     func downloadPlaces() {

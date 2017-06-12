@@ -42,11 +42,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FeaturedContentViewController.swift"
-            timestampString = "518933210.200356"
+            timestampString = "518935570.634081"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "235"
-            endingLineNumber = "235"
+            startingLineNumber = "242"
+            endingLineNumber = "242"
             landmarkName = "tableView(_:cellForRowAt:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -90,7 +90,7 @@
                   moduleName = "TopEats"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Volumes/Seagate%20Backup%20Plus%20Drive/Xcode%20Files/TopEats/TopEats/DetailPlaceViewController.swift"
-                  timestampString = "518933098.116481"
+                  timestampString = "518935586.466264"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "130"
@@ -105,7 +105,7 @@
                   moduleName = "TopEats"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Volumes/Seagate%20Backup%20Plus%20Drive/Xcode%20Files/TopEats/TopEats/DetailPlaceViewController.swift"
-                  timestampString = "518933098.124457"
+                  timestampString = "518935586.468125"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "130"
@@ -138,7 +138,7 @@
                   moduleName = "TopEats"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Volumes/Seagate%20Backup%20Plus%20Drive/Xcode%20Files/TopEats/TopEats/DetailPlaceViewController.swift"
-                  timestampString = "518933098.140164"
+                  timestampString = "518935586.474755"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "126"
@@ -153,7 +153,7 @@
                   moduleName = "TopEats"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Volumes/Seagate%20Backup%20Plus%20Drive/Xcode%20Files/TopEats/TopEats/DetailPlaceViewController.swift"
-                  timestampString = "518933098.14323"
+                  timestampString = "518935586.47655"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "129"
@@ -170,11 +170,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FeaturedContentViewController.swift"
-            timestampString = "518933210.200356"
+            timestampString = "518935570.634081"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "176"
-            endingLineNumber = "176"
+            startingLineNumber = "183"
+            endingLineNumber = "183"
             landmarkName = "runTimedCode()"
             landmarkType = "7">
          </BreakpointContent>
@@ -186,11 +186,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FeaturedContentViewController.swift"
-            timestampString = "518933210.200356"
+            timestampString = "518935406.101261"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "88"
-            endingLineNumber = "88"
+            startingLineNumber = "89"
+            endingLineNumber = "89"
             landmarkName = "locationManager(manager:didChangeAuthorizationStatus:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -202,11 +202,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FeaturedContentViewController.swift"
-            timestampString = "518933210.200356"
+            timestampString = "518935406.101261"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "57"
-            endingLineNumber = "57"
+            startingLineNumber = "58"
+            endingLineNumber = "58"
             landmarkName = "requestLocServices()"
             landmarkType = "7">
          </BreakpointContent>
@@ -218,11 +218,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FeaturedContentViewController.swift"
-            timestampString = "518933210.200356"
+            timestampString = "518935406.101261"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "41"
-            endingLineNumber = "41"
+            startingLineNumber = "42"
+            endingLineNumber = "42"
             landmarkName = "viewDidLoad()"
             landmarkType = "7">
          </BreakpointContent>
@@ -234,11 +234,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FeaturedContentViewController.swift"
-            timestampString = "518933210.200356"
+            timestampString = "518935570.634081"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "136"
-            endingLineNumber = "136"
+            startingLineNumber = "143"
+            endingLineNumber = "143"
             landmarkName = "downloadPlaces()"
             landmarkType = "7">
          </BreakpointContent>
@@ -250,11 +250,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FeaturedContentViewController.swift"
-            timestampString = "518933210.200356"
+            timestampString = "518935406.101261"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "104"
-            endingLineNumber = "104"
+            startingLineNumber = "105"
+            endingLineNumber = "105"
             landmarkName = "locationManager(_:didChangeAuthorization:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -266,11 +266,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FeaturedContentViewController.swift"
-            timestampString = "518933210.200356"
+            timestampString = "518935570.634081"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "114"
-            endingLineNumber = "114"
+            startingLineNumber = "117"
+            endingLineNumber = "117"
             landmarkName = "locationManager(_:didUpdateLocations:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -282,12 +282,44 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FeaturedContentViewController.swift"
-            timestampString = "518933210.200356"
+            timestampString = "518935570.634081"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "127"
-            endingLineNumber = "127"
+            startingLineNumber = "134"
+            endingLineNumber = "134"
             landmarkName = "downloadPlaces()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "TopEats/AppDelegate.swift"
+            timestampString = "518934769.305061"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "20"
+            endingLineNumber = "20"
+            landmarkName = "application(_:didFinishLaunchingWithOptions:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "FeaturedContentViewController.swift"
+            timestampString = "518935570.634081"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "129"
+            endingLineNumber = "129"
+            landmarkName = "locationManager(_:didUpdateLocations:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
