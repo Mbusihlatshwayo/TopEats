@@ -33,17 +33,21 @@ class FeaturedContentViewController: UIViewController, UITableViewDataSource, UI
     var currentLocation: CLLocation!
     var places = [Place]()
     var activityIndicator: NVActivityIndicatorView?
+    var shouldReloadData = true
     
     // MARK: - VIEW METHODS
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.navigationBar.isHidden = true
+        locationMgr.delegate = self
         initializeViewContent()
         placesClient = GMSPlacesClient.shared()
         requestLocServices()
         places.removeAll()
-        downloadPlaces()
-//        activityIndicator.isHidden = true
+        let status  = CLLocationManager.authorizationStatus()
+        if status == .authorizedAlways || status == .authorizedWhenInUse {
+            self.downloadPlaces()
+        }
         
     }
     
@@ -52,16 +56,16 @@ class FeaturedContentViewController: UIViewController, UITableViewDataSource, UI
     
     // MARK: - LOCATION METHODS
     func requestLocServices() {
-        // 1
+        // get the status of the location manager
         let status  = CLLocationManager.authorizationStatus()
         
-        // 2
+        // if we havent received the status request location services
         if status == .notDetermined {
             locationMgr.requestWhenInUseAuthorization()
             return
         }
         
-        // 3
+        // tell user to activate location services
         if status == .denied || status == .restricted {
             let alert = UIAlertController(title: "Location Services Disabled", message: "Please enable Location Services in Settings", preferredStyle: .alert)
             
@@ -72,10 +76,9 @@ class FeaturedContentViewController: UIViewController, UITableViewDataSource, UI
             return
         }
         
-        // 4
-        locationMgr.delegate = self
+        // set up location manager to get location
         locationMgr.desiredAccuracy = kCLLocationAccuracyBest // want coordinates to be very accurate
-        locationMgr.requestWhenInUseAuthorization() // only want location when looking for weather
+//        locationMgr.requestWhenInUseAuthorization() // only want location when looking for weather
         locationMgr.startMonitoringSignificantLocationChanges()
         locationMgr.startUpdatingLocation()
         // get location for shared instance
@@ -87,7 +90,7 @@ class FeaturedContentViewController: UIViewController, UITableViewDataSource, UI
     private func locationManager(manager: CLLocationManager!, didChangeAuthorizationStatus status: CLAuthorizationStatus) {
         if status == .authorizedWhenInUse {
             // authorized location status when app is in use; update current location
-            //            locationManager.startUpdatingLocation()
+            locationMgr.startUpdatingLocation()
             print("LOCATION SUCCESS")
             currentLocation = locationMgr.location
             Location.sharedInstance.latitude = currentLocation.coordinate.latitude
@@ -95,11 +98,32 @@ class FeaturedContentViewController: UIViewController, UITableViewDataSource, UI
             Location.sharedInstance.longitude = currentLocation.coordinate.longitude
             print("INSTANCE LON = \(Location.sharedInstance.longitude)")
             print("location : \(Location.sharedInstance.latitude!) \(Location.sharedInstance.longitude!)")
-            // implement download function for data here...
+            downloadPlaces()
         }
         // implement logic for other status values if needed...
     }
     
+    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
+        if status == .authorizedWhenInUse || status == .authorizedAlways {
+            // authorized location status when app is in use; update current location
+            locationMgr.startUpdatingLocation()
+            print("LOCATION SUCCESS")
+        }
+        // implement logic for other status values if needed...
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        print("UPDATED LOCATION")
+        if shouldReloadData {
+            // set the location
+            currentLocation = locationMgr.location
+            Location.sharedInstance.latitude = currentLocation.coordinate.latitude
+            Location.sharedInstance.longitude = currentLocation.coordinate.longitude
+            // we only load the intial data once
+            downloadPlaces()
+            shouldReloadData = false // change the flag to not update data
+        }
+    }
     
     func downloadPlaces() {
         print("INSIDE DOWNLOAD FUNC")
