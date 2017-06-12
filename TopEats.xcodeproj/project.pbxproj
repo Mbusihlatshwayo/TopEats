@@ -125,6 +125,36 @@
 			name = SupportingFunctionality;
 			sourceTree = "<group>";
 		};
+		CCCB9C891EEE458800837A9D /* Authentication Views */ = {
+			isa = PBXGroup;
+			children = (
+				CCF573251EC8315D000B91D8 /* LoginViewController.swift */,
+				CC19B3E11ECFA9C8003171EB /* SignUpViewController.swift */,
+			);
+			name = "Authentication Views";
+			sourceTree = "<group>";
+		};
+		CCCB9C8A1EEE459E00837A9D /* Base Views */ = {
+			isa = PBXGroup;
+			children = (
+				CCD7177B1EEA5CDE00151A4D /* DetailPlaceViewController.swift */,
+				CCB874401ECD568600A246F7 /* FeaturedContentViewController.swift */,
+				CCB8743E1ECD2D7900A246F7 /* MasterViewController.swift */,
+				CCFD24271ECE89DD00F9FFB6 /* SavedContentViewController.swift */,
+				CCE4B3061ECF67DE00FF0C75 /* CommunityViewController.swift */,
+			);
+			name = "Base Views";
+			sourceTree = "<group>";
+		};
+		CCCB9C8B1EEE45C200837A9D /* Chat Views */ = {
+			isa = PBXGroup;
+			children = (
+				CC58E56A1ED7C905001443AA /* ChatViewController.swift */,
+				CC182D441EDE5CB900165731 /* MasterChatViewController.swift */,
+			);
+			name = "Chat Views";
+			sourceTree = "<group>";
+		};
 		CCF573171EC8315D000B91D8 = {
 			isa = PBXGroup;
 			children = (
@@ -188,15 +218,9 @@
 		CCFF4C5A1EC95FB500CB19A0 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				CCF573251EC8315D000B91D8 /* LoginViewController.swift */,
-				CC19B3E11ECFA9C8003171EB /* SignUpViewController.swift */,
-				CCB874401ECD568600A246F7 /* FeaturedContentViewController.swift */,
-				CCB8743E1ECD2D7900A246F7 /* MasterViewController.swift */,
-				CCFD24271ECE89DD00F9FFB6 /* SavedContentViewController.swift */,
-				CCE4B3061ECF67DE00FF0C75 /* CommunityViewController.swift */,
-				CC58E56A1ED7C905001443AA /* ChatViewController.swift */,
-				CC182D441EDE5CB900165731 /* MasterChatViewController.swift */,
-				CCD7177B1EEA5CDE00151A4D /* DetailPlaceViewController.swift */,
+				CCCB9C8B1EEE45C200837A9D /* Chat Views */,
+				CCCB9C8A1EEE459E00837A9D /* Base Views */,
+				CCCB9C891EEE458800837A9D /* Authentication Views */,
 			);
 			name = Controller;
 			sourceTree = "<group>";

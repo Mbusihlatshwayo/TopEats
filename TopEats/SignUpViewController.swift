@@ -63,10 +63,28 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
             }
         })
     }
-    
+    // MARK: - TEXT FIELD METHODS
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         self.view.endEditing(true)
         return false
+    }
+    
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        if textField == passwordTextField {
+            passwordTextField.isSecureTextEntry = true
+        }
+        if textField == confirmPasswordTextField {
+            confirmPasswordTextField.isSecureTextEntry = true
+        }
+    }
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        if textField == passwordTextField {
+            passwordTextField.isSecureTextEntry = false
+        }
+        if textField == confirmPasswordTextField {
+            confirmPasswordTextField.isSecureTextEntry = false
+        }
     }
 
 }

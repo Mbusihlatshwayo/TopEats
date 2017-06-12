@@ -38,16 +38,13 @@ class FeaturedContentViewController: UIViewController, UITableViewDataSource, UI
     // MARK: - VIEW METHODS
     override func viewDidLoad() {
         super.viewDidLoad()
+        places.removeAll()
         self.navigationController?.navigationBar.isHidden = true
         locationMgr.delegate = self
         initializeViewContent()
-        placesClient = GMSPlacesClient.shared()
         requestLocServices()
-        places.removeAll()
-        let status  = CLLocationManager.authorizationStatus()
-        if status == .authorizedAlways || status == .authorizedWhenInUse {
-            self.downloadPlaces()
-        }
+        placesClient = GMSPlacesClient.shared()
+        
         
     }
     
@@ -82,9 +79,9 @@ class FeaturedContentViewController: UIViewController, UITableViewDataSource, UI
         locationMgr.startMonitoringSignificantLocationChanges()
         locationMgr.startUpdatingLocation()
         // get location for shared instance
-        currentLocation = locationMgr.location
-        Location.sharedInstance.latitude = currentLocation.coordinate.latitude
-        Location.sharedInstance.longitude = currentLocation.coordinate.longitude
+//        currentLocation = locationMgr.location
+//        Location.sharedInstance.latitude = currentLocation.coordinate.latitude
+//        Location.sharedInstance.longitude = currentLocation.coordinate.longitude
     }
     
     private func locationManager(manager: CLLocationManager!, didChangeAuthorizationStatus status: CLAuthorizationStatus) {
