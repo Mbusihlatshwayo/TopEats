@@ -15,6 +15,7 @@ class SavedContentViewController: UIViewController, UITableViewDelegate, UITable
     var places = [Place]()
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.navigationController?.navigationBar.isHidden = true
         tableView.delegate = self
         tableView.dataSource = self
         setupDummyData()

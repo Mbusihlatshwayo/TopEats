@@ -25,6 +25,7 @@ class CommunityViewController: UIViewController, UITableViewDataSource, UITableV
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.navigationController?.navigationBar.isHidden = true
         tableView.delegate = self
         tableView.dataSource = self
         tableView.separatorColor = UIColor.green

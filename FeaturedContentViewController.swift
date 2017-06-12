@@ -37,7 +37,7 @@ class FeaturedContentViewController: UIViewController, UITableViewDataSource, UI
     // MARK: - VIEW METHODS
     override func viewDidLoad() {
         super.viewDidLoad()
-//        self.navigationController?.navigationBar.isHidden = true
+        self.navigationController?.navigationBar.isHidden = true
         initializeViewContent()
         placesClient = GMSPlacesClient.shared()
         requestLocServices()
