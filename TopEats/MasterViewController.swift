@@ -7,15 +7,22 @@
 //
 
 import UIKit
+import Firebase
 
 class MasterViewController: UIViewController {
     
+    // MARK: - OUTLETS
     @IBOutlet weak var savedContainer: UIView!
     @IBOutlet weak var communityContainer: UIView!
     @IBOutlet weak var featuredContainer: UIView!
     @IBOutlet weak var segmentedControl: UISegmentedControl!
     @IBOutlet weak var featuredContainerView: UIView!
+    @IBOutlet weak var leadingConstraint: NSLayoutConstraint!
     
+    // MARK: - PROPERTIES
+    var menuShowing = false
+    
+    // MARK: - VIEW METHODS
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.navigationBar.alpha = 0
@@ -59,6 +66,98 @@ class MasterViewController: UIViewController {
             communityContainer.isHidden = true
             savedContainer.isHidden = false
         }
+    }
+    
+    func animateMenu() {
+        UIView.animate(withDuration: 1) {
+//            viewToAnimate.alpha = 0
+        }
+    }
+    
+    // MARK: - IBACTIONS
+    @IBAction func showMenu(_ sender: Any) {
+        if menuShowing {
+            leadingConstraint.constant = -246
+            UIView.animate(withDuration: 0.5) {
+                self.view.layoutIfNeeded()
+            }
+
+        } else {
+            leadingConstraint.constant = 0
+            UIView.animate(withDuration: 0.5) {
+                self.view.layoutIfNeeded()
+            }
+        }
+        menuShowing = !menuShowing
+    }
+    @IBAction func didPressLogOut(_ sender: Any) {
+        
+        let firebaseAuth = Auth.auth()
+        do {
+            try firebaseAuth.signOut()
+        } catch let signOutError as NSError {
+            print ("Error signing out: %@", signOutError)
+            return
+        }
+        self.dismiss(animated: true)
+
+        
+    }
+    @IBAction func showFeaturedView(_ sender: Any) {
+        featuredContainer.isHidden = false
+        communityContainer.isHidden = true
+        savedContainer.isHidden = true
+        if menuShowing {
+            leadingConstraint.constant = -246
+            UIView.animate(withDuration: 0.5) {
+                self.view.layoutIfNeeded()
+            }
+        } else {
+            leadingConstraint.constant = 0
+            UIView.animate(withDuration: 0.5) {
+                self.view.layoutIfNeeded()
+            }
+        }
+        segmentedControl.selectedSegmentIndex = 0
+        menuShowing = !menuShowing
+    }
+    
+    @IBAction func showCommunityView(_ sender: Any) {
+        featuredContainer.isHidden = true
+        communityContainer.isHidden = false
+        savedContainer.isHidden = true
+        if menuShowing {
+            leadingConstraint.constant = -246
+            UIView.animate(withDuration: 0.5) {
+                self.view.layoutIfNeeded()
+            }
+        } else {
+            leadingConstraint.constant = 0
+            UIView.animate(withDuration: 0.5) {
+                self.view.layoutIfNeeded()
+            }
+        }
+        segmentedControl.selectedSegmentIndex = 1
+        menuShowing = !menuShowing
+    }
+    
+    @IBAction func showSavedView(_ sender: Any) {
+        featuredContainer.isHidden = true
+        communityContainer.isHidden = true
+        savedContainer.isHidden = false
+        if menuShowing {
+            leadingConstraint.constant = -246
+            UIView.animate(withDuration: 0.5) {
+                self.view.layoutIfNeeded()
+            }
+        } else {
+            leadingConstraint.constant = 0
+            UIView.animate(withDuration: 0.5) {
+                self.view.layoutIfNeeded()
+            }
+        }
+        segmentedControl.selectedSegmentIndex = 2
+        menuShowing = !menuShowing
     }
     
     

@@ -18,13 +18,6 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         usernameLabel.delegate = self
         passwordLabel.delegate = self
         
-//        code to sign out
-//        let firebaseAuth = Auth.auth()
-//        do {
-//            try firebaseAuth.signOut()
-//        } catch let signOutError as NSError {
-//            print ("Error signing out: %@", signOutError)
-//        }
         // if user is signed in bypass login
         Auth.auth().addStateDidChangeListener() { auth, user in
             if user != nil {
@@ -55,6 +48,8 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
                         // user was found sign them in and go forward
                         print("USER: \(fireUser)")
                         self.performSegue(withIdentifier: "loginToMaster", sender: nil)
+                        self.passwordLabel.text = ""
+                        self.usernameLabel.text = ""
                     } else {
                         // error
                         print("\(String(describing: error))")

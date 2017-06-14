@@ -126,7 +126,6 @@ class FeaturedContentViewController: UIViewController, UITableViewDataSource, UI
             downloadPlaces()
             shouldReloadData = false // change the flag to not update data
         }
-        print(manager.location)
     }
     
     func downloadPlaces() {
