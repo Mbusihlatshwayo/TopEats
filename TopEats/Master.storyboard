@@ -216,6 +216,7 @@
                         <outlet property="featuredContainer" destination="8av-yA-eY8" id="jPQ-50-cDb"/>
                         <outlet property="featuredContainerView" destination="8av-yA-eY8" id="wp6-QY-ARm"/>
                         <outlet property="leadingConstraint" destination="I22-lP-pLC" id="hkQ-f4-Q96"/>
+                        <outlet property="menuView" destination="aqk-vf-eYh" id="kYq-tw-owo"/>
                         <outlet property="savedContainer" destination="wTm-UC-JNk" id="cSw-FP-Dw5"/>
                         <outlet property="segmentedControl" destination="x1u-uL-Ps8" id="btf-wk-A70"/>
                     </connections>
@@ -432,6 +433,9 @@
                                                     <constraint firstAttribute="width" constant="77" id="4yB-cY-BrQ"/>
                                                 </constraints>
                                                 <state key="normal" title="Directions"/>
+                                                <connections>
+                                                    <action selector="didPressDirectionsButton:" destination="jGK-iE-yZC" eventType="touchUpInside" id="u0I-rY-XtV"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>

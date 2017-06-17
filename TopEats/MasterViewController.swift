@@ -18,7 +18,7 @@ class MasterViewController: UIViewController {
     @IBOutlet weak var segmentedControl: UISegmentedControl!
     @IBOutlet weak var featuredContainerView: UIView!
     @IBOutlet weak var leadingConstraint: NSLayoutConstraint!
-    
+    @IBOutlet weak var menuView: UIView!
     // MARK: - PROPERTIES
     var menuShowing = false
     
@@ -68,11 +68,6 @@ class MasterViewController: UIViewController {
         }
     }
     
-    func animateMenu() {
-        UIView.animate(withDuration: 1) {
-//            viewToAnimate.alpha = 0
-        }
-    }
     
     // MARK: - IBACTIONS
     @IBAction func showMenu(_ sender: Any) {
@@ -80,12 +75,14 @@ class MasterViewController: UIViewController {
             leadingConstraint.constant = -246
             UIView.animate(withDuration: 0.5) {
                 self.view.layoutIfNeeded()
+                self.menuView.layer.shadowOpacity = 0
             }
 
         } else {
             leadingConstraint.constant = 0
             UIView.animate(withDuration: 0.5) {
                 self.view.layoutIfNeeded()
+                self.menuView.layer.shadowOpacity = 1
             }
         }
         menuShowing = !menuShowing
@@ -111,11 +108,13 @@ class MasterViewController: UIViewController {
             leadingConstraint.constant = -246
             UIView.animate(withDuration: 0.5) {
                 self.view.layoutIfNeeded()
+                self.menuView.layer.shadowOpacity = 0
             }
         } else {
             leadingConstraint.constant = 0
             UIView.animate(withDuration: 0.5) {
                 self.view.layoutIfNeeded()
+                self.menuView.layer.shadowOpacity = 1
             }
         }
         segmentedControl.selectedSegmentIndex = 0
@@ -130,11 +129,13 @@ class MasterViewController: UIViewController {
             leadingConstraint.constant = -246
             UIView.animate(withDuration: 0.5) {
                 self.view.layoutIfNeeded()
+                self.menuView.layer.shadowOpacity = 0
             }
         } else {
             leadingConstraint.constant = 0
             UIView.animate(withDuration: 0.5) {
                 self.view.layoutIfNeeded()
+                self.menuView.layer.shadowOpacity = 1
             }
         }
         segmentedControl.selectedSegmentIndex = 1
@@ -149,11 +150,13 @@ class MasterViewController: UIViewController {
             leadingConstraint.constant = -246
             UIView.animate(withDuration: 0.5) {
                 self.view.layoutIfNeeded()
+                self.menuView.layer.shadowOpacity = 0
             }
         } else {
             leadingConstraint.constant = 0
             UIView.animate(withDuration: 0.5) {
                 self.view.layoutIfNeeded()
+                self.menuView.layer.shadowOpacity = 1
             }
         }
         segmentedControl.selectedSegmentIndex = 2

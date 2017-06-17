@@ -31,6 +31,21 @@ class DetailPlaceViewController: UIViewController, MKMapViewDelegate, CLLocation
     @IBAction func didPressBackButton(_ sender: Any) {
         self.navigationController?.popViewController(animated: true)
     }
+    @IBAction func didPressDirectionsButton(_ sender: Any) {
+        
+            let regionDistance:CLLocationDistance = 100
+            let coordinates = place?.location.coordinate
+            let regionSpan = MKCoordinateRegionMakeWithDistance(coordinates!, regionDistance, regionDistance)
+            let options = [
+                MKLaunchOptionsMapCenterKey: NSValue(mkCoordinate: regionSpan.center),
+                MKLaunchOptionsMapSpanKey: NSValue(mkCoordinateSpan: regionSpan.span)
+            ]
+            let placemark = MKPlacemark(coordinate: coordinates!, addressDictionary: nil)
+            let mapItem = MKMapItem(placemark: placemark)
+            mapItem.name = place?.name
+            mapItem.openInMaps(launchOptions: options)
+        
+    }
     
     // MARK: - VIEW METHODS
     override func viewDidLoad() {
@@ -97,8 +112,6 @@ class DetailPlaceViewController: UIViewController, MKMapViewDelegate, CLLocation
                                                                   regionRadius * 2.0, regionRadius * 2.0)
         mapView.setRegion(coordinateRegion, animated: true)
     }
-    
-    
     
     func drawRoute() {
         // get the user and destination location coordinates
