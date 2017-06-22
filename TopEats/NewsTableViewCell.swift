@@ -50,8 +50,7 @@ class NewsTableViewCell: UITableViewCell {
     }
     
     @IBAction func saveButtonPressed(_ sender: Any) {
-        saveButton.setImage(UIImage(named: "favoriteditemenabled"), for: UIControlState.selected)
-        print("change image")
+        print("button pressed")
     }
     override func awakeFromNib() {
         super.awakeFromNib()

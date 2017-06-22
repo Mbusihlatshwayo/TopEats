@@ -253,20 +253,31 @@ class FeaturedContentViewController: UIViewController, UITableViewDataSource, UI
     func saveClicked(sender:UIButton) {
         // the index of the calling place
         let buttonRow = sender.tag
+        let nc = NotificationCenter.default
         
+        if (sender.isSelected == false) {
+            let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+            let place = CDPlace(context: context) // Link place to Context
+            place.name = places[buttonRow].name
+            place.address = places[buttonRow].address
+            place.latitude = places[buttonRow].location.coordinate.latitude
+            place.longitude = places[buttonRow].location.coordinate.longitude
+            place.open = places[buttonRow].open
+            place.photoRef = places[buttonRow].photoRef
+            place.rating = Double(places[buttonRow].rating)
+            // Save the data to coredata
+            (UIApplication.shared.delegate as! AppDelegate).saveContext()
+            // post notification to notify of new saved data
+            nc.post(name: Notification.Name("coreDataChanged"), object: nil)
+
+        } else {
+            let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+            let place = CDPlace(context: context) // Link place to Context
+            context.delete(place)
+            (UIApplication.shared.delegate as! AppDelegate).saveContext()
+            nc.post(name: Notification.Name("coreDataChanged"), object: nil)
+        }
         sender.isSelected = !sender.isSelected
-        let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-        let place = CDPlace(context: context) // Link place to Context
-        place.name = places[buttonRow].name
-        place.address = places[buttonRow].address
-        place.latitude = places[buttonRow].location.coordinate.latitude
-        place.longitude = places[buttonRow].location.coordinate.longitude
-        place.open = places[buttonRow].open
-        place.photoRef = places[buttonRow].photoRef
-        place.rating = Double(places[buttonRow].rating)
-        // Save the data to coredata
-        (UIApplication.shared.delegate as! AppDelegate).saveContext()
-        
     }
     
     // MARK: - Navigation

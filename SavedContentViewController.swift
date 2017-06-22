@@ -13,12 +13,14 @@ class SavedContentViewController: UIViewController, UITableViewDelegate, UITable
     @IBOutlet weak var tableView: UITableView!
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     var places = [CDPlace]()
+    let notificationCenter = NotificationCenter.default
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.navigationBar.isHidden = true
         tableView.delegate = self
         tableView.dataSource = self
+        notificationCenter.addObserver(self, selector: #selector(addToSavedPlaces), name: Notification.Name("coreDataChanged"), object: nil)
 //        if places.count == 0 {
 //            tableView.isHidden = true
 //        } else {
@@ -35,6 +37,11 @@ class SavedContentViewController: UIViewController, UITableViewDelegate, UITable
         getData()
         tableView.reloadData()
     }
+    
+    func addToSavedPlaces() {
+        getData()
+    }
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
     }
@@ -67,6 +74,7 @@ class SavedContentViewController: UIViewController, UITableViewDelegate, UITable
         let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
         let place = places[buttonRow]
         context.delete(place)
+        (UIApplication.shared.delegate as! AppDelegate).saveContext()
         do {
             places = try context.fetch(CDPlace.fetchRequest())
         } catch {
@@ -79,6 +87,8 @@ class SavedContentViewController: UIViewController, UITableViewDelegate, UITable
     func getData() {
         do {
             places = try context.fetch(CDPlace.fetchRequest())
+            print("PLACES COUNT = \(places.count)")
+            tableView.reloadData()
         } catch {
             print("Fetching Failed")
         }
