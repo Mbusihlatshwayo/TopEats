@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
    LastUpgradeVersion = "0830"
-   version = "1.7">
+   version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
       buildImplicitDependencies = "YES">
@@ -14,10 +14,10 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "CCF5731F1EC8315D000B91D8"
-               BuildableName = "TopEats.app"
-               BlueprintName = "TopEats"
-               ReferencedContainer = "container:TopEats.xcodeproj">
+               BlueprintIdentifier = "CCDC39581EF4E1D9000ECACD"
+               BuildableName = "cdata.app"
+               BlueprintName = "cdata"
+               ReferencedContainer = "container:cdata.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -32,10 +32,10 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "CCF5731F1EC8315D000B91D8"
-            BuildableName = "TopEats.app"
-            BlueprintName = "TopEats"
-            ReferencedContainer = "container:TopEats.xcodeproj">
+            BlueprintIdentifier = "CCDC39581EF4E1D9000ECACD"
+            BuildableName = "cdata.app"
+            BlueprintName = "cdata"
+            ReferencedContainer = "container:cdata.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -55,18 +55,14 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "CCF5731F1EC8315D000B91D8"
-            BuildableName = "TopEats.app"
-            BlueprintName = "TopEats"
-            ReferencedContainer = "container:TopEats.xcodeproj">
+            BlueprintIdentifier = "CCDC39581EF4E1D9000ECACD"
+            BuildableName = "cdata.app"
+            BlueprintName = "cdata"
+            ReferencedContainer = "container:cdata.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
       </AdditionalOptions>
-      <LocationScenarioReference
-         identifier = "New York, NY, USA"
-         referenceType = "1">
-      </LocationScenarioReference>
    </LaunchAction>
    <ProfileAction
       buildConfiguration = "Release"
@@ -78,10 +74,10 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "CCF5731F1EC8315D000B91D8"
-            BuildableName = "TopEats.app"
-            BlueprintName = "TopEats"
-            ReferencedContainer = "container:TopEats.xcodeproj">
+            BlueprintIdentifier = "CCDC39581EF4E1D9000ECACD"
+            BuildableName = "cdata.app"
+            BlueprintName = "cdata"
+            ReferencedContainer = "container:cdata.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

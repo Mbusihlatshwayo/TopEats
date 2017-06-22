@@ -43,8 +43,10 @@ class NewsTableViewCell: UITableViewCell {
         
     }
     
-    override func prepareForReuse() {
-//        self.headlineImage.sd_cancelCurrentImageLoad()
+    func configWithCoreData(place: CDPlace) {
+        headlineLabel.text = place.name
+        headlineImage.sd_setImage(with: URL(string: "https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=\(place.photoRef!)&key=AIzaSyACJKXW98TFV6nb0YHqksfJJ3_Y8gkDib0"), placeholderImage: UIImage(named: "restaurant"), options: .continueInBackground)
+        print("https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=\(place.photoRef)&key=AIzaSyACJKXW98TFV6nb0YHqksfJJ3_Y8gkDib0")
     }
     
     @IBAction func saveButtonPressed(_ sender: Any) {

@@ -28,6 +28,8 @@
 		CCD717781EEA4BCF00151A4D /* SignUp.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CCD717771EEA4BCF00151A4D /* SignUp.storyboard */; };
 		CCD7177A1EEA4C1400151A4D /* Chat.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CCD717791EEA4C1400151A4D /* Chat.storyboard */; };
 		CCD7177C1EEA5CDE00151A4D /* DetailPlaceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCD7177B1EEA5CDE00151A4D /* DetailPlaceViewController.swift */; };
+		CCDC394D1EF4DE5C000ECACD /* PlaceDataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = CCDC394B1EF4DE5C000ECACD /* PlaceDataModel.xcdatamodeld */; };
+		CCDC394F1EF4DFCD000ECACD /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CCDC394E1EF4DFCD000ECACD /* CoreData.framework */; };
 		CCE4B3071ECF67DE00FF0C75 /* CommunityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCE4B3061ECF67DE00FF0C75 /* CommunityViewController.swift */; };
 		CCE4B3091ECF939400FF0C75 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = CCE4B3081ECF939400FF0C75 /* GoogleService-Info.plist */; };
 		CCF573241EC8315D000B91D8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCF573231EC8315D000B91D8 /* AppDelegate.swift */; };
@@ -67,6 +69,8 @@
 		CCD717771EEA4BCF00151A4D /* SignUp.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = SignUp.storyboard; sourceTree = "<group>"; };
 		CCD717791EEA4C1400151A4D /* Chat.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Chat.storyboard; sourceTree = "<group>"; };
 		CCD7177B1EEA5CDE00151A4D /* DetailPlaceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailPlaceViewController.swift; sourceTree = "<group>"; };
+		CCDC394C1EF4DE5C000ECACD /* PlaceDataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = PlaceDataModel.xcdatamodel; sourceTree = "<group>"; };
+		CCDC394E1EF4DFCD000ECACD /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		CCE4B3061ECF67DE00FF0C75 /* CommunityViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommunityViewController.swift; sourceTree = "<group>"; };
 		CCE4B3081ECF939400FF0C75 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		CCF573201EC8315D000B91D8 /* TopEats.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TopEats.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -88,6 +92,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CCDC394F1EF4DFCD000ECACD /* CoreData.framework in Frameworks */,
 				CC4CEC011ED7CD89001FE6BA /* JSQMessagesViewController.framework in Frameworks */,
 				CC4CEC021ED7CD89001FE6BA /* JSQSystemSoundPlayer.framework in Frameworks */,
 				FB9873F2C2A2047F9D791451 /* Pods_TopEats.framework in Frameworks */,
@@ -109,6 +114,7 @@
 		B8F7158399F486AE03C8878C /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				CCDC394E1EF4DFCD000ECACD /* CoreData.framework */,
 				CC4CEBFF1ED7CD89001FE6BA /* JSQMessagesViewController.framework */,
 				CC4CEC001ED7CD89001FE6BA /* JSQSystemSoundPlayer.framework */,
 				13AFAA7EC4B55519DE75A088 /* Pods_TopEats.framework */,
@@ -158,6 +164,7 @@
 		CCF573171EC8315D000B91D8 = {
 			isa = PBXGroup;
 			children = (
+				CCDC394B1EF4DE5C000ECACD /* PlaceDataModel.xcdatamodeld */,
 				CCF573221EC8315D000B91D8 /* TopEats */,
 				CCF573211EC8315D000B91D8 /* Products */,
 				8208C622EC9158CE046DC2F3 /* Pods */,
@@ -371,6 +378,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CCDC394D1EF4DE5C000ECACD /* PlaceDataModel.xcdatamodeld in Sources */,
 				CCB874411ECD568600A246F7 /* FeaturedContentViewController.swift in Sources */,
 				CCBB890B1EE634D7007898D1 /* Constants.swift in Sources */,
 				CC4CEC041ED7CEA2001FE6BA /* Section.swift in Sources */,
@@ -512,7 +520,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = CM33HK3T4N;
 				INFOPLIST_FILE = TopEats/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.pacificcoastapps.TopEats;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -530,7 +538,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = CM33HK3T4N;
 				INFOPLIST_FILE = TopEats/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.pacificcoastapps.TopEats;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -561,6 +569,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		CCDC394B1EF4DE5C000ECACD /* PlaceDataModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				CCDC394C1EF4DE5C000ECACD /* PlaceDataModel.xcdatamodel */,
+			);
+			currentVersion = CCDC394C1EF4DE5C000ECACD /* PlaceDataModel.xcdatamodel */;
+			path = PlaceDataModel.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = CCF573181EC8315D000B91D8 /* Project object */;
 }

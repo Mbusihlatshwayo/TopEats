@@ -73,11 +73,6 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
             passwordLabel.isSecureTextEntry = true
         }
     }
-    func textFieldDidEndEditing(_ textField: UITextField) {
-        if textField == passwordLabel {
-           passwordLabel.isSecureTextEntry = false
-        }
-    }
 
 }
 

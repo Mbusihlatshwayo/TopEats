@@ -25,6 +25,22 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
         
     }
     
+    func clearTextFields() {
+        
+        passwordTextField.text = ""
+        confirmPasswordTextField.text = ""
+        emailTextField.text = ""
+        usernameTextField.text = ""
+        
+    }
+    func showAlert(alertTitle: String, alertMessage: String) {
+        let controller = UIAlertController(title: alertTitle, message: alertMessage, preferredStyle: .alert)
+        let ok = UIAlertAction(title: "OK", style: .default, handler: nil)
+        
+        controller.addAction(ok)
+        present(controller, animated: true, completion: nil)
+    }
+    
     @IBAction func signInPressed(_ sender: Any) {
         //self.dismiss(self, animated: true, completion: nil)
         self.dismiss(animated: true, completion: nil)
@@ -37,6 +53,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
                 return
             }else{
                 print("success!!!")
+                self.clearTextFields()
                 Auth.auth().signIn(withEmail: self.emailTextField.text!, password: self.passwordTextField.text!) { (user, error) in
                     if let fireUser = user {
                         // user was found sign them in and go forward
@@ -54,7 +71,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
                     } else {
                         // error
                         print("\(String(describing: error))")
-//                        self.showAlert(alertTitle: "Sorry", alertMessage: String(describing: error))
+                        self.showAlert(alertTitle: "Sorry", alertMessage: String(describing: error))
                         
                     }
                 }
@@ -75,15 +92,6 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
         }
         if textField == confirmPasswordTextField {
             confirmPasswordTextField.isSecureTextEntry = true
-        }
-    }
-    
-    func textFieldDidEndEditing(_ textField: UITextField) {
-        if textField == passwordTextField {
-            passwordTextField.isSecureTextEntry = false
-        }
-        if textField == confirmPasswordTextField {
-            confirmPasswordTextField.isSecureTextEntry = false
         }
     }
 

@@ -11,38 +11,36 @@ import UIKit
 class SavedContentViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
     @IBOutlet weak var tableView: UITableView!
+    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    var places = [CDPlace]()
     
-    var places = [Place]()
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.navigationBar.isHidden = true
         tableView.delegate = self
         tableView.dataSource = self
-        setupDummyData()
-        if places.count == 0 {
-            tableView.isHidden = true
-        }
+//        if places.count == 0 {
+//            tableView.isHidden = true
+//        } else {
+//            tableView.isHidden = false
+//        }
     }
     
     override func viewDidAppear(_ animated: Bool) {
         print("view appeared")
     }
-    func setupDummyData() {
-        /* create objects for table view dummy data */
-//        let newsObject = News(image: "restaurant1", headText: "A one", articleText: "It is a great place try it")
-//        let newsObject1 = News(image: "restaurant2", headText: "A twooo", articleText: "Really listen and give it a shot")
-//        let newsObject2 = News(image: "restaurant3", headText: "Threeee", articleText: "We have nice food try it sometime")
-//        newsArray.append(newsObject)
-//        newsArray.append(newsObject1)
-//        newsArray.append(newsObject2)
-//        newsArray.append(newsObject1)
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        getData()
+        tableView.reloadData()
     }
-    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        print("COUNT: \(places.count)")
         return places.count
     }
     
@@ -52,7 +50,8 @@ class SavedContentViewController: UIViewController, UITableViewDelegate, UITable
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let newsCell = tableView.dequeueReusableCell(withIdentifier: "newsCell") as? NewsTableViewCell {
-            newsCell.configCell(place: places[indexPath.row])
+            newsCell.configWithCoreData(place: places[indexPath.row])
+            newsCell.saveButton.addTarget(self, action:#selector(saveClicked(sender:)), for: .touchUpInside)
             print("already setting up cells")
             return newsCell
         }
@@ -60,6 +59,29 @@ class SavedContentViewController: UIViewController, UITableViewDelegate, UITable
             return NewsTableViewCell()
         }
         
+    }
+    
+    func saveClicked(sender:UIButton) {
+        // the index of the calling place
+        let buttonRow = sender.tag
+        let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+        let place = places[buttonRow]
+        context.delete(place)
+        do {
+            places = try context.fetch(CDPlace.fetchRequest())
+        } catch {
+            print("Fetching Failed")
+        }
+        tableView.reloadData()
+    }
+
+    
+    func getData() {
+        do {
+            places = try context.fetch(CDPlace.fetchRequest())
+        } catch {
+            print("Fetching Failed")
+        }
     }
     
     /*

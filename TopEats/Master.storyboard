@@ -593,33 +593,48 @@
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="1Tr-KD-Uu3">
                                                     <rect key="frame" x="0.0" y="0.0" width="375" height="224"/>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cdR-Ix-kqe">
-                                                    <rect key="frame" x="8" y="195" width="289" height="21"/>
-                                                    <fontDescription key="fontDescription" name="Copperplate" family="Copperplate" pointSize="20"/>
-                                                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mha-6A-Otw">
-                                                    <rect key="frame" x="317" y="178" width="50" height="38"/>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xhH-J0-Ydh">
+                                                    <rect key="frame" x="0.0" y="175" width="375" height="50"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cdR-Ix-kqe">
+                                                            <rect key="frame" x="8" y="25" width="289" height="21"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="height" constant="21" id="nfG-d2-Etd"/>
+                                                            </constraints>
+                                                            <fontDescription key="fontDescription" name="Copperplate" family="Copperplate" pointSize="20"/>
+                                                            <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mha-6A-Otw">
+                                                            <rect key="frame" x="317" y="8" width="50" height="38"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="height" constant="38" id="76X-rp-F4w"/>
+                                                                <constraint firstAttribute="width" constant="50" id="yt1-j5-Ocg"/>
+                                                            </constraints>
+                                                            <state key="normal" image="favoriteditemenabled"/>
+                                                            <state key="selected" image="favoriteditemenabled"/>
+                                                            <connections>
+                                                                <action selector="saveButtonPressed:" destination="w1k-mG-fsu" eventType="touchUpInside" id="Nq6-hX-wvX"/>
+                                                            </connections>
+                                                        </button>
+                                                    </subviews>
+                                                    <color key="backgroundColor" white="0.33333333329999998" alpha="0.5" colorSpace="calibratedWhite"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="height" constant="38" id="blW-8t-GNU"/>
-                                                        <constraint firstAttribute="width" constant="50" id="eMu-Cb-qga"/>
+                                                        <constraint firstItem="Mha-6A-Otw" firstAttribute="leading" secondItem="cdR-Ix-kqe" secondAttribute="trailing" constant="20" id="Hi3-Ov-dNf"/>
+                                                        <constraint firstAttribute="height" constant="50" id="HnO-Em-CEY"/>
+                                                        <constraint firstAttribute="trailing" secondItem="Mha-6A-Otw" secondAttribute="trailing" constant="8" id="Oi9-JA-eHT"/>
+                                                        <constraint firstAttribute="bottom" secondItem="Mha-6A-Otw" secondAttribute="bottom" constant="4" id="QFJ-5c-DP9"/>
+                                                        <constraint firstItem="cdR-Ix-kqe" firstAttribute="leading" secondItem="xhH-J0-Ydh" secondAttribute="leading" constant="8" id="hux-aS-mB3"/>
+                                                        <constraint firstAttribute="bottom" secondItem="cdR-Ix-kqe" secondAttribute="bottom" constant="4" id="kRh-Zs-djz"/>
                                                     </constraints>
-                                                    <state key="normal" image="favoriteditem"/>
-                                                    <state key="selected" image="favoriteditemenabled"/>
-                                                    <connections>
-                                                        <action selector="saveButtonPressed:" destination="w1k-mG-fsu" eventType="touchUpInside" id="Nq6-hX-wvX"/>
-                                                    </connections>
-                                                </button>
+                                                </view>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="cdR-Ix-kqe" firstAttribute="bottom" secondItem="ufX-OE-9cR" secondAttribute="bottomMargin" id="BrW-6H-Jdp"/>
                                                 <constraint firstAttribute="bottom" secondItem="1Tr-KD-Uu3" secondAttribute="bottom" id="FWO-0B-MTE"/>
                                                 <constraint firstItem="1Tr-KD-Uu3" firstAttribute="leading" secondItem="ufX-OE-9cR" secondAttribute="leading" id="HcY-po-sIs"/>
-                                                <constraint firstItem="Mha-6A-Otw" firstAttribute="bottom" secondItem="ufX-OE-9cR" secondAttribute="bottomMargin" id="LLk-f7-xBf"/>
-                                                <constraint firstItem="Mha-6A-Otw" firstAttribute="trailing" secondItem="ufX-OE-9cR" secondAttribute="trailingMargin" id="OEN-Jg-rU2"/>
-                                                <constraint firstItem="Mha-6A-Otw" firstAttribute="leading" secondItem="cdR-Ix-kqe" secondAttribute="trailing" constant="20" id="n5S-rM-0VL"/>
-                                                <constraint firstItem="cdR-Ix-kqe" firstAttribute="leading" secondItem="ufX-OE-9cR" secondAttribute="leadingMargin" id="oV7-6m-8Q8"/>
+                                                <constraint firstItem="xhH-J0-Ydh" firstAttribute="leading" secondItem="ufX-OE-9cR" secondAttribute="leading" id="cHI-cu-owc"/>
+                                                <constraint firstAttribute="bottom" secondItem="xhH-J0-Ydh" secondAttribute="bottom" id="fwd-ST-OmC"/>
+                                                <constraint firstAttribute="trailing" secondItem="xhH-J0-Ydh" secondAttribute="trailing" id="nTb-S1-zPy"/>
                                                 <constraint firstItem="1Tr-KD-Uu3" firstAttribute="top" secondItem="ufX-OE-9cR" secondAttribute="top" id="uCn-yc-tcv"/>
                                                 <constraint firstAttribute="trailing" secondItem="1Tr-KD-Uu3" secondAttribute="trailing" id="y0a-ua-Eod"/>
                                             </constraints>

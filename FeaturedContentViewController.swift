@@ -11,6 +11,7 @@ import GooglePlaces
 import CoreLocation
 import Alamofire
 import NVActivityIndicatorView
+import CoreData
 
 class FeaturedContentViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UIScrollViewDelegate,CLLocationManagerDelegate  {
 
@@ -105,13 +106,11 @@ class FeaturedContentViewController: UIViewController, UITableViewDataSource, UI
         if status == .authorizedWhenInUse || status == .authorizedAlways {
             // authorized location status when app is in use; update current location
             locationMgr.startUpdatingLocation()
-            print("LOCATION SUCCESS")
         }
         // implement logic for other status values if needed...
     }
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        print("UPDATED LOCATION")
         // workaround for simulator delaying location manager coordinates. Come back and fix.
         updateLocationCount = updateLocationCount + 1
         if shouldReloadData && updateLocationCount == 3 {
@@ -239,7 +238,11 @@ class FeaturedContentViewController: UIViewController, UITableViewDataSource, UI
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let newsCell = tableView.dequeueReusableCell(withIdentifier: "newsCell") as? NewsTableViewCell {
             newsCell.configCell(place: places[indexPath.row])
-//            places[indexPath.row].shouldAnimate = false // animate the image only once on initial load
+            newsCell.saveButton.tag = indexPath.row // get the index of the place for the saving action
+            newsCell.saveButton.addTarget(self, action:#selector(saveClicked(sender:)), for: .touchUpInside)
+            newsCell.saveButton.setImage(UIImage(named: "favoriteditem")?.withRenderingMode(.alwaysOriginal), for: .normal)
+            newsCell.saveButton.setImage(UIImage(named: "favoriteditemenabled")?.withRenderingMode(.alwaysOriginal), for: [.selected])
+
             return newsCell
         }
         else {
@@ -247,7 +250,24 @@ class FeaturedContentViewController: UIViewController, UITableViewDataSource, UI
         }
     }
     
-    
+    func saveClicked(sender:UIButton) {
+        // the index of the calling place
+        let buttonRow = sender.tag
+        
+        sender.isSelected = !sender.isSelected
+        let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+        let place = CDPlace(context: context) // Link place to Context
+        place.name = places[buttonRow].name
+        place.address = places[buttonRow].address
+        place.latitude = places[buttonRow].location.coordinate.latitude
+        place.longitude = places[buttonRow].location.coordinate.longitude
+        place.open = places[buttonRow].open
+        place.photoRef = places[buttonRow].photoRef
+        place.rating = Double(places[buttonRow].rating)
+        // Save the data to coredata
+        (UIApplication.shared.delegate as! AppDelegate).saveContext()
+        
+    }
     
     // MARK: - Navigation
     
