@@ -671,7 +671,7 @@
         <!--Search View Controller-->
         <scene sceneID="kWa-fk-gg3">
             <objects>
-                <viewController id="Wqt-aU-NdB" customClass="SearchViewController" customModule="TopEats" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController automaticallyAdjustsScrollViewInsets="NO" id="Wqt-aU-NdB" customClass="SearchViewController" customModule="TopEats" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="xct-3B-HCY"/>
                         <viewControllerLayoutGuide type="bottom" id="60E-cy-V2T"/>

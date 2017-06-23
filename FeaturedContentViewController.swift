@@ -37,7 +37,7 @@ class FeaturedContentViewController: UIViewController, UITableViewDataSource, UI
     var shouldReloadData = true
     var updateLocationCount = 0
     
-    // MARK: - VIEW METHODS
+    // MARK: - VIEW LIFECYCLE
     override func viewDidLoad() {
         super.viewDidLoad()
         places.removeAll()
@@ -76,14 +76,9 @@ class FeaturedContentViewController: UIViewController, UITableViewDataSource, UI
         }
         
         // set up location manager to get location
-        locationMgr.desiredAccuracy = kCLLocationAccuracyBest // want coordinates to be very accurate
-//        locationMgr.requestWhenInUseAuthorization() // only want location when looking for weather
+        locationMgr.desiredAccuracy = kCLLocationAccuracyBest
         locationMgr.startMonitoringSignificantLocationChanges()
         locationMgr.startUpdatingLocation()
-        // get location for shared instance
-//        currentLocation = locationMgr.location
-//        Location.sharedInstance.latitude = currentLocation.coordinate.latitude
-//        Location.sharedInstance.longitude = currentLocation.coordinate.longitude
     }
     
     private func locationManager(manager: CLLocationManager!, didChangeAuthorizationStatus status: CLAuthorizationStatus) {
@@ -113,24 +108,23 @@ class FeaturedContentViewController: UIViewController, UITableViewDataSource, UI
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         // workaround for simulator delaying location manager coordinates. Come back and fix.
         updateLocationCount = updateLocationCount + 1
+        currentLocation = manager.location
+        // set the location
+        Location.sharedInstance.latitude = currentLocation.coordinate.latitude
+        Location.sharedInstance.longitude = currentLocation.coordinate.longitude
         if shouldReloadData && updateLocationCount == 3 {
-            // set the location
-//            currentLocation = locationMgr.location
-            currentLocation = manager.location
-            Location.sharedInstance.latitude = currentLocation.coordinate.latitude
-            Location.sharedInstance.longitude = currentLocation.coordinate.longitude
             print("LATITUDE \(Location.sharedInstance.latitude)")
             print("LONGITUDE \(Location.sharedInstance.longitude)")
             // we only load the intial data once
             downloadPlaces()
             shouldReloadData = false // change the flag to not update data
         }
+        
     }
     
     func downloadPlaces() {
         print("INSIDE DOWNLOAD FUNC")
         tableView.isHidden = true
-//        let centerFrame = CGRect(x: self.view.frame.size.width/2, y: self.view.frame.size.height/2, width: 40, height: 40)
         let centerFrame = CGRect(x: 0, y: 0, width: 40, height: 40)
         activityIndicator = NVActivityIndicatorView(frame: centerFrame, type: .ballPulseSync, color: topEatsGreen)
         activityIndicator?.center = view.center
@@ -139,7 +133,6 @@ class FeaturedContentViewController: UIViewController, UITableViewDataSource, UI
         NetworkingFunctionality.downloadPlaces(completion: { [weak self] data in
             self?.places = data
             self?.tableView.reloadData()
-//            self?.tableview.isHidden = false
             self?.tableView.isHidden = false
             self?.activityIndicator?.stopAnimating()
         })

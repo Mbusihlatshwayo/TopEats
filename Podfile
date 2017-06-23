@@ -17,5 +17,6 @@ target 'TopEats' do
     pod 'SDWebImage'
     pod 'NVActivityIndicatorView'
     pod 'SwiftyStarRatingView'
+    pod 'GoogleMaps' 
 
 end
