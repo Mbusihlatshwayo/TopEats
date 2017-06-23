@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import MapKit
 
 class SavedContentViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
@@ -38,7 +39,9 @@ class SavedContentViewController: UIViewController, UITableViewDelegate, UITable
         getData()
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
+        let place = places[indexPath.row]
+        tableView.deselectRow(at: indexPath, animated: true)
+        self.performSegue(withIdentifier: "showSaved", sender: place)
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -88,14 +91,19 @@ class SavedContentViewController: UIViewController, UITableViewDelegate, UITable
         }
     }
     
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    func convertToPlace(place: CDPlace) -> Place {
+        let location = CLLocation(latitude: place.latitude, longitude: place.longitude)
+        let placeObj = Place(name: place.name, open: nil, photoRef: place.photoRef, rating: Float(place.rating), address: place.address, animated: false, location: location, id: place.id!)
+        return placeObj
     }
-    */
+    // MARK: - Navigation
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        super.prepare(for: segue, sender: sender)
+        let savedPlace = convertToPlace(place: sender as! CDPlace)
+        let detailPlaceVC = segue.destination as! DetailPlaceViewController
+        detailPlaceVC.place = savedPlace
+    }
+ 
 
 }
