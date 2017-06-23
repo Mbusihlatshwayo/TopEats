@@ -21,15 +21,11 @@ class SavedContentViewController: UIViewController, UITableViewDelegate, UITable
         tableView.delegate = self
         tableView.dataSource = self
         notificationCenter.addObserver(self, selector: #selector(addToSavedPlaces), name: Notification.Name("coreDataChanged"), object: nil)
-//        if places.count == 0 {
-//            tableView.isHidden = true
-//        } else {
-//            tableView.isHidden = false
-//        }
+        notificationCenter.addObserver(self, selector: #selector(addToSavedPlaces), name: Notification.Name("deletedCoreData"), object: nil)
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        print("view appeared")
+        super.viewDidAppear(animated)
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -41,7 +37,6 @@ class SavedContentViewController: UIViewController, UITableViewDelegate, UITable
     func addToSavedPlaces() {
         getData()
     }
-    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
     }
@@ -59,7 +54,6 @@ class SavedContentViewController: UIViewController, UITableViewDelegate, UITable
         if let newsCell = tableView.dequeueReusableCell(withIdentifier: "newsCell") as? NewsTableViewCell {
             newsCell.configWithCoreData(place: places[indexPath.row])
             newsCell.saveButton.addTarget(self, action:#selector(saveClicked(sender:)), for: .touchUpInside)
-            print("already setting up cells")
             return newsCell
         }
         else {

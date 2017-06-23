@@ -36,6 +36,7 @@ class NetworkingFunctionality {
                                 var place_rating: Float?
                                 var place_address: String!
                                 var place_location: CLLocation!
+                                var place_id: String!
                                 
                                 if let name = object["name"] as? String {
                                     print("NAME: \(name)")
@@ -73,7 +74,11 @@ class NetworkingFunctionality {
                                     place_location = CLLocation(latitude: latitude, longitude: longitude)
                                 }
                                 
-                                placeInstance = Place(name: place_name, open: place_open_or_not, photoRef: place_photo_ref, rating: place_rating, address: place_address, animated: true, location: place_location)
+                                if let id = object["id"] as? String {
+                                    place_id = id
+                                }
+                                
+                                placeInstance = Place(name: place_name, open: place_open_or_not, photoRef: place_photo_ref, rating: place_rating, address: place_address, animated: true, location: place_location, id: place_id)
                                 places.append(placeInstance)
                                 }
                         }

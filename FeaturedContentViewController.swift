@@ -242,12 +242,33 @@ class FeaturedContentViewController: UIViewController, UITableViewDataSource, UI
             newsCell.saveButton.addTarget(self, action:#selector(saveClicked(sender:)), for: .touchUpInside)
             newsCell.saveButton.setImage(UIImage(named: "favoriteditem")?.withRenderingMode(.alwaysOriginal), for: .normal)
             newsCell.saveButton.setImage(UIImage(named: "favoriteditemenabled")?.withRenderingMode(.alwaysOriginal), for: [.selected])
-
+            if isItemSaved(place: places[indexPath.row]) {
+                newsCell.saveButton.isSelected = true
+            } else {
+                newsCell.saveButton.isSelected = false
+            }
             return newsCell
         }
         else {
             return NewsTableViewCell()
         }
+    }
+    
+    func isItemSaved(place: Place) -> Bool {
+        let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+        do {
+            var savedPlaces: [CDPlace]?
+            savedPlaces = try context.fetch(CDPlace.fetchRequest())
+            for object in savedPlaces! {
+                if place.id == object.id {
+                    return true
+                }
+            }
+        } catch {
+            print("Fetching Failed")
+            return false
+        }
+        return false
     }
     
     func saveClicked(sender:UIButton) {
@@ -265,6 +286,7 @@ class FeaturedContentViewController: UIViewController, UITableViewDataSource, UI
             place.open = places[buttonRow].open
             place.photoRef = places[buttonRow].photoRef
             place.rating = Double(places[buttonRow].rating)
+            place.id = places[buttonRow].id
             // Save the data to coredata
             (UIApplication.shared.delegate as! AppDelegate).saveContext()
             // post notification to notify of new saved data
@@ -272,10 +294,20 @@ class FeaturedContentViewController: UIViewController, UITableViewDataSource, UI
 
         } else {
             let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-            let place = CDPlace(context: context) // Link place to Context
-            context.delete(place)
-            (UIApplication.shared.delegate as! AppDelegate).saveContext()
-            nc.post(name: Notification.Name("coreDataChanged"), object: nil)
+            do {
+                let idToDelete = places[buttonRow].id
+                var savedPlaces: [CDPlace]?
+                savedPlaces = try context.fetch(CDPlace.fetchRequest())
+                for obj in savedPlaces! {
+                    if obj.id == idToDelete {
+                        context.delete(obj)
+                    }
+                }
+            } catch {
+                print("Fetching Failed")
+            }
+            nc.post(name: Notification.Name("deletedCoreData"), object: nil)
+            
         }
         sender.isSelected = !sender.isSelected
     }
