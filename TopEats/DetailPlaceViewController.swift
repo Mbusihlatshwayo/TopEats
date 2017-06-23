@@ -10,8 +10,10 @@ import UIKit
 import SwiftyStarRatingView
 import SDWebImage
 import MapKit
+import GoogleMaps
+import Alamofire
 
-class DetailPlaceViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate {
+class DetailPlaceViewController: UIViewController, CLLocationManagerDelegate, GMSMapViewDelegate {
 
     // MARK: - OUTLETS
     @IBOutlet weak var placeImageView: UIImageView!
@@ -20,6 +22,7 @@ class DetailPlaceViewController: UIViewController, MKMapViewDelegate, CLLocation
     @IBOutlet weak var addressLabel: UILabel!
     @IBOutlet weak var hoursLabel: UILabel!
     @IBOutlet weak var detailScrollView: UIScrollView!
+    @IBOutlet weak var mapView: GMSMapView!
 
     
     // MARK: - PROPERTIES
@@ -64,6 +67,25 @@ class DetailPlaceViewController: UIViewController, MKMapViewDelegate, CLLocation
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         print("SCROLLED")
     }
+    
+    func googleMapSetup() {
+        self.mapView.isMyLocationEnabled = true;
+        self.mapView.settings.compassButton = true;
+        self.mapView.settings.myLocationButton = true;
+        self.mapView.delegate = self;
+        let camera = GMSCameraPosition.camera(withLatitude: Location.sharedInstance.latitude, longitude: Location.sharedInstance.longitude, zoom: 14.0)
+        mapView.camera = camera
+        let position = CLLocationCoordinate2D(latitude: (place?.location.coordinate.latitude)!, longitude: (place?.location.coordinate.longitude)!)
+        let marker = GMSMarker(position: position)
+        marker.title = place?.name
+        marker.map = mapView
+        mapView.settings.scrollGestures = false
+        mapView.settings.rotateGestures = false
+        mapView.settings.tiltGestures = false
+        
+    }
+    
+    // MARK: - ANIMATIONS
     func animateImageView() {
         // set image asynchronously with animation
         placeImageView.sd_setImage(with: URL(string: "https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=\(self.place!.photoRef)&key=AIzaSyACJKXW98TFV6nb0YHqksfJJ3_Y8gkDib0"), placeholderImage: UIImage(named: "restaurant"), options: .continueInBackground) { (_, _, _, _ ) in
@@ -89,70 +111,49 @@ class DetailPlaceViewController: UIViewController, MKMapViewDelegate, CLLocation
         addressLabel.text = place!.address
         // init hours label with location open status
         hoursLabel.text = place!.open
-        setUpMap()
-    }
-    
-    func setUpMap() {
-        mapView.delegate = self
-        centerMapOnLocation(location: place!.location)
-        let annotation = MKPointAnnotation()
-        annotation.coordinate = place!.location.coordinate
-        annotation.title = place!.name
-        mapView.addAnnotation(annotation)
-        mapView.isScrollEnabled = false
-        mapView.isZoomEnabled = false
-        mapView.showsUserLocation = true
+//        setUpMap() COME BACK FIX
+        googleMapSetup()
         drawRoute()
     }
-    
+
     // MARK: - MAP VIEW METHODS
     let regionRadius: CLLocationDistance = 700
     func centerMapOnLocation(location: CLLocation) {
         let coordinateRegion = MKCoordinateRegionMakeWithDistance(location.coordinate,
                                                                   regionRadius * 2.0, regionRadius * 2.0)
-        mapView.setRegion(coordinateRegion, animated: true)
+//        mapView.setRegion(coordinateRegion, animated: true)
     }
     
     func drawRoute() {
-        // get the user and destination location coordinates
-        let userLocation = CLLocationCoordinate2D(latitude: Location.sharedInstance.latitude, longitude: Location.sharedInstance.longitude)
-        let destinationLocation = CLLocationCoordinate2D(latitude: place!.location.coordinate.latitude, longitude: place!.location.coordinate.longitude)
-        
-        // create placemarks from the locations
-        let userPlacemark = MKPlacemark(coordinate: userLocation, addressDictionary: nil)
-        let destinationPlacemark = MKPlacemark(coordinate: destinationLocation, addressDictionary: nil)
-        
-        // get map items to handle routing
-        let sourceMapItem = MKMapItem(placemark: userPlacemark)
-        let destinationMapItem = MKMapItem(placemark: destinationPlacemark)
-        
-        // compute the route to the destination
-        let directionRequest = MKDirectionsRequest()
-        directionRequest.source = sourceMapItem
-        directionRequest.destination = destinationMapItem
-        directionRequest.transportType = .automobile
-        
-        // Calculate the directions
-        let directions = MKDirections(request: directionRequest)
-        
-
-        directions.calculate {
-            (response, error) -> Void in
-            
-            guard let response = response else {
-                if let error = error {
-                    print("DIRECTIONS ERROR: \(error)")
-                }
+        let origin = "\(Location.sharedInstance.latitude!),\(Location.sharedInstance.longitude!)"
+        let destination = "\(String(describing: place!.location.coordinate.latitude)),\(String(describing: place!.location.coordinate.longitude))"
+        let directionsURL = "https://maps.googleapis.com/maps/api/directions/json?origin=\(origin)&destination=\(destination)&mode=driving"
+        print(directionsURL)
+        Alamofire.request(directionsURL).responseJSON { response in
+            switch response.result {
                 
-                return
+            // download successful
+            case .success(let value):
+                if let resultDict = response.result.value as? Dictionary<String, AnyObject> {
+                    if let routes = resultDict["routes"] as? [Dictionary<String, AnyObject>] {
+                        for route in routes {
+                            let overviewPolyline = route["overview_polyline"] as? Dictionary<String, AnyObject>
+                            let points = overviewPolyline?["points"] as? String
+                            let path = GMSPath.init(fromEncodedPath: points!)
+                            let polyline = GMSPolyline(path: path)
+                            polyline.strokeWidth = 5
+                            polyline.strokeColor = topEatsGreen
+                            polyline.map = self.mapView
+                        }
+                    }
+
+                }
+            case .failure(let error):
+                print("ALAMOFIRE ERROR: \(error)")
             }
-            
-            let route = response.routes[0]
-            self.mapView.add((route.polyline), level: MKOverlayLevel.aboveRoads)
-            
-            let rect = route.polyline.boundingMapRect
-            self.mapView.setRegion(MKCoordinateRegionForMapRect(rect), animated: true)
+
         }
+        
     }
     
     

@@ -94,7 +94,7 @@ class NetworkingFunctionality {
     
     class func searchPlaces(searchKeyword: String,completion: @escaping ([Place]) -> Void) {
         // download google places restaurants
-        let BASE_URL = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=\(Location.sharedInstance.latitude!),\(Location.sharedInstance.longitude!)&radius=2000&type=restaurant&name=\(searchKeyword)&key=AIzaSyACJKXW98TFV6nb0YHqksfJJ3_Y8gkDib0"
+        let BASE_URL = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=\(Location.sharedInstance.latitude!),\(Location.sharedInstance.longitude!)&radius=5000&type=restaurant&name=\(searchKeyword)&key=AIzaSyACJKXW98TFV6nb0YHqksfJJ3_Y8gkDib0"
         let PLACE_REQUEST_URL = URL(string: BASE_URL)
         print("PLACES URL: \(String(describing: PLACE_REQUEST_URL))")
         Alamofire.request(PLACE_REQUEST_URL!).responseJSON(completionHandler: {response -> Void in
@@ -102,11 +102,9 @@ class NetworkingFunctionality {
                 
             // download successful
             case .success(let value):
-                //                    print("SUCCESS VALUE: \(value)")
                 var places = [Place]()
                 var placeInstance: Place!
                 if let resultDict = response.result.value as? Dictionary<String, AnyObject> {
-                    // need to change this to handle json with swiftyjson safely
                     print("ABLE TO PARSE RESULT VALUE INTO DICTIONARY")
                     if let results = resultDict["results"] as? [Dictionary<String, AnyObject>] {
                         print("ABLE TO PARSE INTO ARRAY OF DICTS")
