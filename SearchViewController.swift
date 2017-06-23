@@ -26,7 +26,7 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
         tableView.delegate = self
         tableView.dataSource = self
         searchBar.delegate = self
-        tableView.isHidden = true
+//        tableView.isHidden = true
         self.navigationController?.navigationBar.isHidden = true
     }
     
@@ -42,6 +42,12 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
         } else {
             return UITableViewCell()
         }
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let place = searchResults[indexPath.row]
+        tableView.deselectRow(at: indexPath, animated: true)
+        self.performSegue(withIdentifier: "showSearchedDetail", sender: place)
     }
     
     // MARK: - SEARCH BAR DELEGATE METHODS 
@@ -81,6 +87,15 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
     // MARK: - IBACTIONS
     @IBAction func didPressBack(_ sender: Any) {
         self.navigationController?.popViewController(animated: true)
+    }
+    
+    // MARK: - NAVIGATION
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        super.prepare(for: segue, sender: sender)
+        if let place = sender as? Place {
+            let detailPlaceVC = segue.destination as! DetailPlaceViewController
+            detailPlaceVC.place = place
+        }
     }
 }
 
