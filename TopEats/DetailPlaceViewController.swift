@@ -20,7 +20,7 @@ class DetailPlaceViewController: UIViewController, MKMapViewDelegate, CLLocation
     @IBOutlet weak var addressLabel: UILabel!
     @IBOutlet weak var hoursLabel: UILabel!
     @IBOutlet weak var detailScrollView: UIScrollView!
-    @IBOutlet weak var mapView: MKMapView!
+
     
     // MARK: - PROPERTIES
     var place: Place?
