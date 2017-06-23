@@ -29,7 +29,7 @@ class NewsTableViewCell: UITableViewCell {
             headlineImage.sd_setImage(with: URL(string: "https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=\(place.photoRef)&key=AIzaSyACJKXW98TFV6nb0YHqksfJJ3_Y8gkDib0"), placeholderImage: UIImage(named: "restaurant"), options: .continueInBackground) { (_, _, _, _ ) in
                 // image download complete fade in image
 //                print("COMPLETED SD SET IMAGE")
-                UIView.animate(withDuration: 1.5, animations: {
+                UIView.animate(withDuration: 0.5, animations: {
                     self.headlineImage.alpha = 1
                     self.headlineLabel.alpha = 1
                     self.saveButton.alpha = 1
