@@ -85,13 +85,9 @@ class FeaturedContentViewController: UIViewController, UITableViewDataSource, UI
         if status == .authorizedWhenInUse || status == .authorizedAlways {
             // authorized location status when app is in use; update current location
             locationMgr.startUpdatingLocation()
-            print("LOCATION SUCCESS")
             currentLocation = locationMgr.location
             Location.sharedInstance.latitude = currentLocation.coordinate.latitude
-            print("INSTANCE LAT = \(Location.sharedInstance.latitude)")
             Location.sharedInstance.longitude = currentLocation.coordinate.longitude
-            print("INSTANCE LON = \(Location.sharedInstance.longitude)")
-            print("location : \(Location.sharedInstance.latitude!) \(Location.sharedInstance.longitude!)")
             downloadPlaces()
         }
         // implement logic for other status values if needed...
@@ -113,8 +109,6 @@ class FeaturedContentViewController: UIViewController, UITableViewDataSource, UI
         Location.sharedInstance.latitude = currentLocation.coordinate.latitude
         Location.sharedInstance.longitude = currentLocation.coordinate.longitude
         if shouldReloadData && updateLocationCount == 3 {
-            print("LATITUDE \(Location.sharedInstance.latitude)")
-            print("LONGITUDE \(Location.sharedInstance.longitude)")
             // we only load the intial data once
             downloadPlaces()
             shouldReloadData = false // change the flag to not update data
@@ -123,7 +117,6 @@ class FeaturedContentViewController: UIViewController, UITableViewDataSource, UI
     }
     
     func downloadPlaces() {
-        print("INSIDE DOWNLOAD FUNC")
         tableView.isHidden = true
         let centerFrame = CGRect(x: 0, y: 0, width: 40, height: 40)
         activityIndicator = NVActivityIndicatorView(frame: centerFrame, type: .ballPulseSync, color: topEatsGreen)
@@ -258,7 +251,6 @@ class FeaturedContentViewController: UIViewController, UITableViewDataSource, UI
                 }
             }
         } catch {
-            print("Fetching Failed")
             return false
         }
         return false
@@ -297,7 +289,6 @@ class FeaturedContentViewController: UIViewController, UITableViewDataSource, UI
                     }
                 }
             } catch {
-                print("Fetching Failed")
             }
             nc.post(name: Notification.Name("deletedCoreData"), object: nil)
             

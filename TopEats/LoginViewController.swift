@@ -21,7 +21,6 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         // if user is signed in bypass login
         Auth.auth().addStateDidChangeListener() { auth, user in
             if user != nil {
-                print("USER: \(user)")
                 self.performSegue(withIdentifier: "loginToMaster", sender: nil)
             }
         }
@@ -42,17 +41,14 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     @IBAction func signInPressed(_ sender: Any) {
         if let email = usernameLabel.text, let password = passwordLabel.text {
             if email != "" {
-                print("email: \(email)")
                 Auth.auth().signIn(withEmail: email, password: password) { (user, error) in
-                    if let fireUser = user {
+                    if user != nil {
                         // user was found sign them in and go forward
-                        print("USER: \(fireUser)")
                         self.performSegue(withIdentifier: "loginToMaster", sender: nil)
                         self.passwordLabel.text = ""
                         self.usernameLabel.text = ""
                     } else {
                         // error
-                        print("\(String(describing: error))")
                         self.showAlert(alertTitle: "Sorry", alertMessage: String(describing: error))
 
                     }

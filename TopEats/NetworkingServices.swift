@@ -13,10 +13,8 @@ class NetworkingServices {
     static func createUser(email: String!, password: String!) {
         Auth.auth().createUser(withEmail: email, password: password, completion: {(user, error) in
             if error != nil {
-                print("Error")
                 return
             }else{
-                print("Login Successful")
                 return
             }
         })

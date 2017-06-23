@@ -58,7 +58,6 @@ final class ChatViewController: JSQMessagesViewController {
         // get the jsq sender id from the firebase user id
         self.senderId = Auth.auth().currentUser?.uid
         self.senderDisplayName = Auth.auth().currentUser?.displayName
-        print("display name = \(self.senderDisplayName)")
         
         observeMessages()
         
@@ -173,8 +172,6 @@ final class ChatViewController: JSQMessagesViewController {
     
     private func observeMessages() {
         
-        print("sec ref: \(String(describing: communitySectionsRef!))")
-        print("mess ref: \(messageRef)")
         messageRef = communitySectionsRef!.child("messages")
 
         let messageQuery = messageRef.queryLimited(toLast:25)
@@ -188,7 +185,6 @@ final class ChatViewController: JSQMessagesViewController {
                 self.addMessage(withId: id, name: name, text: text)
                 self.finishReceivingMessage()
             } else {
-                print("Error! Could not decode message data")
             }
         })
 

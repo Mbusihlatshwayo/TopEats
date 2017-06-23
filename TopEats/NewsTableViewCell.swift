@@ -24,11 +24,9 @@ class NewsTableViewCell: UITableViewCell {
             headlineLabel.alpha = 0
             saveButton.alpha = 0
             headlineLabel.text = place.name
-            print("NAME")
             // set image asynchronously
             headlineImage.sd_setImage(with: URL(string: "https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=\(place.photoRef)&key=AIzaSyACJKXW98TFV6nb0YHqksfJJ3_Y8gkDib0"), placeholderImage: UIImage(named: "restaurant"), options: .continueInBackground) { (_, _, _, _ ) in
                 // image download complete fade in image
-//                print("COMPLETED SD SET IMAGE")
                 UIView.animate(withDuration: 0.5, animations: {
                     self.headlineImage.alpha = 1
                     self.headlineLabel.alpha = 1
@@ -46,11 +44,9 @@ class NewsTableViewCell: UITableViewCell {
     func configWithCoreData(place: CDPlace) {
         headlineLabel.text = place.name
         headlineImage.sd_setImage(with: URL(string: "https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=\(place.photoRef!)&key=AIzaSyACJKXW98TFV6nb0YHqksfJJ3_Y8gkDib0"), placeholderImage: UIImage(named: "restaurant"), options: .continueInBackground)
-        print("https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=\(place.photoRef)&key=AIzaSyACJKXW98TFV6nb0YHqksfJJ3_Y8gkDib0")
     }
     
     @IBAction func saveButtonPressed(_ sender: Any) {
-        print("button pressed")
     }
     override func awakeFromNib() {
         super.awakeFromNib()

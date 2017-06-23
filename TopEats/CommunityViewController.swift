@@ -37,7 +37,7 @@ class CommunityViewController: UIViewController, UITableViewDataSource, UITableV
         // need to set up cuisine array with objects of type section in order to push messages into database
 //        for obj in cuisinearray {
 //            let name = obj
-        let newSectionRef = communitySectionsRef.childByAutoId()
+//        let newSectionRef = communitySectionsRef.childByAutoId()
 //            let sectionItem = [
 //                "name": name
 //            ]
@@ -51,9 +51,6 @@ class CommunityViewController: UIViewController, UITableViewDataSource, UITableV
                 self.sections.append(Section(id: (child as AnyObject).key, name: dict["name"] as! String))
                 index += 1
             }
-//            for index in 0...self.sections.count-1 {
-//                print("Section: \(self.sections[index].id) : \(self.sections[index].name)")
-//            }
             self.tableView.reloadData()
         })
     }
@@ -79,7 +76,6 @@ class CommunityViewController: UIViewController, UITableViewDataSource, UITableV
         }
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        print("\(cuisinearray.count)")
         return sections.count
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -100,11 +96,7 @@ class CommunityViewController: UIViewController, UITableViewDataSource, UITableV
 //            MasterChatVc.titleString = titleString
             MasterChatVc.section = sender as! Section
             MasterChatVc.communitySectionsRef = communitySectionsRef.child(section.id)
-            print("SECTION REF: \(communitySectionsRef)")
-            print("WHAT IS NIL : \(communitySectionsRef.child(section.id))")
             chatVc.communitySectionsRef = communitySectionsRef.child(section.id)
-            print("SECTION ID = \(section.id)")
-            print("SECTION REF PASSED: \(communitySectionsRef.child(section.id))")
         }
         
     }

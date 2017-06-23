@@ -45,7 +45,6 @@ class SavedContentViewController: UIViewController, UITableViewDelegate, UITable
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        print("COUNT: \(places.count)")
         return places.count
     }
     
@@ -75,7 +74,6 @@ class SavedContentViewController: UIViewController, UITableViewDelegate, UITable
         do {
             places = try context.fetch(CDPlace.fetchRequest())
         } catch {
-            print("Fetching Failed")
         }
         tableView.reloadData()
     }
@@ -84,10 +82,8 @@ class SavedContentViewController: UIViewController, UITableViewDelegate, UITable
     func getData() {
         do {
             places = try context.fetch(CDPlace.fetchRequest())
-            print("PLACES COUNT = \(places.count)")
             tableView.reloadData()
         } catch {
-            print("Fetching Failed")
         }
     }
     

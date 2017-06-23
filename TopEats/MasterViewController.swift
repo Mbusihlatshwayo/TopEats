@@ -93,7 +93,7 @@ class MasterViewController: UIViewController {
         do {
             try firebaseAuth.signOut()
         } catch let signOutError as NSError {
-            print ("Error signing out: %@", signOutError)
+            print("error \(signOutError)")
             return
         }
         self.dismiss(animated: true)

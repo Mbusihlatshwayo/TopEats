@@ -65,7 +65,6 @@ class DetailPlaceViewController: UIViewController, CLLocationManagerDelegate, GM
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        print("SCROLLED")
     }
     
     func googleMapSetup() {
@@ -90,10 +89,8 @@ class DetailPlaceViewController: UIViewController, CLLocationManagerDelegate, GM
         // set image asynchronously with animation
         placeImageView.sd_setImage(with: URL(string: "https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=\(self.place!.photoRef)&key=AIzaSyACJKXW98TFV6nb0YHqksfJJ3_Y8gkDib0"), placeholderImage: UIImage(named: "restaurant"), options: .continueInBackground) { (_, _, _, _ ) in
             // image download complete fade in image
-//            print("COMPLETED SD SET IMAGE")
             UIView.animate(withDuration: 1, animations: {
                 self.placeImageView.alpha = 1
-                print("ANIMATED HEREEEEE")
             })
         }
     }
@@ -118,22 +115,16 @@ class DetailPlaceViewController: UIViewController, CLLocationManagerDelegate, GM
 
     // MARK: - MAP VIEW METHODS
     let regionRadius: CLLocationDistance = 700
-    func centerMapOnLocation(location: CLLocation) {
-        let coordinateRegion = MKCoordinateRegionMakeWithDistance(location.coordinate,
-                                                                  regionRadius * 2.0, regionRadius * 2.0)
-//        mapView.setRegion(coordinateRegion, animated: true)
-    }
-    
+
     func drawRoute() {
         let origin = "\(Location.sharedInstance.latitude!),\(Location.sharedInstance.longitude!)"
         let destination = "\(String(describing: place!.location.coordinate.latitude)),\(String(describing: place!.location.coordinate.longitude))"
         let directionsURL = "https://maps.googleapis.com/maps/api/directions/json?origin=\(origin)&destination=\(destination)&mode=driving"
-        print(directionsURL)
         Alamofire.request(directionsURL).responseJSON { response in
             switch response.result {
                 
             // download successful
-            case .success(let value):
+            case .success:
                 if let resultDict = response.result.value as? Dictionary<String, AnyObject> {
                     if let routes = resultDict["routes"] as? [Dictionary<String, AnyObject>] {
                         for route in routes {
@@ -148,8 +139,8 @@ class DetailPlaceViewController: UIViewController, CLLocationManagerDelegate, GM
                     }
 
                 }
-            case .failure(let error):
-                print("ALAMOFIRE ERROR: \(error)")
+            case .failure:
+                break
             }
 
         }

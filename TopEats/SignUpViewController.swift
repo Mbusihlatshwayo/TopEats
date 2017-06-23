@@ -49,28 +49,24 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
     @IBAction func createAccountPressed(_ sender: Any) {
         Auth.auth().createUser(withEmail: emailTextField.text!, password: passwordTextField.text!, completion: {(user, error) in
             if error != nil {
-                print("Error: \(error!.localizedDescription)")
                 return
             }else{
-                print("success!!!")
                 self.clearTextFields()
                 Auth.auth().signIn(withEmail: self.emailTextField.text!, password: self.passwordTextField.text!) { (user, error) in
-                    if let fireUser = user {
+                    if user != nil {
                         // user was found sign them in and go forward
-                        print("USER: \(fireUser)")
                         let changeRequest = Auth.auth().currentUser?.createProfileChangeRequest()
                         changeRequest?.displayName = self.usernameTextField.text!
                         changeRequest?.commitChanges { (error) in
                             if error != nil {
-                                print("TROUBLE CHANGING DISPLAY NAME...\(error?.localizedDescription)")
+
                             } else {
-                                print("INSIDE CLOSURE no trouble: \(fireUser.displayName)")
+
                             }
                         }
                         self.performSegue(withIdentifier: "masterSegue", sender: nil)
                     } else {
                         // error
-                        print("\(String(describing: error))")
                         self.showAlert(alertTitle: "Sorry", alertMessage: String(describing: error))
                         
                     }

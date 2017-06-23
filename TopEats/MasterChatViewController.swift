@@ -44,7 +44,6 @@ class MasterChatViewController: UIViewController {
         if segue.identifier == "detailChatSegue" {
             let chatVC = segue.destination as! ChatViewController
             chatVC.communitySectionsRef = communitySectionsRef
-            print("detail CHAT VC Ref = \(String(describing: chatVC.communitySectionsRef!))")
         }
     }
 
