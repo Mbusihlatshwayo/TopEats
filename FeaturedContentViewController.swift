@@ -132,7 +132,7 @@ class FeaturedContentViewController: UIViewController, UITableViewDataSource, UI
         tableView.isHidden = true
 //        let centerFrame = CGRect(x: self.view.frame.size.width/2, y: self.view.frame.size.height/2, width: 40, height: 40)
         let centerFrame = CGRect(x: 0, y: 0, width: 40, height: 40)
-        activityIndicator = NVActivityIndicatorView(frame: centerFrame, type: .ballPulseSync, color: UIColor.green)
+        activityIndicator = NVActivityIndicatorView(frame: centerFrame, type: .ballPulseSync, color: topEatsGreen)
         activityIndicator?.center = view.center
         view.addSubview(activityIndicator!)
         activityIndicator?.startAnimating()

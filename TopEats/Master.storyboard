@@ -41,6 +41,10 @@
                                             <constraint firstAttribute="width" constant="18" id="tIw-Gy-c9W"/>
                                         </constraints>
                                         <state key="normal" image="searchbutton"/>
+                                        <connections>
+                                            <action selector="didPressSearch:" destination="9Cc-Z0-Cji" eventType="touchUpInside" id="5vK-5o-CNG"/>
+                                            <segue destination="Wqt-aU-NdB" kind="show" identifier="showSearch" id="eqc-FQ-4YV"/>
+                                        </connections>
                                     </button>
                                     <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="x1u-uL-Ps8">
                                         <rect key="frame" x="52" y="29" width="279" height="29"/>
@@ -664,10 +668,10 @@
             </objects>
             <point key="canvasLocation" x="2378" y="843"/>
         </scene>
-        <!--View Controller-->
+        <!--Search View Controller-->
         <scene sceneID="kWa-fk-gg3">
             <objects>
-                <viewController id="Wqt-aU-NdB" sceneMemberID="viewController">
+                <viewController id="Wqt-aU-NdB" customClass="SearchViewController" customModule="TopEats" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="xct-3B-HCY"/>
                         <viewControllerLayoutGuide type="bottom" id="60E-cy-V2T"/>
@@ -676,18 +680,11 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="lsb-as-U63">
-                                <rect key="frame" x="0.0" y="20" width="375" height="44"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="44" id="m8R-X2-Hbf"/>
-                                </constraints>
-                                <textInputTraits key="textInputTraits"/>
-                            </searchBar>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="EEC-Vu-Jku">
-                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <rect key="frame" x="0.0" y="109" width="375" height="558"/>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="6pl-Vs-Yel">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="searchResultCell" id="6pl-Vs-Yel">
                                         <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="6pl-Vs-Yel" id="cUR-04-Ay8">
@@ -697,18 +694,68 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gRn-uS-oDv">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="65"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CuS-CY-Myc">
+                                        <rect key="frame" x="8" y="22" width="37" height="35"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="35" id="5ww-U4-SPq"/>
+                                            <constraint firstAttribute="width" constant="37" id="D4I-ko-gKN"/>
+                                        </constraints>
+                                        <state key="normal" image="backbutton"/>
+                                        <connections>
+                                            <action selector="didPressBack:" destination="Wqt-aU-NdB" eventType="touchUpInside" id="Nhp-7S-4lG"/>
+                                            <action selector="didPressBackButton:" destination="jGK-iE-yZC" eventType="touchUpInside" id="nnE-Ot-JZX"/>
+                                        </connections>
+                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SEARCH" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ep5-Tl-IpY">
+                                        <rect key="frame" x="51" y="26" width="273" height="26"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="26" id="FdO-VH-z79"/>
+                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="26" id="Nee-jY-cvj"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="Copperplate" family="Copperplate" pointSize="25"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" red="0.0" green="0.50196081400000003" blue="0.25098040700000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="ep5-Tl-IpY" secondAttribute="trailing" constant="51" id="0mf-nW-VFt"/>
+                                    <constraint firstAttribute="bottom" secondItem="CuS-CY-Myc" secondAttribute="bottom" constant="8" id="BJb-Io-bbV"/>
+                                    <constraint firstAttribute="height" constant="65" id="D1A-up-ol5"/>
+                                    <constraint firstItem="CuS-CY-Myc" firstAttribute="leading" secondItem="gRn-uS-oDv" secondAttribute="leading" constant="8" id="Wgf-DV-z3V"/>
+                                    <constraint firstAttribute="bottom" secondItem="ep5-Tl-IpY" secondAttribute="bottom" constant="13" id="mWD-JC-P74"/>
+                                    <constraint firstItem="ep5-Tl-IpY" firstAttribute="leading" secondItem="CuS-CY-Myc" secondAttribute="trailing" constant="6" id="tR2-ae-cwW"/>
+                                </constraints>
+                            </view>
+                            <searchBar contentMode="redraw" placeholder="Search For A Restaurant" translatesAutoresizingMaskIntoConstraints="NO" id="lsb-as-U63">
+                                <rect key="frame" x="0.0" y="65" width="375" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="OGA-0a-8Fa"/>
+                                </constraints>
+                                <textInputTraits key="textInputTraits"/>
+                            </searchBar>
                         </subviews>
                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="EEC-Vu-Jku" secondAttribute="trailing" id="9fC-7q-sJe"/>
-                            <constraint firstAttribute="trailing" secondItem="lsb-as-U63" secondAttribute="trailing" id="9fD-Nj-kSO"/>
-                            <constraint firstItem="EEC-Vu-Jku" firstAttribute="leading" secondItem="oUm-aM-XEM" secondAttribute="leading" id="DLw-3I-e1m"/>
-                            <constraint firstItem="lsb-as-U63" firstAttribute="leading" secondItem="oUm-aM-XEM" secondAttribute="leading" id="RBW-Cl-OnR"/>
-                            <constraint firstItem="60E-cy-V2T" firstAttribute="top" secondItem="EEC-Vu-Jku" secondAttribute="bottom" id="S3v-ga-5mw"/>
-                            <constraint firstItem="lsb-as-U63" firstAttribute="top" secondItem="xct-3B-HCY" secondAttribute="bottom" id="rZ5-yR-drR"/>
-                            <constraint firstItem="EEC-Vu-Jku" firstAttribute="top" secondItem="lsb-as-U63" secondAttribute="bottom" id="w7S-qY-mjd"/>
+                            <constraint firstAttribute="trailing" secondItem="lsb-as-U63" secondAttribute="trailing" id="0dp-ZF-41J"/>
+                            <constraint firstItem="gRn-uS-oDv" firstAttribute="leading" secondItem="oUm-aM-XEM" secondAttribute="leading" id="Pr4-E7-GhR"/>
+                            <constraint firstItem="60E-cy-V2T" firstAttribute="top" secondItem="EEC-Vu-Jku" secondAttribute="bottom" id="RkS-aw-giS"/>
+                            <constraint firstAttribute="trailing" secondItem="EEC-Vu-Jku" secondAttribute="trailing" id="YKw-uN-HTw"/>
+                            <constraint firstItem="EEC-Vu-Jku" firstAttribute="top" secondItem="lsb-as-U63" secondAttribute="bottom" id="aEl-Tn-cje"/>
+                            <constraint firstAttribute="trailing" secondItem="gRn-uS-oDv" secondAttribute="trailing" id="gcr-i8-mDw"/>
+                            <constraint firstItem="lsb-as-U63" firstAttribute="top" secondItem="gRn-uS-oDv" secondAttribute="bottom" id="oDF-Ma-FF0"/>
+                            <constraint firstItem="gRn-uS-oDv" firstAttribute="top" secondItem="oUm-aM-XEM" secondAttribute="top" id="r0w-Sa-YyT"/>
+                            <constraint firstItem="lsb-as-U63" firstAttribute="leading" secondItem="oUm-aM-XEM" secondAttribute="leading" id="tXr-s7-9Hb"/>
+                            <constraint firstItem="EEC-Vu-Jku" firstAttribute="leading" secondItem="oUm-aM-XEM" secondAttribute="leading" id="zd3-XZ-WWz"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="searchBar" destination="lsb-as-U63" id="J6w-6h-PAc"/>
+                        <outlet property="tableView" destination="EEC-Vu-Jku" id="6Hq-fz-jvI"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ry2-Ta-739" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -749,6 +796,6 @@
         <image name="searchbutton" width="18" height="18"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="M2f-RX-kKw"/>
+        <segue reference="TIJ-pr-Cxo"/>
     </inferredMetricsTieBreakers>
 </document>

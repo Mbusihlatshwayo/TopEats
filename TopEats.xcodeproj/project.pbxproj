@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CC0B30671EFD6C2500A3629D /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC0B30661EFD6C2500A3629D /* SearchViewController.swift */; };
 		CC182D451EDE5CB900165731 /* MasterChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC182D441EDE5CB900165731 /* MasterChatViewController.swift */; };
 		CC19B3DC1ECF96CE003171EB /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CC19B3DB1ECF96CE003171EB /* Login.storyboard */; };
 		CC19B3E01ECF9884003171EB /* CuisineTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC19B3DF1ECF9884003171EB /* CuisineTableViewCell.swift */; };
@@ -47,6 +48,7 @@
 /* Begin PBXFileReference section */
 		13AFAA7EC4B55519DE75A088 /* Pods_TopEats.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TopEats.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3D5B50CD8D25393AD6271DEA /* Pods-TopEats.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TopEats.release.xcconfig"; path = "Pods/Target Support Files/Pods-TopEats/Pods-TopEats.release.xcconfig"; sourceTree = "<group>"; };
+		CC0B30661EFD6C2500A3629D /* SearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SearchViewController.swift; path = ../SearchViewController.swift; sourceTree = "<group>"; };
 		CC182D441EDE5CB900165731 /* MasterChatViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MasterChatViewController.swift; sourceTree = "<group>"; };
 		CC19B3DB1ECF96CE003171EB /* Login.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
 		CC19B3DF1ECF9884003171EB /* CuisineTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CuisineTableViewCell.swift; sourceTree = "<group>"; };
@@ -143,6 +145,7 @@
 		CCCB9C8A1EEE459E00837A9D /* Base Views */ = {
 			isa = PBXGroup;
 			children = (
+				CC0B30661EFD6C2500A3629D /* SearchViewController.swift */,
 				CCD7177B1EEA5CDE00151A4D /* DetailPlaceViewController.swift */,
 				CCB874401ECD568600A246F7 /* FeaturedContentViewController.swift */,
 				CCB8743E1ECD2D7900A246F7 /* MasterViewController.swift */,
@@ -396,6 +399,7 @@
 				CCFF4C621EC9920900CB19A0 /* NewsObject.swift in Sources */,
 				CC182D451EDE5CB900165731 /* MasterChatViewController.swift in Sources */,
 				CCE4B3071ECF67DE00FF0C75 /* CommunityViewController.swift in Sources */,
+				CC0B30671EFD6C2500A3629D /* SearchViewController.swift in Sources */,
 				CC19B3E21ECFA9C8003171EB /* SignUpViewController.swift in Sources */,
 				CC58E56B1ED7C905001443AA /* ChatViewController.swift in Sources */,
 				CCD7177C1EEA5CDE00151A4D /* DetailPlaceViewController.swift in Sources */,

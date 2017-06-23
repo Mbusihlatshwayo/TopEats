@@ -163,6 +163,9 @@ class MasterViewController: UIViewController {
         menuShowing = !menuShowing
     }
     
+    @IBAction func didPressSearch(_ sender: Any) {
+//        performSegue(withIdentifier: "showSearch", sender: nil)
+    }
     
     
 }
