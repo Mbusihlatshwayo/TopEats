@@ -26,8 +26,23 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         }
         
     }
+    
     @IBAction func createAccountPressed(_ sender: Any) {
         performSegue(withIdentifier: "signUpSegue", sender: nil)
+    }
+    
+    @IBAction func forgotPasswordPressed(_ sender: Any) {
+        if usernameLabel.text != "" {
+            Auth.auth().sendPasswordReset(withEmail: usernameLabel.text!) { (error) in
+                if error != nil {
+                    self.showAlert(alertTitle: "Sorry", alertMessage: "\(String(describing: error))")
+                } else {
+                    self.showAlert(alertTitle: "Success", alertMessage: "Email Sent!")
+                }
+            }
+        } else {
+            showAlert(alertTitle: "Sorry", alertMessage: "Please enter the email of the account you wish to reset")
+        }
     }
     
     func showAlert(alertTitle: String, alertMessage: String) {
@@ -44,12 +59,12 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
                 Auth.auth().signIn(withEmail: email, password: password) { (user, error) in
                     if user != nil {
                         // user was found sign them in and go forward
-                        self.performSegue(withIdentifier: "loginToMaster", sender: nil)
+//                        self.performSegue(withIdentifier: "loginToMaster", sender: nil)
                         self.passwordLabel.text = ""
                         self.usernameLabel.text = ""
                     } else {
                         // error
-                        self.showAlert(alertTitle: "Sorry", alertMessage: String(describing: error))
+                        self.showAlert(alertTitle: "Sorry", alertMessage: String(describing: error!))
 
                     }
                 }

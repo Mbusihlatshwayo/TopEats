@@ -47,24 +47,32 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
     }
     
     @IBAction func createAccountPressed(_ sender: Any) {
+        
+        if passwordTextField.text != confirmPasswordTextField.text {
+            showAlert(alertTitle: "Sorry", alertMessage: "Passwords do not match")
+            return
+        }
         Auth.auth().createUser(withEmail: emailTextField.text!, password: passwordTextField.text!, completion: {(user, error) in
+
+            // there was a problem show the error to the user
             if error != nil {
-                return
+                self.showAlert(alertTitle: "Sorry", alertMessage: String(describing: error!))
             }else{
+                // no error sign in now
                 self.clearTextFields()
                 Auth.auth().signIn(withEmail: self.emailTextField.text!, password: self.passwordTextField.text!) { (user, error) in
-                    if user != nil {
+                    if error != nil {
                         // user was found sign them in and go forward
                         let changeRequest = Auth.auth().currentUser?.createProfileChangeRequest()
                         changeRequest?.displayName = self.usernameTextField.text!
                         changeRequest?.commitChanges { (error) in
                             if error != nil {
-
+                                self.showAlert(alertTitle: "Sorry", alertMessage: String(describing: error!))
                             } else {
 
                             }
                         }
-                        self.performSegue(withIdentifier: "masterSegue", sender: nil)
+
                     } else {
                         // error
                         self.showAlert(alertTitle: "Sorry", alertMessage: String(describing: error))
