@@ -69,7 +69,8 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
                             if error != nil {
                                 self.showAlert(alertTitle: "Sorry", alertMessage: String(describing: error!))
                             } else {
-
+                                // segue to main view
+                                
                             }
                         }
 

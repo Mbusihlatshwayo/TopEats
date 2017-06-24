@@ -8,25 +8,36 @@
 
 import UIKit
 import Firebase
+import NVActivityIndicatorView
 
 class LoginViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var usernameLabel: UITextField!
     @IBOutlet weak var passwordLabel: CustomTextField!
 
+    var activityIndicator: NVActivityIndicatorView?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         usernameLabel.delegate = self
         passwordLabel.delegate = self
-        
+        setUpActivityIndicator()
         // if user is signed in bypass login
         Auth.auth().addStateDidChangeListener() { auth, user in
             if user != nil {
+                self.activityIndicator?.stopAnimating()
                 self.performSegue(withIdentifier: "loginToMaster", sender: nil)
             }
         }
         
     }
     
+    func setUpActivityIndicator() {
+        let centerFrame = CGRect(x: 0, y: 0, width: 40, height: 40)
+        activityIndicator = NVActivityIndicatorView(frame: centerFrame, type: .ballPulseSync, color: UIColor.white)
+        activityIndicator?.center = view.center
+        view.addSubview(activityIndicator!)
+        activityIndicator?.startAnimating()
+    }
     @IBAction func createAccountPressed(_ sender: Any) {
         performSegue(withIdentifier: "signUpSegue", sender: nil)
     }
@@ -56,15 +67,19 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     @IBAction func signInPressed(_ sender: Any) {
         if let email = usernameLabel.text, let password = passwordLabel.text {
             if email != "" {
+                setUpActivityIndicator()
                 Auth.auth().signIn(withEmail: email, password: password) { (user, error) in
-                    if user != nil {
+                    if error != nil {
                         // user was found sign them in and go forward
 //                        self.performSegue(withIdentifier: "loginToMaster", sender: nil)
+                        self.activityIndicator?.stopAnimating()
                         self.passwordLabel.text = ""
                         self.usernameLabel.text = ""
                     } else {
                         // error
+                        self.activityIndicator?.stopAnimating()
                         self.showAlert(alertTitle: "Sorry", alertMessage: String(describing: error!))
+                        
 
                     }
                 }
