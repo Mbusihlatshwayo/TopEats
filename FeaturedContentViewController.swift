@@ -51,9 +51,34 @@ class FeaturedContentViewController: UIViewController, UITableViewDataSource, UI
     }
     
     override func viewDidAppear(_ animated: Bool) {
+        if !isLocationEnabled() {
+            showAlert(alertTitle: "Sorry", alertMessage: "Please enable location services to see local restaurants.")
+        }
+    }
+    
+    func showAlert(alertTitle: String, alertMessage: String) {
+        let controller = UIAlertController(title: alertTitle, message: alertMessage, preferredStyle: .alert)
+        let ok = UIAlertAction(title: "OK", style: .default, handler: nil)
+        
+        controller.addAction(ok)
+        present(controller, animated: true, completion: nil)
     }
     
     // MARK: - LOCATION METHODS
+    
+    func isLocationEnabled() -> Bool {
+        if CLLocationManager.locationServicesEnabled() {
+            switch(CLLocationManager.authorizationStatus()) {
+            case .notDetermined, .restricted, .denied:
+                return false
+            case .authorizedAlways, .authorizedWhenInUse:
+                return true
+            }
+        } else {
+            return false
+        }
+    }
+    
     func requestLocServices() {
         // get the status of the location manager
         let status  = CLLocationManager.authorizationStatus()

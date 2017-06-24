@@ -26,6 +26,8 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
             if user != nil {
                 self.activityIndicator?.stopAnimating()
                 self.performSegue(withIdentifier: "loginToMaster", sender: nil)
+            } else {
+                self.activityIndicator?.stopAnimating()
             }
         }
         
@@ -69,7 +71,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
             if email != "" {
                 setUpActivityIndicator()
                 Auth.auth().signIn(withEmail: email, password: password) { (user, error) in
-                    if error != nil {
+                    if error == nil {
                         // user was found sign them in and go forward
 //                        self.performSegue(withIdentifier: "loginToMaster", sender: nil)
                         self.activityIndicator?.stopAnimating()

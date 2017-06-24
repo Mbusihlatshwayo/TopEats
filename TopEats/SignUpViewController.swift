@@ -61,7 +61,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
                 // no error sign in now
                 self.clearTextFields()
                 Auth.auth().signIn(withEmail: self.emailTextField.text!, password: self.passwordTextField.text!) { (user, error) in
-                    if error != nil {
+                    if error == nil && user != nil {
                         // user was found sign them in and go forward
                         let changeRequest = Auth.auth().currentUser?.createProfileChangeRequest()
                         changeRequest?.displayName = self.usernameTextField.text!
@@ -70,7 +70,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
                                 self.showAlert(alertTitle: "Sorry", alertMessage: String(describing: error!))
                             } else {
                                 // segue to main view
-                                
+                                self.performSegue(withIdentifier: "segueToMaster", sender: nil)
                             }
                         }
 
@@ -100,4 +100,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
         }
     }
 
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+    }
 }

@@ -8,8 +8,9 @@
 
 import UIKit
 import NVActivityIndicatorView
+import MapKit
 
-class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate
+class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate, CLLocationManagerDelegate
 {
 
     // MARK: - OUTLETS
@@ -30,6 +31,25 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
         self.navigationController?.navigationBar.isHidden = true
     }
     
+    func isLocationEnabled() -> Bool {
+        if CLLocationManager.locationServicesEnabled() {
+            switch(CLLocationManager.authorizationStatus()) {
+            case .notDetermined, .restricted, .denied:
+                return false
+            case .authorizedAlways, .authorizedWhenInUse:
+                return true
+            }
+        } else {
+            return false
+        }
+    }
+    func showAlert(alertTitle: String, alertMessage: String) {
+        let controller = UIAlertController(title: alertTitle, message: alertMessage, preferredStyle: .alert)
+        let ok = UIAlertAction(title: "OK", style: .default, handler: nil)
+        
+        controller.addAction(ok)
+        present(controller, animated: true, completion: nil)
+    }
     // MARK: - TABLE VIEW DELEGATE METHODS
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return searchResults.count
@@ -50,18 +70,23 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
         self.performSegue(withIdentifier: "showSearchedDetail", sender: place)
     }
     
+    
     // MARK: - SEARCH BAR DELEGATE METHODS 
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        if searchBar.text != "" {
-            if (searchBar.text?.containsWhiteSpace())! {
-                let text = searchBar.text!
-                let first = text.replacingOccurrences(of: " ", with: "%20")
-                let searchKeyword = "%22\(first)%22"
-                performSearch(searchKeyword: searchKeyword)
-            } else {
-                performSearch(searchKeyword: searchBar.text!)
-            }
-            
+        if !isLocationEnabled() {
+            showAlert(alertTitle: "Sorry", alertMessage: "Please enable location services for search.")
+        } else {
+            if searchBar.text != "" {
+                if (searchBar.text?.containsWhiteSpace())! {
+                    let text = searchBar.text!
+                    let first = text.replacingOccurrences(of: " ", with: "%20")
+                    let searchKeyword = "%22\(first)%22"
+                    performSearch(searchKeyword: searchKeyword)
+                } else {
+                    performSearch(searchKeyword: searchBar.text!)
+                }
+                
+            }   
         }
         self.view.endEditing(true)
     }
