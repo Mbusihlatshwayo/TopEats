@@ -20,19 +20,32 @@ class CommunityViewController: UIViewController, UITableViewDataSource, UITableV
     private var communitySectionsRefHandle: DatabaseHandle?
     private lazy var communitySectionsRef: DatabaseReference = Database.database().reference().child("Sections")
     var sections: [Section] = []
-    
+    var isGrantedNotificationAccess:Bool = false
     var senderDisplayName: String?
     
+    //MARK: - VIEW LIFECYCLE
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.navigationBar.isHidden = true
         tableView.delegate = self
         tableView.dataSource = self
         tableView.separatorColor = UIColor.green
-     
+//        initNotificationSetupCheck()
         setUpData()
     }
     
+    // MARK: - LOCAL NOTIFICATIONS
+//    func initNotificationSetupCheck() {
+//        UNUserNotificationCenter.current().requestAuthorization(options: [.alert,.sound,.badge])
+//        { (success, error) in
+//            if success {
+//                self.isGrantedNotificationAccess = success
+//                print("Permission Granted")
+//            } else {
+//                print("There was a problem!")
+//            }
+//        }
+//    }
     func setUpData() {
         // need to set up cuisine array with objects of type section in order to push messages into database
 //        for obj in cuisinearray {

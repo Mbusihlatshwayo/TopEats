@@ -47,7 +47,6 @@ class FeaturedContentViewController: UIViewController, UITableViewDataSource, UI
         requestLocServices()
         placesClient = GMSPlacesClient.shared()
         
-        
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -142,7 +141,6 @@ class FeaturedContentViewController: UIViewController, UITableViewDataSource, UI
     }
     
     func downloadPlaces() {
-        tableView.isHidden = true
         let centerFrame = CGRect(x: 0, y: 0, width: 40, height: 40)
         activityIndicator = NVActivityIndicatorView(frame: centerFrame, type: .ballPulseSync, color: topEatsGreen)
         activityIndicator?.center = view.center
@@ -151,7 +149,6 @@ class FeaturedContentViewController: UIViewController, UITableViewDataSource, UI
         NetworkingFunctionality.downloadPlaces(completion: { [weak self] data in
             self?.places = data
             self?.tableView.reloadData()
-            self?.tableView.isHidden = false
             self?.activityIndicator?.stopAnimating()
         })
         
