@@ -55,6 +55,7 @@ class SavedContentViewController: UIViewController, UITableViewDelegate, UITable
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let newsCell = tableView.dequeueReusableCell(withIdentifier: "newsCell") as? NewsTableViewCell {
             newsCell.configWithCoreData(place: places[indexPath.row])
+            newsCell.saveButton.tag = indexPath.row // get the index of the place for the saving action
             newsCell.saveButton.addTarget(self, action:#selector(saveClicked(sender:)), for: .touchUpInside)
             return newsCell
         }
