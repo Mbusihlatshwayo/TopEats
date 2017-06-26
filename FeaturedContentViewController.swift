@@ -36,6 +36,7 @@ class FeaturedContentViewController: UIViewController, UITableViewDataSource, UI
     var activityIndicator: NVActivityIndicatorView?
     var shouldReloadData = true
     var updateLocationCount = 0
+    private let refreshControl = UIRefreshControl()
     
     // MARK: - VIEW LIFECYCLE
     override func viewDidLoad() {
@@ -139,6 +140,7 @@ class FeaturedContentViewController: UIViewController, UITableViewDataSource, UI
             self?.places = data
             self?.tableView.reloadData()
             self?.activityIndicator?.stopAnimating()
+//            self?.refreshControl.endRefreshing()
         })
         
     }
@@ -147,6 +149,12 @@ class FeaturedContentViewController: UIViewController, UITableViewDataSource, UI
         tableView.delegate = self
         tableView.dataSource = self
         tableView.separatorColor = UIColor.green
+        if #available(iOS 10.0, *) {
+            tableView.refreshControl = refreshControl
+        } else {
+            tableView.addSubview(refreshControl)
+        }
+        refreshControl.addTarget(self, action: #selector(downloadPlaces), for: .valueChanged)
         featuredScrollView.isPagingEnabled = true
         featuredScrollView.showsVerticalScrollIndicator = false
         featuredScrollView.delegate = self
