@@ -122,6 +122,7 @@ class FeaturedContentViewController: UIViewController, UITableViewDataSource, UI
         // set the location
         Location.sharedInstance.latitude = currentLocation.coordinate.latitude
         Location.sharedInstance.longitude = currentLocation.coordinate.longitude
+        print("Location: \(Location.sharedInstance.latitude!),\(Location.sharedInstance.longitude!)")
         if shouldReloadData && updateLocationCount == 3 {
             // we only load the intial data once
             downloadPlaces()
@@ -140,7 +141,7 @@ class FeaturedContentViewController: UIViewController, UITableViewDataSource, UI
             self?.places = data
             self?.tableView.reloadData()
             self?.activityIndicator?.stopAnimating()
-//            self?.refreshControl.endRefreshing()
+            self?.refreshControl.endRefreshing()
         })
         
     }

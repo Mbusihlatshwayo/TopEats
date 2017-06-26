@@ -14,8 +14,10 @@ class NetworkingFunctionality {
     
     class func downloadPlaces(completion: @escaping ([Place]) -> Void) {
         // download google places restaurants
-        let PLACE_REQUEST_URL = URL(string: PLACES_URL)
-        Alamofire.request(PLACE_REQUEST_URL!).responseJSON(completionHandler: {response -> Void in
+//        let PLACE_REQUEST_URL = URL(string: PLACES_URL)
+        let PLACE_REQUEST_URL = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=\(Location.sharedInstance.latitude!),\(Location.sharedInstance.longitude!)&radius=805&types=restaurant&key=AIzaSyACJKXW98TFV6nb0YHqksfJJ3_Y8gkDib0"
+        print("Place request url: \(PLACE_REQUEST_URL)")
+        Alamofire.request(PLACE_REQUEST_URL).responseJSON(completionHandler: {response -> Void in
             switch response.result {
                 
                 // download successful
