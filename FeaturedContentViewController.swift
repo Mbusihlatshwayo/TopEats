@@ -50,9 +50,7 @@ class FeaturedContentViewController: UIViewController, UITableViewDataSource, UI
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        if !isLocationEnabled() {
-            showAlert(alertTitle: "Sorry", alertMessage: "Please enable location services to see local restaurants.")
-        }
+
     }
     
     func showAlert(alertTitle: String, alertMessage: String) {
@@ -105,24 +103,15 @@ class FeaturedContentViewController: UIViewController, UITableViewDataSource, UI
         locationMgr.startUpdatingLocation()
     }
     
-    private func locationManager(manager: CLLocationManager!, didChangeAuthorizationStatus status: CLAuthorizationStatus) {
-        if status == .authorizedWhenInUse || status == .authorizedAlways {
-            // authorized location status when app is in use; update current location
-            locationMgr.startUpdatingLocation()
-            currentLocation = locationMgr.location
-            Location.sharedInstance.latitude = currentLocation.coordinate.latitude
-            Location.sharedInstance.longitude = currentLocation.coordinate.longitude
-            downloadPlaces()
-        }
-        // implement logic for other status values if needed...
-    }
-    
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
         if status == .authorizedWhenInUse || status == .authorizedAlways {
             // authorized location status when app is in use; update current location
             locationMgr.startUpdatingLocation()
+        } else {
+            if !isLocationEnabled() {
+                showAlert(alertTitle: "Sorry", alertMessage: "Please enable location services to see local restaurants.")
+            }
         }
-        // implement logic for other status values if needed...
     }
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {

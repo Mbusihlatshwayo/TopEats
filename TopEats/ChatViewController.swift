@@ -179,6 +179,7 @@ final class ChatViewController: JSQMessagesViewController {
         // We can use the observe method to listen for new
         // messages being written to the Firebase DB
         newMessageRefHandle = messageQuery.observe(.childAdded, with: { (snapshot) -> Void in
+//        newMessageRefHandle = messageQuery.observe(.value, with: { (snapshot) -> Void in
             let messageData = snapshot.value as! Dictionary<String, String>
             
             if let id = messageData["senderId"] as String!, let name = messageData["senderName"] as String!, let text = messageData["text"] as String!, text.characters.count > 0 {
@@ -191,23 +192,19 @@ final class ChatViewController: JSQMessagesViewController {
     }
     
     override func didPressSend(_ button: UIButton!, withMessageText text: String!, senderId: String!, senderDisplayName: String!, date: Date!) {
-        // 1
+
         let itemRef = messageRef.childByAutoId()
-        
-        // 2
+
         let messageItem = [
             "senderId": senderId!,
             "senderName": senderDisplayName!,
             "text": text!,
             ]
         
-        // 3
         itemRef.setValue(messageItem)
         
-        // 4
         JSQSystemSoundPlayer.jsq_playMessageSentSound()
         
-        // 5
         finishSendingMessage()
         isTyping = false
     }
