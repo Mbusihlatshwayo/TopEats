@@ -35,6 +35,7 @@ class NetworkingFunctionality {
                                 var place_address: String!
                                 var place_location: CLLocation!
                                 var place_id: String!
+                                var place_attributions: String?
                                 
                                 if let name = object["name"] as? String {
                                     place_name = name
@@ -47,6 +48,10 @@ class NetworkingFunctionality {
                                 if let photosArr = object["photos"] as? [Dictionary<String, AnyObject>] {
                                     if let photoRef = photosArr[0]["photo_reference"] as? String {
                                         place_photo_ref = photoRef
+                                    }
+                                    if let attributions = photosArr[0]["html_attributions"] as? [String] {
+                                        let photoAttributions = attributions[0]
+                                        place_attributions = photoAttributions
                                     }
                                 } else {
                                     place_photo_ref = nil
@@ -67,7 +72,7 @@ class NetworkingFunctionality {
                                     place_id = id
                                 }
                                 
-                                placeInstance = Place(name: place_name, open: place_open_or_not, photoRef: place_photo_ref, rating: place_rating, address: place_address, animated: true, location: place_location, id: place_id)
+                                placeInstance = Place(name: place_name, open: place_open_or_not, photoRef: place_photo_ref, rating: place_rating, address: place_address, animated: true, location: place_location, id: place_id, attributes: place_attributions)
                                 places.append(placeInstance)
                                 }
                         }
@@ -102,7 +107,8 @@ class NetworkingFunctionality {
                             var place_address: String!
                             var place_location: CLLocation!
                             var place_id: String!
-                            
+                            var place_attributions: String?
+
                             if let name = object["name"] as? String {
                                 place_name = name
                             }
@@ -114,6 +120,10 @@ class NetworkingFunctionality {
                             if let photosArr = object["photos"] as? [Dictionary<String, AnyObject>] {
                                 if let photoRef = photosArr[0]["photo_reference"] as? String {
                                     place_photo_ref = photoRef
+                                }
+                                if let attributions = photosArr[0]["html_attributions"] as? [String] {
+                                    let photoAttributions = attributions[0]
+                                    place_attributions = photoAttributions
                                 }
                             } else {
                                 place_photo_ref = nil
@@ -134,7 +144,7 @@ class NetworkingFunctionality {
                                 place_id = id
                             }
                             
-                            placeInstance = Place(name: place_name, open: place_open_or_not, photoRef: place_photo_ref, rating: place_rating, address: place_address, animated: true, location: place_location, id: place_id)
+                            placeInstance = Place(name: place_name, open: place_open_or_not, photoRef: place_photo_ref, rating: place_rating, address: place_address, animated: true, location: place_location, id: place_id, attributes: place_attributions)
                             places.append(placeInstance)
                         }
                     }

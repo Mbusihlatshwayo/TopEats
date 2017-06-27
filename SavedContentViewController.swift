@@ -90,7 +90,7 @@ class SavedContentViewController: UIViewController, UITableViewDelegate, UITable
     
     func convertToPlace(place: CDPlace) -> Place {
         let location = CLLocation(latitude: place.latitude, longitude: place.longitude)
-        let placeObj = Place(name: place.name, open: nil, photoRef: place.photoRef, rating: Float(place.rating), address: place.address, animated: false, location: location, id: place.id!)
+        let placeObj = Place(name: place.name, open: nil, photoRef: place.photoRef, rating: Float(place.rating), address: place.address, animated: false, location: location, id: place.id!, attributes: place.attributes)
         return placeObj
     }
     // MARK: - Navigation

@@ -19,6 +19,11 @@ class Place {
     private var _shouldAnimate: Bool!
     private var _location: CLLocation!
     private var _id: String!
+    private var _attributes: String!
+    
+    var attributes: String {
+        return _attributes
+    }
     
     var id: String {
         return _id
@@ -79,7 +84,7 @@ class Place {
         }
     }
     
-    init(name: String!, open: Bool?, photoRef: String?, rating: Float?, address: String!, animated: Bool!, location: CLLocation, id: String) {
+    init(name: String!, open: Bool?, photoRef: String?, rating: Float?, address: String!, animated: Bool!, location: CLLocation, id: String, attributes: String?) {
         // we always have a name
         self._name = name
         
@@ -101,6 +106,11 @@ class Place {
             self._rating = 0
         }
         
+        if attributes != nil {
+            self._attributes = attributes
+        } else {
+            self._attributes = ""
+        }
         self._shouldAnimate = animated
         // we always have an address
         self._address = address

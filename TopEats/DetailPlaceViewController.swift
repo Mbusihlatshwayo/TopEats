@@ -23,6 +23,7 @@ class DetailPlaceViewController: UIViewController, CLLocationManagerDelegate, GM
     @IBOutlet weak var hoursLabel: UILabel!
     @IBOutlet weak var detailScrollView: UIScrollView!
     @IBOutlet weak var mapView: GMSMapView!
+    @IBOutlet weak var attributionsLabel: UILabel!
 
     
     // MARK: - PROPERTIES
@@ -108,7 +109,10 @@ class DetailPlaceViewController: UIViewController, CLLocationManagerDelegate, GM
         addressLabel.text = place!.address
         // init hours label with location open status
         hoursLabel.text = place!.open
-//        setUpMap() COME BACK FIX
+        // init attributes label with html
+        attributionsLabel.adjustsFontSizeToFitWidth = true
+        attributionsLabel.text = place!.attributes
+        // init map data and route
         googleMapSetup()
         drawRoute()
     }

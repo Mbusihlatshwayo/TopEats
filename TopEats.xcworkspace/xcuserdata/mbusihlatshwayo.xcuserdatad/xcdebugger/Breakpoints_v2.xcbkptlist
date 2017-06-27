@@ -42,7 +42,7 @@
                   moduleName = "TopEats"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Volumes/Seagate%20Backup%20Plus%20Drive/Xcode%20Files/TopEats/TopEats/LoginViewController.swift"
-                  timestampString = "520195667.986636"
+                  timestampString = "520216609.634294"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "49"
@@ -57,7 +57,7 @@
                   moduleName = "TopEats"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Volumes/Seagate%20Backup%20Plus%20Drive/Xcode%20Files/TopEats/TopEats/LoginViewController.swift"
-                  timestampString = "520195668.009226"
+                  timestampString = "520216609.642327"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "50"
@@ -134,7 +134,7 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FeaturedContentViewController.swift"
@@ -168,7 +168,7 @@
                   moduleName = "TopEats"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Volumes/Seagate%20Backup%20Plus%20Drive/Xcode%20Files/TopEats/TopEats/Constants.swift"
-                  timestampString = "520195668.088032"
+                  timestampString = "520216609.714006"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "12"
@@ -183,7 +183,7 @@
                   moduleName = "TopEats"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Volumes/Seagate%20Backup%20Plus%20Drive/Xcode%20Files/TopEats/TopEats/Constants.swift"
-                  timestampString = "520195668.090369"
+                  timestampString = "520216609.716994"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "12"
@@ -207,6 +207,102 @@
             endingLineNumber = "110"
             landmarkName = "locationManager(_:didChangeAuthorization:)"
             landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "TopEats/Networking.swift"
+            timestampString = "520216605.279269"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "52"
+            endingLineNumber = "52"
+            landmarkName = "downloadPlaces(completion:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "static TopEats.NetworkingFunctionality.(downloadPlaces (completion : (Swift.Array&lt;TopEats.Place&gt;) -&gt; ()) -&gt; ()).(closure #1)"
+                  moduleName = "TopEats"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Volumes/Seagate%20Backup%20Plus%20Drive/Xcode%20Files/TopEats/TopEats/Networking.swift"
+                  timestampString = "520216609.610424"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "52"
+                  endingLineNumber = "52"
+                  offsetFromSymbolStart = "3968">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "static TopEats.NetworkingFunctionality.(downloadPlaces (completion : (Swift.Array&lt;TopEats.Place&gt;) -&gt; ()) -&gt; ()).(closure #1)"
+                  moduleName = "TopEats"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Volumes/Seagate%20Backup%20Plus%20Drive/Xcode%20Files/TopEats/TopEats/Networking.swift"
+                  timestampString = "520216609.614477"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "52"
+                  endingLineNumber = "52"
+                  offsetFromSymbolStart = "4260">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "TopEats/Networking.swift"
+            timestampString = "520216612.764353"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "124"
+            endingLineNumber = "124"
+            landmarkName = "searchPlaces(searchKeyword:completion:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "static TopEats.NetworkingFunctionality.(searchPlaces (searchKeyword : Swift.String, completion : (Swift.Array&lt;TopEats.Place&gt;) -&gt; ()) -&gt; ()).(closure #1)"
+                  moduleName = "TopEats"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Volumes/Seagate%20Backup%20Plus%20Drive/Xcode%20Files/TopEats/TopEats/Networking.swift"
+                  timestampString = "520216615.620573"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "124"
+                  endingLineNumber = "124"
+                  offsetFromSymbolStart = "3968">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "static TopEats.NetworkingFunctionality.(searchPlaces (searchKeyword : Swift.String, completion : (Swift.Array&lt;TopEats.Place&gt;) -&gt; ()) -&gt; ()).(closure #1)"
+                  moduleName = "TopEats"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Volumes/Seagate%20Backup%20Plus%20Drive/Xcode%20Files/TopEats/TopEats/Networking.swift"
+                  timestampString = "520216615.623839"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "124"
+                  endingLineNumber = "124"
+                  offsetFromSymbolStart = "4260">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

@@ -294,6 +294,7 @@ class FeaturedContentViewController: UIViewController, UITableViewDataSource, UI
             place.photoRef = places[buttonRow].photoRef
             place.rating = Double(places[buttonRow].rating)
             place.id = places[buttonRow].id
+            place.attributes = places[buttonRow].attributes
             // Save the data to coredata
             (UIApplication.shared.delegate as! AppDelegate).saveContext()
             // post notification to notify of new saved data
