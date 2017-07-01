@@ -170,13 +170,12 @@ class FeaturedContentViewController: UIViewController, UITableViewDataSource, UI
     
     func setupDummyData() {
         /* create objects for table view dummy data */
-        newsObject = News(image: "restaurant1", headText: "Dummy Headline", articleText: "It is a great place try it")
-        newsObject1 = News(image: "restaurant2", headText: "Anotha one", articleText: "Really listen and give it a shot")
-        newsObject2 = News(image: "restaurant3", headText: "Here", articleText: "We have nice food try it sometime")
+        newsObject = News(image: "sushi-sashimi", headText: "Learn how to make sushi", articleText: "")
+        newsObject1 = News(image: "barbecue", headText: "Great BBQ Recipies", articleText: "")
+        newsObject2 = News(image: "mexican-food", headText: "Authentic Mexican Recipies", articleText: "")
         newsArray.append(newsObject)
         newsArray.append(newsObject1)
         newsArray.append(newsObject2)
-        newsArray.append(newsObject1)
     }
     
     override func viewWillDisappear(_ animated: Bool) {

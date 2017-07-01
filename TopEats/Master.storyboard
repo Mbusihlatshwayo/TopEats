@@ -312,6 +312,7 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
+                                            <outlet property="googleAttributionImage" destination="z6Z-57-3kX" id="ehS-aQ-Y5s"/>
                                             <outlet property="headlineImage" destination="4KC-dk-tsZ" id="7mV-zN-rhQ"/>
                                             <outlet property="headlineLabel" destination="Lw1-nn-3qX" id="1NN-rv-tu8"/>
                                             <outlet property="saveButton" destination="Pyw-YM-Nze" id="1wg-K5-wIy"/>
@@ -529,6 +530,7 @@
                         <outlet property="addressLabel" destination="o0q-z2-UAZ" id="6nK-ji-VSG"/>
                         <outlet property="attributionsLabel" destination="1Z4-mV-f4D" id="bEP-AA-Mm4"/>
                         <outlet property="detailScrollView" destination="ZGe-ei-cDD" id="ZHC-HW-nju"/>
+                        <outlet property="googleAttributionImage" destination="ZXG-6b-f9P" id="NlD-cO-IbT"/>
                         <outlet property="hoursLabel" destination="Hxm-La-a3m" id="zAo-uG-tR7"/>
                         <outlet property="mapView" destination="IPC-wK-800" id="eFo-YK-W5u"/>
                         <outlet property="placeImageView" destination="mvx-ZB-3H0" id="LyZ-qN-Ln4"/>

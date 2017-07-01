@@ -14,6 +14,7 @@ class NewsTableViewCell: UITableViewCell {
     @IBOutlet weak var saveButton: UIButton!
     @IBOutlet weak var headlineImage: UIImageView!
     @IBOutlet weak var headlineLabel: UILabel!
+    @IBOutlet weak var googleAttributionImage: UIImageView!
     
     // function to configure custom table view cell
     func configCell(place: Place) {
@@ -21,6 +22,7 @@ class NewsTableViewCell: UITableViewCell {
         if place.shouldAnimate {
             // hide image and label before image is loaded
             headlineImage.alpha = 0
+            googleAttributionImage.alpha = 0
             headlineLabel.alpha = 0
             saveButton.alpha = 0
             headlineLabel.text = place.name
@@ -31,6 +33,7 @@ class NewsTableViewCell: UITableViewCell {
                     self.headlineImage.alpha = 1
                     self.headlineLabel.alpha = 1
                     self.saveButton.alpha = 1
+                    self.googleAttributionImage.alpha = 1
                     place.shouldAnimate = false
                 })
             }

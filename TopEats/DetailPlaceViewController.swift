@@ -24,7 +24,7 @@ class DetailPlaceViewController: UIViewController, CLLocationManagerDelegate, GM
     @IBOutlet weak var detailScrollView: UIScrollView!
     @IBOutlet weak var mapView: GMSMapView!
     @IBOutlet weak var attributionsLabel: UILabel!
-
+    @IBOutlet weak var googleAttributionImage: UIImageView!
     
     // MARK: - PROPERTIES
     var place: Place?
@@ -92,12 +92,14 @@ class DetailPlaceViewController: UIViewController, CLLocationManagerDelegate, GM
             // image download complete fade in image
             UIView.animate(withDuration: 1, animations: {
                 self.placeImageView.alpha = 1
+                self.googleAttributionImage.alpha = 1
             })
         }
     }
 
     func setUpView() {
         placeImageView.alpha = 0
+        googleAttributionImage.alpha = 0
         // init view title label with location name
         titleLabel.adjustsFontSizeToFitWidth = true
         titleLabel.text = place!.name

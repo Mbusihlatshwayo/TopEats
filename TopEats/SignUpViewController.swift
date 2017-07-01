@@ -53,9 +53,12 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
             return
         }
         Auth.auth().createUser(withEmail: emailTextField.text!, password: passwordTextField.text!, completion: {(user, error) in
+            self.view.isUserInteractionEnabled = false
 
             // there was a problem show the error to the user
             if error != nil {
+                self.view.isUserInteractionEnabled = true
+
                 self.showAlert(alertTitle: "Sorry", alertMessage: String(describing: error!))
             }else{
                 // no error sign in now
@@ -67,15 +70,18 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
                         changeRequest?.commitChanges { (error) in
                             if error != nil {
                                 self.showAlert(alertTitle: "Sorry", alertMessage: String(describing: error!))
+                                self.view.isUserInteractionEnabled = true
                             } else {
                                 // segue to main view
                                 self.clearTextFields()
+                                self.view.isUserInteractionEnabled = true
                                 self.performSegue(withIdentifier: "segueToMaster", sender: nil)
                             }
                         }
 
                     } else {
                         // error
+                        self.view.isUserInteractionEnabled = true
                         self.showAlert(alertTitle: "Sorry", alertMessage: String(describing: error))
                         
                     }

@@ -68,17 +68,20 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
 
     @IBAction func signInPressed(_ sender: Any) {
         if let email = usernameLabel.text, let password = passwordLabel.text {
+            view.isUserInteractionEnabled = false
             if email != "" {
                 setUpActivityIndicator()
                 Auth.auth().signIn(withEmail: email, password: password) { (user, error) in
                     if error == nil {
                         // user was found sign them in and go forward
-//                        self.performSegue(withIdentifier: "loginToMaster", sender: nil)
+                        self.view.isUserInteractionEnabled = true
                         self.activityIndicator?.stopAnimating()
                         self.passwordLabel.text = ""
                         self.usernameLabel.text = ""
                     } else {
                         // error
+                        self.view.isUserInteractionEnabled = true
+
                         self.activityIndicator?.stopAnimating()
                         self.showAlert(alertTitle: "Sorry", alertMessage: String(describing: error!))
                         
