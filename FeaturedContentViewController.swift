@@ -122,7 +122,7 @@ class FeaturedContentViewController: UIViewController, UITableViewDataSource, UI
         // set the location
         Location.sharedInstance.latitude = currentLocation.coordinate.latitude
         Location.sharedInstance.longitude = currentLocation.coordinate.longitude
-        print("Location: \(Location.sharedInstance.latitude!),\(Location.sharedInstance.longitude!)")
+//        print("Location: \(Location.sharedInstance.latitude!),\(Location.sharedInstance.longitude!)")
         if shouldReloadData && updateLocationCount == 3 {
             // we only load the intial data once
             downloadPlaces()
@@ -184,7 +184,6 @@ class FeaturedContentViewController: UIViewController, UITableViewDataSource, UI
     
     // MARK: - FEATURED SCROLL VIEW METHODS
     func runTimedCode() {
-//        print("TIMER FIRED go to page \(currentPage)")
         let itemCount = newsArray.count // how many items are in the news reel
         if currentPage < itemCount {
             newX = CGFloat(currentPage) * self.view.frame.width // calculate next page position
@@ -220,7 +219,11 @@ class FeaturedContentViewController: UIViewController, UITableViewDataSource, UI
         if scrollView == featuredScrollView {
             currentX = featuredScrollView.contentOffset.x
             if currentX < newX {
-                currentPage -= 1
+                if currentPage < 0 {
+                    currentPage = 0
+                } else {
+                    currentPage -= 1
+                }
             } else if currentX > newX {
                 currentPage += 1
             }

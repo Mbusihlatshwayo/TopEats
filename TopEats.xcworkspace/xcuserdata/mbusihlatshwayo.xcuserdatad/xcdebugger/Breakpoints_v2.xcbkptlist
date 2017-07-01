@@ -70,22 +70,6 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "FeaturedContentViewController.swift"
-            timestampString = "520192155.214317"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "120"
-            endingLineNumber = "120"
-            landmarkName = "locationManager(_:didUpdateLocations:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
@@ -104,7 +88,7 @@
                   moduleName = "TopEats"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Volumes/Seagate%20Backup%20Plus%20Drive/Xcode%20Files/TopEats/TopEats/Constants.swift"
-                  timestampString = "520216609.714006"
+                  timestampString = "520567683.121603"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "12"
@@ -119,7 +103,7 @@
                   moduleName = "TopEats"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Volumes/Seagate%20Backup%20Plus%20Drive/Xcode%20Files/TopEats/TopEats/Constants.swift"
-                  timestampString = "520216609.716994"
+                  timestampString = "520567683.124819"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "12"
@@ -132,23 +116,7 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "FeaturedContentViewController.swift"
-            timestampString = "520195500.321621"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "110"
-            endingLineNumber = "110"
-            landmarkName = "locationManager(_:didChangeAuthorization:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "TopEats/Networking.swift"
@@ -161,14 +129,14 @@
             landmarkType = "7">
             <Locations>
                <Location
-                  shouldBeEnabled = "Yes"
+                  shouldBeEnabled = "No"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
                   symbolName = "static TopEats.NetworkingFunctionality.(downloadPlaces (completion : (Swift.Array&lt;TopEats.Place&gt;) -&gt; ()) -&gt; ()).(closure #1)"
                   moduleName = "TopEats"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Volumes/Seagate%20Backup%20Plus%20Drive/Xcode%20Files/TopEats/TopEats/Networking.swift"
-                  timestampString = "520216609.610424"
+                  timestampString = "520567373.554114"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "52"
@@ -176,14 +144,14 @@
                   offsetFromSymbolStart = "3968">
                </Location>
                <Location
-                  shouldBeEnabled = "Yes"
+                  shouldBeEnabled = "No"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
                   symbolName = "static TopEats.NetworkingFunctionality.(downloadPlaces (completion : (Swift.Array&lt;TopEats.Place&gt;) -&gt; ()) -&gt; ()).(closure #1)"
                   moduleName = "TopEats"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Volumes/Seagate%20Backup%20Plus%20Drive/Xcode%20Files/TopEats/TopEats/Networking.swift"
-                  timestampString = "520216609.614477"
+                  timestampString = "520567373.555945"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "52"
@@ -216,7 +184,7 @@
                   moduleName = "TopEats"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Volumes/Seagate%20Backup%20Plus%20Drive/Xcode%20Files/TopEats/TopEats/Networking.swift"
-                  timestampString = "520216615.620573"
+                  timestampString = "520567683.134004"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "124"
@@ -231,7 +199,7 @@
                   moduleName = "TopEats"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Volumes/Seagate%20Backup%20Plus%20Drive/Xcode%20Files/TopEats/TopEats/Networking.swift"
-                  timestampString = "520216615.623839"
+                  timestampString = "520567683.138608"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "124"
@@ -239,6 +207,54 @@
                   offsetFromSymbolStart = "4260">
                </Location>
             </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "TopEats/LoginViewController.swift"
+            timestampString = "520566943.140328"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "28"
+            endingLineNumber = "28"
+            landmarkName = "viewDidLoad()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "FeaturedContentViewController.swift"
+            timestampString = "520567117.320822"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "188"
+            endingLineNumber = "188"
+            landmarkName = "runTimedCode()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "FeaturedContentViewController.swift"
+            timestampString = "520567246.834685"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "192"
+            endingLineNumber = "192"
+            landmarkName = "runTimedCode()"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>
