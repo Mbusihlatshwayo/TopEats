@@ -10,6 +10,7 @@ import UIKit
 
 class FeaturedContentView: UIView {
 
+    @IBOutlet weak var pageControl: UIPageControl!
     @IBOutlet weak var featuredLabel: UILabel!
     @IBOutlet weak var featuredImage: UIImageView!
     /*

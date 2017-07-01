@@ -39,16 +39,27 @@
                         <constraint firstAttribute="trailing" secondItem="tlT-Ju-Z3u" secondAttribute="trailing" constant="8" id="y36-nf-Sl5"/>
                     </constraints>
                 </view>
+                <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="dmU-Oy-q25">
+                    <rect key="frame" x="153" y="0.0" width="68" height="37"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="68" id="7sr-b6-W6H"/>
+                        <constraint firstAttribute="height" constant="37" id="bfm-vq-bMC"/>
+                    </constraints>
+                    <color key="pageIndicatorTintColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                    <color key="currentPageIndicatorTintColor" red="0.0" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                </pageControl>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstItem="uq4-iA-jhn" firstAttribute="top" secondItem="mZl-4b-98h" secondAttribute="top" id="KyQ-pw-vX6"/>
                 <constraint firstItem="FHg-Af-5lJ" firstAttribute="leading" secondItem="mZl-4b-98h" secondAttribute="leading" id="OJh-Ix-08P"/>
                 <constraint firstAttribute="bottom" secondItem="FHg-Af-5lJ" secondAttribute="bottom" id="Ol4-va-ur6"/>
+                <constraint firstItem="dmU-Oy-q25" firstAttribute="top" secondItem="mZl-4b-98h" secondAttribute="top" id="Qr9-lJ-UfZ"/>
                 <constraint firstAttribute="trailing" secondItem="FHg-Af-5lJ" secondAttribute="trailing" id="Sd8-0P-Hbm"/>
                 <constraint firstAttribute="bottom" secondItem="uq4-iA-jhn" secondAttribute="bottom" id="eC2-h9-UCS"/>
                 <constraint firstItem="uq4-iA-jhn" firstAttribute="leading" secondItem="mZl-4b-98h" secondAttribute="leading" id="edH-uZ-fWi"/>
                 <constraint firstAttribute="trailing" secondItem="uq4-iA-jhn" secondAttribute="trailing" id="oJa-DS-l2O"/>
+                <constraint firstItem="dmU-Oy-q25" firstAttribute="centerX" secondItem="mZl-4b-98h" secondAttribute="centerX" id="yVR-Bh-Plt"/>
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
             <nil key="simulatedTopBarMetrics"/>
@@ -57,8 +68,9 @@
             <connections>
                 <outlet property="featuredImage" destination="uq4-iA-jhn" id="SK8-hc-uYv"/>
                 <outlet property="featuredLabel" destination="tlT-Ju-Z3u" id="3eZ-e2-eU2"/>
+                <outlet property="pageControl" destination="dmU-Oy-q25" id="hPR-Sb-ZMc"/>
             </connections>
-            <point key="canvasLocation" x="-126" y="52"/>
+            <point key="canvasLocation" x="-126.5" y="51.5"/>
         </view>
     </objects>
     <resources>

@@ -37,6 +37,7 @@ class FeaturedContentViewController: UIViewController, UITableViewDataSource, UI
     var shouldReloadData = true
     var updateLocationCount = 0
     private let refreshControl = UIRefreshControl()
+    var featuredNewsView: FeaturedContentView?
     
     // MARK: - VIEW LIFECYCLE
     override func viewDidLoad() {
@@ -193,15 +194,13 @@ class FeaturedContentViewController: UIViewController, UITableViewDataSource, UI
     
     // MARK: - FEATURED SCROLL VIEW METHODS
     func openRecipieURL(_ sender:UITapGestureRecognizer){
-        print("SELECTED PAGE: \(currentPage)")
         let selectedNewsObject = newsArray[Int(currentPage)]
         let articleURL = selectedNewsObject.articleURL
         let safariURL = URL(string: articleURL)
         UIApplication.shared.open(safariURL!)
     }
-    
+
     func switchScrollViewPage() {
-        print("timer fired")
         let itemCount = newsArray.count // how many items are in the news reel
         var isAtEnd: Bool
         if currentPage == itemCount - 1 {
@@ -238,15 +237,15 @@ class FeaturedContentViewController: UIViewController, UITableViewDataSource, UI
         
         // set up featured content for scroll view
         for (index, featuredNews) in newsArray.enumerated() {
-            if let featuredNewsView = Bundle.main.loadNibNamed("FeaturedContent", owner: self, options: nil)?.first as? FeaturedContentView {
-                featuredNewsView.featuredImage.image = UIImage(named: featuredNews.headlineImage)
-                featuredNewsView.featuredLabel.text = featuredNews.headlineText
-                
-                featuredScrollView.addSubview(featuredNewsView)
-                featuredNewsView.frame.size.width = self.view.bounds.width
-                featuredNewsView.frame.origin.x = CGFloat(index) * self.view.bounds.size.width
-                featuredScrollView.contentSize = CGSize(width: self.view.bounds.width * CGFloat(newsArray.count), height: 225)
-            }
+            featuredNewsView = Bundle.main.loadNibNamed("FeaturedContent", owner: self, options: nil)?.first as? FeaturedContentView
+            featuredNewsView?.featuredImage.image = UIImage(named: featuredNews.headlineImage)
+            featuredNewsView?.featuredLabel.text = featuredNews.headlineText
+            featuredNewsView?.pageControl.currentPage = index
+            featuredScrollView.addSubview(featuredNewsView!)
+            featuredNewsView?.frame.size.width = self.view.bounds.width
+            featuredNewsView?.frame.origin.x = CGFloat(index) * self.view.bounds.size.width
+            featuredScrollView.contentSize = CGSize(width: self.view.bounds.width * CGFloat(newsArray.count), height: 225)
+            
             
         }
     }
