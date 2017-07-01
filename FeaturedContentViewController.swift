@@ -51,7 +51,12 @@ class FeaturedContentViewController: UIViewController, UITableViewDataSource, UI
     }
     
     override func viewDidAppear(_ animated: Bool) {
-
+        initTimer()
+    }
+    override func viewWillAppear(_ animated: Bool) {
+    }
+    override func viewWillDisappear(_ animated: Bool) {
+        myTimer.invalidate()
     }
     
     func showAlert(alertTitle: String, alertMessage: String) {
@@ -149,52 +154,84 @@ class FeaturedContentViewController: UIViewController, UITableViewDataSource, UI
     }
     
     func initializeViewContent() {
+        // add a gesture for scroll view to open safari
+        let gesture = UITapGestureRecognizer(target: self, action:  #selector (self.openRecipieURL (_:)))
+        featuredScrollView.addGestureRecognizer(gesture)
+        // set up table view delegate
         tableView.delegate = self
         tableView.dataSource = self
         tableView.separatorColor = UIColor.green
+        // add refresh control so user can refresh data
         if #available(iOS 10.0, *) {
             tableView.refreshControl = refreshControl
         } else {
             tableView.addSubview(refreshControl)
         }
         refreshControl.addTarget(self, action: #selector(downloadPlaces), for: .valueChanged)
+        // set up scroll view delegate
         featuredScrollView.isPagingEnabled = true
         featuredScrollView.showsVerticalScrollIndicator = false
         featuredScrollView.delegate = self
         /* ---------------------------------------- */
-        myTimer = Timer.scheduledTimer(timeInterval: 4, target: self, selector: #selector(runTimedCode), userInfo: nil, repeats: true)
-        // Do any additional setup after loading the view.
+        // set up data for scroll view
         setupDummyData()
-        loadFeaturedItems() // send it off to load all data into featured view
+        loadFeaturedItems()
     }
-    
+    func initTimer() {
+        myTimer = Timer.scheduledTimer(timeInterval: 4, target: self, selector: #selector(switchScrollViewPage), userInfo: nil, repeats: true)
+    }
     func setupDummyData() {
         /* create objects for table view dummy data */
-        newsObject = News(image: "sushi-sashimi", headText: "Learn how to make sushi", articleText: "")
-        newsObject1 = News(image: "barbecue", headText: "Great BBQ Recipies", articleText: "")
-        newsObject2 = News(image: "mexican-food", headText: "Authentic Mexican Recipies", articleText: "")
+        newsObject = News(image: "sushi-sashimi", headText: "Learn how to make sushi", articleURL: "http://thepioneerwoman.com/cooking/sushi-101-how-to-make-sushi-rolls/")
+        newsObject1 = News(image: "barbecue", headText: "Great BBQ Recipes", articleURL: "http://www.foodnetwork.com/grilling/grilling-central-barbecue/best-backyard-barbecue-recipes")
+        newsObject2 = News(image: "mexican-food", headText: "Authentic Mexican Recipies", articleURL: "http://www.saveur.com/authentic-mexican-recipes")
         newsArray.append(newsObject)
         newsArray.append(newsObject1)
         newsArray.append(newsObject2)
     }
     
-    override func viewWillDisappear(_ animated: Bool) {
-        myTimer.invalidate()
-    }
     
     // MARK: - FEATURED SCROLL VIEW METHODS
-    func runTimedCode() {
+    func openRecipieURL(_ sender:UITapGestureRecognizer){
+        print("SELECTED PAGE: \(currentPage)")
+        let selectedNewsObject = newsArray[Int(currentPage)]
+        let articleURL = selectedNewsObject.articleURL
+        let safariURL = URL(string: articleURL)
+        UIApplication.shared.open(safariURL!)
+    }
+    
+    func switchScrollViewPage() {
+        print("timer fired")
         let itemCount = newsArray.count // how many items are in the news reel
-        if currentPage < itemCount {
-            newX = CGFloat(currentPage) * self.view.frame.width // calculate next page position
-            featuredScrollView.setContentOffset(CGPoint(x: newX, y: 0), animated: true)
-            currentPage += 1
+        var isAtEnd: Bool
+        if currentPage == itemCount - 1 {
+            isAtEnd = true
         } else {
-            // end of items
-            currentPage = 0
-            let newX = CGFloat(currentPage) * self.view.frame.width // calculate next page position
-            featuredScrollView.setContentOffset(CGPoint(x: newX, y: 0), animated: true)
+            isAtEnd = false
         }
+        if currentPage < itemCount {
+            if currentPage == 0 {
+                newX = CGFloat(1) * self.view.frame.width // calculate next page position
+                currentPage += 1
+            } else {
+                if isAtEnd {
+                    featuredScrollView.setContentOffset(CGPoint(x: 0, y: 0), animated: true)
+                    currentPage = 0
+                    return
+                } else {
+                    newX = CGFloat(currentPage+1) * self.view.frame.width // calculate next page position
+                    currentPage += 1
+
+                }
+            }
+            featuredScrollView.setContentOffset(CGPoint(x: newX, y: 0), animated: true)
+            
+        }
+//        else {
+//            // end of items
+//            currentPage = 0
+//            featuredScrollView.setContentOffset(CGPoint(x: 0, y: 0), animated: true)
+//        }
     }
     
     func loadFeaturedItems() {
@@ -217,6 +254,7 @@ class FeaturedContentViewController: UIViewController, UITableViewDataSource, UI
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
         // if the user dragged the carousel update the current page number
         if scrollView == featuredScrollView {
+//            featuredScrollView.featuredNewsView
             currentX = featuredScrollView.contentOffset.x
             if currentX < newX {
                 if currentPage < 0 {

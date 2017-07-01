@@ -11,7 +11,7 @@ import Foundation
 class News {
     private var _headlineImage: String!
     private var _headlineText: String!
-    private var _articleText: String!
+    private var _articleURL: String!
     
     var headlineImage: String {
         if _headlineImage == nil {
@@ -29,18 +29,18 @@ class News {
         }
     }
     
-    var articleText: String {
-        if _articleText == nil {
+    var articleURL: String {
+        if _articleURL == nil {
             return ""
         } else {
-            return _articleText
+            return _articleURL
         }
     }
     
-    init(image: String, headText: String, articleText: String) {
+    init(image: String, headText: String, articleURL: String) {
         
         _headlineImage = image
         _headlineText = headText
-        _articleText = articleText
+        _articleURL = articleURL
     }
 }
