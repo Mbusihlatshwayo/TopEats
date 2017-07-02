@@ -116,7 +116,7 @@ class FeaturedContentViewController: UIViewController, UITableViewDataSource, UI
             locationMgr.startUpdatingLocation()
         } else {
             if !isLocationEnabled() {
-                showAlert(alertTitle: "Sorry", alertMessage: "Please enable location services to see local restaurants.")
+//                showAlert(alertTitle: "Sorry", alertMessage: "Please enable location services to see local restaurants.")
             }
         }
     }
@@ -138,20 +138,23 @@ class FeaturedContentViewController: UIViewController, UITableViewDataSource, UI
     }
     
     func downloadPlaces() {
-        refreshControl.isUserInteractionEnabled = false
-        let centerFrame = CGRect(x: 0, y: 0, width: 40, height: 40)
-        activityIndicator = NVActivityIndicatorView(frame: centerFrame, type: .ballPulseSync, color: topEatsGreen)
-        activityIndicator?.center = view.center
-        view.addSubview(activityIndicator!)
-        activityIndicator?.startAnimating()
-        NetworkingFunctionality.downloadPlaces(completion: { [weak self] data in
-            self?.refreshControl.isUserInteractionEnabled = true
-            self?.places = data
-            self?.tableView.reloadData()
-            self?.activityIndicator?.stopAnimating()
-            self?.refreshControl.endRefreshing()
-        })
-        
+        if isLocationEnabled() {
+            refreshControl.isEnabled = false
+            let centerFrame = CGRect(x: 0, y: 0, width: 40, height: 40)
+            activityIndicator = NVActivityIndicatorView(frame: centerFrame, type: .ballPulseSync, color: topEatsGreen)
+            activityIndicator?.center = view.center
+            view.addSubview(activityIndicator!)
+            activityIndicator?.startAnimating()
+            NetworkingFunctionality.downloadPlaces(completion: { [weak self] data in
+                self?.refreshControl.isEnabled = true
+                self?.places = data
+                self?.tableView.reloadData()
+                self?.activityIndicator?.stopAnimating()
+                self?.refreshControl.endRefreshing()
+            })
+        } else {
+            refreshControl.endRefreshing()
+        }
     }
     
     func initializeViewContent() {
