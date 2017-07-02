@@ -139,14 +139,12 @@ class FeaturedContentViewController: UIViewController, UITableViewDataSource, UI
     
     func downloadPlaces() {
         if isLocationEnabled() {
-            refreshControl.isEnabled = false
             let centerFrame = CGRect(x: 0, y: 0, width: 40, height: 40)
             activityIndicator = NVActivityIndicatorView(frame: centerFrame, type: .ballPulseSync, color: topEatsGreen)
             activityIndicator?.center = view.center
             view.addSubview(activityIndicator!)
             activityIndicator?.startAnimating()
             NetworkingFunctionality.downloadPlaces(completion: { [weak self] data in
-                self?.refreshControl.isEnabled = true
                 self?.places = data
                 self?.tableView.reloadData()
                 self?.activityIndicator?.stopAnimating()
@@ -157,6 +155,26 @@ class FeaturedContentViewController: UIViewController, UITableViewDataSource, UI
         }
     }
     
+    func addRefreshControl() {
+        // add refresh control so user can refresh data
+        if #available(iOS 10.0, *) {
+            tableView.refreshControl = refreshControl
+        } else {
+            tableView.addSubview(refreshControl)
+        }
+        refreshControl.addTarget(self, action: #selector(refreshPlaces), for: .valueChanged)
+    }
+    func refreshPlaces() {
+        if isLocationEnabled() {
+            NetworkingFunctionality.downloadPlaces(completion: { [weak self] data in
+                self?.places = data
+                self?.tableView.reloadData()
+                self?.refreshControl.endRefreshing()
+            })
+        } else {
+            refreshControl.endRefreshing()
+        }
+    }
     func initializeViewContent() {
         // add a gesture for scroll view to open safari
         let gesture = UITapGestureRecognizer(target: self, action:  #selector (self.openRecipieURL (_:)))
@@ -165,13 +183,7 @@ class FeaturedContentViewController: UIViewController, UITableViewDataSource, UI
         tableView.delegate = self
         tableView.dataSource = self
         tableView.separatorColor = UIColor.green
-        // add refresh control so user can refresh data
-        if #available(iOS 10.0, *) {
-            tableView.refreshControl = refreshControl
-        } else {
-            tableView.addSubview(refreshControl)
-        }
-        refreshControl.addTarget(self, action: #selector(downloadPlaces), for: .valueChanged)
+        addRefreshControl()
         // set up scroll view delegate
         featuredScrollView.isPagingEnabled = true
         featuredScrollView.showsVerticalScrollIndicator = false
@@ -188,7 +200,7 @@ class FeaturedContentViewController: UIViewController, UITableViewDataSource, UI
         /* create objects for table view dummy data */
         newsObject = News(image: "sushi-sashimi", headText: "Learn how to make sushi", articleURL: "http://thepioneerwoman.com/cooking/sushi-101-how-to-make-sushi-rolls/")
         newsObject1 = News(image: "barbecue", headText: "Great BBQ Recipes", articleURL: "http://www.foodnetwork.com/grilling/grilling-central-barbecue/best-backyard-barbecue-recipes")
-        newsObject2 = News(image: "mexican-food", headText: "Authentic Mexican Recipies", articleURL: "http://www.saveur.com/authentic-mexican-recipes")
+        newsObject2 = News(image: "mexican-food", headText: "Authentic Mexican Recipes", articleURL: "http://www.saveur.com/authentic-mexican-recipes")
         newsArray.append(newsObject)
         newsArray.append(newsObject1)
         newsArray.append(newsObject2)
