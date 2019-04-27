@@ -54,7 +54,7 @@ class DetailPlaceViewController: UIViewController, CLLocationManagerDelegate, GM
     // MARK: - VIEW METHODS
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationController?.navigationBar.isHidden = true
+//        self.navigationController?.navigationBar.isHidden = true
         setUpView()
         locationMgr.delegate = self
         locationMgr.desiredAccuracy = kCLLocationAccuracyBest

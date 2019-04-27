@@ -12,6 +12,7 @@ import GooglePlaces
 import GoogleMaps
 import CoreData
 
+
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
@@ -23,6 +24,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         Database.database().isPersistenceEnabled = true
         GMSPlacesClient.provideAPIKey("AIzaSyACJKXW98TFV6nb0YHqksfJJ3_Y8gkDib0")
         GMSServices.provideAPIKey("AIzaSyAXRG_TbtLIHfMmSlh_LaFTAMZwMK8wh7M")
+        
+        
+        let navigationBarAppearace = UINavigationBar.appearance()
+        navigationBarAppearace.barTintColor = hexStringToUIColor(hex: "138F53")
+        navigationBarAppearace.tintColor = hexStringToUIColor(hex: "ffffff")
         
         return true
     }
@@ -97,7 +103,27 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
     }
 
-
+    func hexStringToUIColor (hex:String) -> UIColor {
+        var cString:String = hex.trimmingCharacters(in: .whitespacesAndNewlines).uppercased()
+        
+        if (cString.hasPrefix("#")) {
+            cString.remove(at: cString.startIndex)
+        }
+        
+        if ((cString.count) != 6) {
+            return UIColor.gray
+        }
+        
+        var rgbValue:UInt32 = 0
+        Scanner(string: cString).scanHexInt32(&rgbValue)
+        
+        return UIColor(
+            red: CGFloat((rgbValue & 0xFF0000) >> 16) / 255.0,
+            green: CGFloat((rgbValue & 0x00FF00) >> 8) / 255.0,
+            blue: CGFloat(rgbValue & 0x0000FF) / 255.0,
+            alpha: CGFloat(1.0)
+        )
+    }
     
 
 }

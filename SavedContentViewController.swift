@@ -18,7 +18,7 @@ class SavedContentViewController: UIViewController, UITableViewDelegate, UITable
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationController?.navigationBar.isHidden = true
+//        self.navigationController?.navigationBar.isHidden = true
         tableView.delegate = self
         tableView.dataSource = self
         notificationCenter.addObserver(self, selector: #selector(addToSavedPlaces), name: Notification.Name("coreDataChanged"), object: nil)

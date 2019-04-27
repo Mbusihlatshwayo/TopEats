@@ -16,6 +16,10 @@ class MasterViewController: UIViewController {
     @IBOutlet weak var communityContainer: UIView!
     @IBOutlet weak var featuredContainer: UIView!
     @IBOutlet weak var segmentedControl: UISegmentedControl!
+    
+    @IBOutlet weak var viewSegmentedControl: UISegmentedControl!
+    
+    
     @IBOutlet weak var featuredContainerView: UIView!
     @IBOutlet weak var leadingConstraint: NSLayoutConstraint!
     @IBOutlet weak var menuView: UIView!
@@ -25,7 +29,7 @@ class MasterViewController: UIViewController {
     // MARK: - VIEW METHODS
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationController?.navigationBar.alpha = 0
+//        self.navigationController?.navigationBar.alpha = 0
         setupView()
     }
     
@@ -44,7 +48,10 @@ class MasterViewController: UIViewController {
     
     func setupView() {
         // do view stuff here
-        segmentedControl.addTarget(self, action: #selector(selectionDidChange(_:)), for: .valueChanged)
+//        segmentedControl.addTarget(self, action: #selector(selectionDidChange(_:)), for: .valueChanged)
+        
+        viewSegmentedControl.addTarget(self, action: #selector(selectionDidChange(_:)), for: .valueChanged)
+        
         updateView()
     }
     
@@ -53,11 +60,12 @@ class MasterViewController: UIViewController {
     }
     
     func updateView() {
-        if segmentedControl.selectedSegmentIndex == 0 {
+
+        if viewSegmentedControl.selectedSegmentIndex == 0 {
             featuredContainer.isHidden = false
             communityContainer.isHidden = true
             savedContainer.isHidden = true
-        } else if segmentedControl.selectedSegmentIndex == 1 {
+        } else if viewSegmentedControl.selectedSegmentIndex == 1 {
             featuredContainer.isHidden = true
             communityContainer.isHidden = false
             savedContainer.isHidden = true
@@ -66,6 +74,7 @@ class MasterViewController: UIViewController {
             communityContainer.isHidden = true
             savedContainer.isHidden = false
         }
+        
     }
     
     
@@ -87,6 +96,35 @@ class MasterViewController: UIViewController {
         }
         menuShowing = !menuShowing
     }
+    
+    
+    @IBAction func displayLeftMenu(_ sender: Any) {
+        
+        if menuShowing {
+            leadingConstraint.constant = -246
+            UIView.animate(withDuration: 0.5) {
+                self.view.layoutIfNeeded()
+                self.menuView.layer.shadowOpacity = 0
+            }
+            
+        } else {
+            leadingConstraint.constant = 0
+            UIView.animate(withDuration: 0.5) {
+                self.view.layoutIfNeeded()
+                self.menuView.layer.shadowOpacity = 1
+            }
+        }
+        menuShowing = !menuShowing
+        
+    }
+
+    @IBAction func didPressSearch(_ sender: Any) {
+        
+        performSegue(withIdentifier: "showSearch", sender: nil)
+        
+    }
+    
+    
     @IBAction func didPressLogOut(_ sender: Any) {
         
         let firebaseAuth = Auth.auth()
@@ -162,10 +200,6 @@ class MasterViewController: UIViewController {
         segmentedControl.selectedSegmentIndex = 2
         menuShowing = !menuShowing
     }
-    
-    @IBAction func didPressSearch(_ sender: Any) {
-//        performSegue(withIdentifier: "showSearch", sender: nil)
-    }
-    
+        
     
 }
