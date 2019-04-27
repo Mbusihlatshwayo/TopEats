@@ -164,7 +164,7 @@ class FeaturedContentViewController: UIViewController, UITableViewDataSource, UI
         }
         refreshControl.addTarget(self, action: #selector(refreshPlaces), for: .valueChanged)
     }
-    func refreshPlaces() {
+    @objc func refreshPlaces() {
         if isLocationEnabled() {
             NetworkingFunctionality.downloadPlaces(completion: { [weak self] data in
                 self?.places = data
@@ -208,14 +208,14 @@ class FeaturedContentViewController: UIViewController, UITableViewDataSource, UI
     
     
     // MARK: - FEATURED SCROLL VIEW METHODS
-    func openRecipieURL(_ sender:UITapGestureRecognizer){
+    @objc func openRecipieURL(_ sender:UITapGestureRecognizer){
         let selectedNewsObject = newsArray[Int(currentPage)]
         let articleURL = selectedNewsObject.articleURL
         let safariURL = URL(string: articleURL)
         UIApplication.shared.open(safariURL!)
     }
 
-    func switchScrollViewPage() {
+    @objc func switchScrollViewPage() {
         let itemCount = newsArray.count // how many items are in the news reel
         var isAtEnd: Bool
         if currentPage == itemCount - 1 {
@@ -332,7 +332,7 @@ class FeaturedContentViewController: UIViewController, UITableViewDataSource, UI
         return false
     }
     
-    func saveClicked(sender:UIButton) {
+    @objc func saveClicked(sender:UIButton) {
         // the index of the calling place
         let buttonRow = sender.tag
         let nc = NotificationCenter.default

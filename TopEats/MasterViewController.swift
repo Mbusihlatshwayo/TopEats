@@ -48,7 +48,7 @@ class MasterViewController: UIViewController {
         updateView()
     }
     
-    func selectionDidChange(_ sender: UISegmentedControl) {
+    @objc func selectionDidChange(_ sender: UISegmentedControl) {
         updateView()
     }
     

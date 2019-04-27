@@ -182,7 +182,7 @@ final class ChatViewController: JSQMessagesViewController {
 //        newMessageRefHandle = messageQuery.observe(.value, with: { (snapshot) -> Void in
             let messageData = snapshot.value as! Dictionary<String, String>
             
-            if let id = messageData["senderId"] as String!, let name = messageData["senderName"] as String!, let text = messageData["text"] as String!, text.characters.count > 0 {
+            if let id = messageData["senderId"] as String?, let name = messageData["senderName"] as String?, let text = messageData["text"] as String?, text.count > 0 {
                 self.addMessage(withId: id, name: name, text: text)
                 self.finishReceivingMessage()
             } else {

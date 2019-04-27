@@ -39,7 +39,7 @@ class DetailPlaceViewController: UIViewController, CLLocationManagerDelegate, GM
         
             let regionDistance:CLLocationDistance = 100
             let coordinates = place?.location.coordinate
-            let regionSpan = MKCoordinateRegionMakeWithDistance(coordinates!, regionDistance, regionDistance)
+        let regionSpan = MKCoordinateRegion(center: coordinates!, latitudinalMeters: regionDistance, longitudinalMeters: regionDistance)
             let options = [
                 MKLaunchOptionsMapCenterKey: NSValue(mkCoordinate: regionSpan.center),
                 MKLaunchOptionsMapSpanKey: NSValue(mkCoordinateSpan: regionSpan.span)

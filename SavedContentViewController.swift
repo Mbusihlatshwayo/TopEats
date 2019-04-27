@@ -35,7 +35,7 @@ class SavedContentViewController: UIViewController, UITableViewDelegate, UITable
         tableView.reloadData()
     }
     
-    func addToSavedPlaces() {
+    @objc func addToSavedPlaces() {
         getData()
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -65,7 +65,7 @@ class SavedContentViewController: UIViewController, UITableViewDelegate, UITable
         
     }
     
-    func saveClicked(sender:UIButton) {
+    @objc func saveClicked(sender:UIButton) {
         // the index of the calling place
         let buttonRow = sender.tag
         let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext

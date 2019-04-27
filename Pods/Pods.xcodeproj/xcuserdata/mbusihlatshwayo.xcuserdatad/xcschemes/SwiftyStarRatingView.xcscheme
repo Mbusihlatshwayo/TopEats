@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "0700"
+   LastUpgradeVersion = "0930"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -13,11 +13,11 @@
             buildForProfiling = "YES"
             buildForArchiving = "YES">
             <BuildableReference
-               BuildableIdentifier = 'primary'
-               BlueprintIdentifier = '3BF0742FA4B38007FB878A847671961E'
-               BlueprintName = 'SwiftyStarRatingView'
-               ReferencedContainer = 'container:Pods.xcodeproj'
-               BuildableName = 'SwiftyStarRatingView.framework'>
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "9815D266B2E05E4FCB60696DE75DB9CF"
+               BuildableName = "SwiftyStarRatingView.framework"
+               BlueprintName = "SwiftyStarRatingView"
+               ReferencedContainer = "container:Pods.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
