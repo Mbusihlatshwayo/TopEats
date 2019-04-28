@@ -40,7 +40,7 @@ class CustomTextField: UITextField {
             leftViewMode = .never
         }
         
-        attributedText = NSAttributedString(string: placeholder != nil ? placeholder! : "", attributes: [NSAttributedString.Key.foregroundColor : tintColor])
+        attributedText = NSAttributedString(string: placeholder != nil ? placeholder! : "", attributes: [NSAttributedString.Key.foregroundColor : tintColor!])
     }
 
 }
