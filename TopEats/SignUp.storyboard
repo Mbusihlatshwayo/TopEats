@@ -149,6 +149,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstAttribute="bottom" secondItem="ljc-1j-yXs" secondAttribute="bottom" id="1Sa-9V-402"/>
                             <constraint firstItem="ljc-1j-yXs" firstAttribute="leading" secondItem="Tot-fx-Kce" secondAttribute="leading" id="5wg-Dv-r4z"/>
                             <constraint firstItem="hGo-tw-Ocz" firstAttribute="centerX" secondItem="Tot-fx-Kce" secondAttribute="centerX" id="67N-eg-mUg"/>
                             <constraint firstItem="nKr-q4-9Jf" firstAttribute="top" secondItem="ljc-1j-yXs" secondAttribute="bottom" id="6Vc-qH-JFi"/>

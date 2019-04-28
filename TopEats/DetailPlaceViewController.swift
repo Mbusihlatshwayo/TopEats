@@ -54,6 +54,8 @@ class DetailPlaceViewController: UIViewController, CLLocationManagerDelegate, GM
     // MARK: - VIEW METHODS
     override func viewDidLoad() {
         super.viewDidLoad()
+
+
 //        self.navigationController?.navigationBar.isHidden = true
         setUpView()
         locationMgr.delegate = self
@@ -98,11 +100,21 @@ class DetailPlaceViewController: UIViewController, CLLocationManagerDelegate, GM
     }
 
     func setUpView() {
+        
         placeImageView.alpha = 0
         googleAttributionImage.alpha = 0
-        // init view title label with location name
+        // init nav bar label with name of restaurant and dynamically resize font
+        self.title = place!.name
+        let frame = CGRect(x: 0, y: 0, width: 200, height: 40)
+        let titleLabel = UILabel(frame: frame)
+        titleLabel.text = self.title
+        titleLabel.textColor = UIColor.white
+        titleLabel.font = UIFont(name: "Copperplate", size: 25.0)
+        titleLabel.backgroundColor = UIColor.clear
         titleLabel.adjustsFontSizeToFitWidth = true
-        titleLabel.text = place!.name
+        titleLabel.textAlignment = .center
+        self.navigationItem.titleView = titleLabel
+        
         // init star rating view with location rating value
         starRatingView.value = CGFloat(place!.rating)
         starRatingView.tintColor = topEatsGreen

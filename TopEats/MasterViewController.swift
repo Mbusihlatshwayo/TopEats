@@ -29,7 +29,6 @@ class MasterViewController: UIViewController {
     // MARK: - VIEW METHODS
     override func viewDidLoad() {
         super.viewDidLoad()
-//        self.navigationController?.navigationBar.alpha = 0
         setupView()
     }
     
@@ -79,24 +78,6 @@ class MasterViewController: UIViewController {
     
     
     // MARK: - IBACTIONS
-    @IBAction func showMenu(_ sender: Any) {
-        if menuShowing {
-            leadingConstraint.constant = -246
-            UIView.animate(withDuration: 0.5) {
-                self.view.layoutIfNeeded()
-                self.menuView.layer.shadowOpacity = 0
-            }
-
-        } else {
-            leadingConstraint.constant = 0
-            UIView.animate(withDuration: 0.5) {
-                self.view.layoutIfNeeded()
-                self.menuView.layer.shadowOpacity = 1
-            }
-        }
-        menuShowing = !menuShowing
-    }
-    
     
     @IBAction func displayLeftMenu(_ sender: Any) {
         
@@ -200,6 +181,6 @@ class MasterViewController: UIViewController {
         segmentedControl.selectedSegmentIndex = 2
         menuShowing = !menuShowing
     }
-        
+    
     
 }
