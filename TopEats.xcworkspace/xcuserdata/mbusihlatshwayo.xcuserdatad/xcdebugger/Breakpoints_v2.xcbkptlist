@@ -131,53 +131,5 @@
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "TopEats/DetailPlaceViewController.swift"
-            timestampString = "578108907.156242"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "141"
-            endingLineNumber = "141"
-            landmarkName = "drawRoute()"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "TopEats.DetailPlaceViewController.drawRoute() -&gt; ()"
-                  moduleName = "TopEats"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/mbusihlatshwayo/Documents/TopEats/TopEats/DetailPlaceViewController.swift"
-                  timestampString = "578107173.191563"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "141"
-                  endingLineNumber = "141"
-                  offsetFromSymbolStart = "2831">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Alamofire.DataResponse&lt;Any&gt;) -&gt; () in TopEats.DetailPlaceViewController.drawRoute() -&gt; ()"
-                  moduleName = "TopEats"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/mbusihlatshwayo/Documents/TopEats/TopEats/DetailPlaceViewController.swift"
-                  timestampString = "578107173.194229"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "142"
-                  endingLineNumber = "142"
-                  offsetFromSymbolStart = "308">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
    </Breakpoints>
 </Bucket>

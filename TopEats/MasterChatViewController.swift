@@ -21,7 +21,6 @@ class MasterChatViewController: UIViewController {
     //MARK:  VC Methods
     override func viewDidLoad() {
         super.viewDidLoad()
-//        self.navigationController?.navigationBar.isHidden = true
         titleLabel.text = section.name
         
         // Do any additional setup after loading the view.

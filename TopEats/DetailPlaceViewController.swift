@@ -128,42 +128,42 @@ class DetailPlaceViewController: UIViewController, CLLocationManagerDelegate, GM
         attributionsLabel.text = place!.attributes
         // init map data and route
         googleMapSetup()
-        drawRoute()
+//        drawRoute() 
     }
 
     // MARK: - MAP VIEW METHODS
     let regionRadius: CLLocationDistance = 700
-
-    func drawRoute() {
-        let origin = "\(Location.sharedInstance.latitude!),\(Location.sharedInstance.longitude!)"
-        let destination = "\(String(describing: place!.location.coordinate.latitude)),\(String(describing: place!.location.coordinate.longitude))"
-        let directionsURL = "https://maps.googleapis.com/maps/api/directions/json?origin=\(origin)&destination=\(destination)&mode=driving"
-        Alamofire.request(directionsURL).responseJSON { response in
-            switch response.result {
-                
-            // download successful
-            case .success:
-                if let resultDict = response.result.value as? Dictionary<String, AnyObject> {
-                    if let routes = resultDict["routes"] as? [Dictionary<String, AnyObject>] {
-                        for route in routes {
-                            let overviewPolyline = route["overview_polyline"] as? Dictionary<String, AnyObject>
-                            let points = overviewPolyline?["points"] as? String
-                            let path = GMSPath.init(fromEncodedPath: points!)
-                            let polyline = GMSPolyline(path: path)
-                            polyline.strokeWidth = 5
-                            polyline.strokeColor = topEatsGreen
-                            polyline.map = self.mapView
-                        }
-                    }
-
-                }
-            case .failure:
-                break
-            }
-
-        }
-        
-    }
+    // TODO : update app for Googles new Maps API
+//    func drawRoute() {
+//        let origin = "\(Location.sharedInstance.latitude!),\(Location.sharedInstance.longitude!)"
+//        let destination = "\(String(describing: place!.location.coordinate.latitude)),\(String(describing: place!.location.coordinate.longitude))"
+//        let directionsURL = "https://maps.googleapis.com/maps/api/directions/json?origin=\(origin)&destination=\(destination)&mode=driving"
+//        Alamofire.request(directionsURL).responseJSON { response in
+//            switch response.result {
+//
+//            // download successful
+//            case .success:
+//                if let resultDict = response.result.value as? Dictionary<String, AnyObject> {
+//                    if let routes = resultDict["routes"] as? [Dictionary<String, AnyObject>] {
+//                        for route in routes {
+//                            let overviewPolyline = route["overview_polyline"] as? Dictionary<String, AnyObject>
+//                            let points = overviewPolyline?["points"] as? String
+//                            let path = GMSPath.init(fromEncodedPath: points!)
+//                            let polyline = GMSPolyline(path: path)
+//                            polyline.strokeWidth = 5
+//                            polyline.strokeColor = topEatsGreen
+//                            polyline.map = self.mapView
+//                        }
+//                    }
+//
+//                }
+//            case .failure:
+//                break
+//            }
+//
+//        }
+//
+//    }
     
     
     func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
