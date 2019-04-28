@@ -21,9 +21,9 @@ class MasterChatViewController: UIViewController {
     //MARK:  VC Methods
     override func viewDidLoad() {
         super.viewDidLoad()
-        titleLabel.text = section.name
+        self.title = section.name
+//        titleLabel.text = section.name
         
-        // Do any additional setup after loading the view.
     }
 
     @IBAction func didPressBackButton(_ sender: Any) {
