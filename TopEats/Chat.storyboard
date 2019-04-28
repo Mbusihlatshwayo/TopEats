@@ -35,18 +35,10 @@
                                             <action selector="didPressBackButton:" destination="5VI-Bp-tKv" eventType="touchUpInside" id="1Rw-pC-eug"/>
                                         </connections>
                                     </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IGo-TL-0wW">
-                                        <rect key="frame" x="171" y="31.666666666666671" width="72.333333333333314" height="25.333333333333329"/>
-                                        <fontDescription key="fontDescription" name="Copperplate" family="Copperplate" pointSize="25"/>
-                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
                                 </subviews>
                                 <color key="backgroundColor" red="0.0" green="0.50196081400000003" blue="0.25098040700000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="bottom" secondItem="rfD-Dd-ueB" secondAttribute="bottom" constant="8" id="5U7-9X-e96"/>
-                                    <constraint firstItem="IGo-TL-0wW" firstAttribute="centerX" secondItem="yjJ-Ol-Mvk" secondAttribute="centerX" id="fB0-uh-Lq6"/>
-                                    <constraint firstAttribute="bottom" secondItem="IGo-TL-0wW" secondAttribute="bottom" constant="8" id="pzX-Mb-PHA"/>
                                     <constraint firstAttribute="height" constant="65" id="t6K-PG-2eN"/>
                                     <constraint firstItem="rfD-Dd-ueB" firstAttribute="leading" secondItem="yjJ-Ol-Mvk" secondAttribute="leading" constant="8" id="w2l-SF-Erw"/>
                                 </constraints>
@@ -74,9 +66,6 @@
                         <size key="portraitSize" width="375" height="602"/>
                         <size key="landscapeSize" width="602" height="375"/>
                     </fixedSimulatedSizeMetrics>
-                    <connections>
-                        <outlet property="titleLabel" destination="IGo-TL-0wW" id="txd-Vz-ZzL"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="b7Q-QM-ddQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

@@ -13,8 +13,6 @@ class MasterChatViewController: UIViewController {
 
     //MARK: - PROPERTIES
     
-    @IBOutlet weak var titleLabel: UILabel!
-    
     var section: Section!
     var communitySectionsRef: DatabaseReference?
     
@@ -22,12 +20,10 @@ class MasterChatViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = section.name
-//        titleLabel.text = section.name
         
     }
 
     @IBAction func didPressBackButton(_ sender: Any) {
-//        self.dismiss(animated: true, completion: nil)
         self.navigationController?.popViewController(animated: true)
     }
     override func didReceiveMemoryWarning() {
