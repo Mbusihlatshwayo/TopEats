@@ -15,7 +15,6 @@ class MasterViewController: UIViewController {
     @IBOutlet weak var savedContainer: UIView!
     @IBOutlet weak var communityContainer: UIView!
     @IBOutlet weak var featuredContainer: UIView!
-    @IBOutlet weak var segmentedControl: UISegmentedControl!
     
     @IBOutlet weak var viewSegmentedControl: UISegmentedControl!
     
@@ -46,9 +45,9 @@ class MasterViewController: UIViewController {
     }
     
     func setupView() {
-        // do view stuff here
-//        segmentedControl.addTarget(self, action: #selector(selectionDidChange(_:)), for: .valueChanged)
         
+        let font = UIFont.systemFont(ofSize: 12)
+        viewSegmentedControl.setTitleTextAttributes([NSAttributedString.Key.font: font], for: .normal)
         viewSegmentedControl.addTarget(self, action: #selector(selectionDidChange(_:)), for: .valueChanged)
         
         updateView()
@@ -136,7 +135,7 @@ class MasterViewController: UIViewController {
                 self.menuView.layer.shadowOpacity = 1
             }
         }
-        segmentedControl.selectedSegmentIndex = 0
+        viewSegmentedControl.selectedSegmentIndex = 0
         menuShowing = !menuShowing
     }
     
@@ -157,7 +156,7 @@ class MasterViewController: UIViewController {
                 self.menuView.layer.shadowOpacity = 1
             }
         }
-        segmentedControl.selectedSegmentIndex = 1
+        viewSegmentedControl.selectedSegmentIndex = 1
         menuShowing = !menuShowing
     }
     
@@ -178,7 +177,7 @@ class MasterViewController: UIViewController {
                 self.menuView.layer.shadowOpacity = 1
             }
         }
-        segmentedControl.selectedSegmentIndex = 2
+        viewSegmentedControl.selectedSegmentIndex = 2
         menuShowing = !menuShowing
     }
     
