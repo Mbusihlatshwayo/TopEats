@@ -28,6 +28,7 @@ class MasterViewController: UIViewController {
     // MARK: - VIEW METHODS
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.modalPresentationStyle = .fullScreen
         setupView()
     }
     

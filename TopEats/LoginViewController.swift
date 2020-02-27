@@ -21,11 +21,24 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         usernameLabel.delegate = self
         passwordLabel.delegate = self
         setUpActivityIndicator()
+        self.navigationController?.navigationBar.isHidden = true
         // if user is signed in bypass login
         Auth.auth().addStateDidChangeListener() { auth, user in
             if user != nil {
                 self.activityIndicator?.stopAnimating()
-                self.performSegue(withIdentifier: "loginToMaster", sender: nil)
+                self.dismiss(animated: false)
+
+//                self.performSegue(withIdentifier: "loginToMaster", sender: nil)
+                
+                let storyboard : UIStoryboard = UIStoryboard(name: "Master", bundle: nil)
+                let vc : MasterViewController = storyboard.instantiateViewController(withIdentifier: "masterView") as! MasterViewController
+                vc.modalPresentationStyle = .fullScreen
+
+                let navigationController = UINavigationController(rootViewController: vc)
+                navigationController.modalPresentationStyle = .fullScreen
+                
+                self.present(navigationController, animated: true, completion: nil)
+                
             } else {
                 self.activityIndicator?.stopAnimating()
             }

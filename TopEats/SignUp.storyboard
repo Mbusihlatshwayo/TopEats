@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
-    <device id="retina4_7" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -25,7 +23,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </imageView>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password" textAlignment="natural" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="DTA-JD-GHp" customClass="CustomTextField" customModule="TopEats" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="281" width="375" height="40"/>
+                                <rect key="frame" x="0.0" y="261" width="375" height="40"/>
                                 <color key="backgroundColor" red="0.098039217289999994" green="0.098039217289999994" blue="0.098039217289999994" alpha="0.29999999999999999" colorSpace="calibratedRGB"/>
                                 <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
@@ -39,7 +37,7 @@
                                 </userDefinedRuntimeAttributes>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Confirm Password" textAlignment="natural" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="XUR-10-wiG" customClass="CustomTextField" customModule="TopEats" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="322" width="375" height="40"/>
+                                <rect key="frame" x="0.0" y="302" width="375" height="40"/>
                                 <color key="backgroundColor" red="0.098039217289999994" green="0.098039217289999994" blue="0.098039217289999994" alpha="0.29999999999999999" colorSpace="calibratedRGB"/>
                                 <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
@@ -53,7 +51,7 @@
                                 </userDefinedRuntimeAttributes>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Username" textAlignment="natural" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2Fn-sy-MYZ" customClass="CustomTextField" customModule="TopEats" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="199" width="375" height="40"/>
+                                <rect key="frame" x="0.0" y="179" width="375" height="40"/>
                                 <color key="backgroundColor" red="0.098039217289999994" green="0.098039217289999994" blue="0.098039217289999994" alpha="0.29999999999999999" colorSpace="calibratedRGB"/>
                                 <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
@@ -67,7 +65,7 @@
                                 </userDefinedRuntimeAttributes>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TOPEATS" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="w6T-iu-bVJ">
-                                <rect key="frame" x="108.5" y="148" width="158" height="46"/>
+                                <rect key="frame" x="108.5" y="128" width="158" height="46"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="46" id="JwX-gr-Kkf"/>
                                     <constraint firstAttribute="width" constant="158" id="rNT-yA-wBL"/>
@@ -77,7 +75,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="HomeIcon" translatesAutoresizingMaskIntoConstraints="NO" id="hGo-tw-Ocz">
-                                <rect key="frame" x="97.5" y="50" width="180" height="98"/>
+                                <rect key="frame" x="97.5" y="30" width="180" height="98"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="180" id="2l8-gh-3eh"/>
                                     <constraint firstAttribute="height" constant="98" id="u3C-pV-ffn"/>
@@ -98,7 +96,7 @@
                                 </connections>
                             </button>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Email" textAlignment="natural" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="yTO-rR-e2z" customClass="CustomTextField" customModule="TopEats" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="240" width="375" height="40"/>
+                                <rect key="frame" x="0.0" y="220" width="375" height="40"/>
                                 <color key="backgroundColor" red="0.098039217289999994" green="0.098039217289999994" blue="0.098039217289999994" alpha="0.29999999999999999" colorSpace="calibratedRGB"/>
                                 <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
@@ -112,28 +110,28 @@
                                 </userDefinedRuntimeAttributes>
                             </textField>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XaP-X5-fJL">
-                                <rect key="frame" x="0.0" y="239" width="375" height="1"/>
+                                <rect key="frame" x="0.0" y="219" width="375" height="1"/>
                                 <color key="backgroundColor" red="0.20000000300000001" green="0.20000000300000001" blue="0.20000000300000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="1" id="3nf-Ay-Pob"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Oyz-H3-XyW">
-                                <rect key="frame" x="0.0" y="280" width="375" height="1"/>
+                                <rect key="frame" x="0.0" y="260" width="375" height="1"/>
                                 <color key="backgroundColor" red="0.20000000300000001" green="0.20000000300000001" blue="0.20000000300000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="1" id="Uf2-SU-DdB"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IWB-iK-Ec5">
-                                <rect key="frame" x="0.0" y="321" width="375" height="1"/>
+                                <rect key="frame" x="0.0" y="301" width="375" height="1"/>
                                 <color key="backgroundColor" red="0.20000000300000001" green="0.20000000300000001" blue="0.20000000300000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="1" id="9Ed-Da-PHe"/>
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ykl-dX-ssP">
-                                <rect key="frame" x="113" y="372" width="149" height="40"/>
+                                <rect key="frame" x="113" y="352" width="149" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="7fb-4m-3WH"/>
                                     <constraint firstAttribute="width" constant="149" id="uvg-GJ-HyP"/>

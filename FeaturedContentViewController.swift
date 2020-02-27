@@ -129,7 +129,7 @@ class FeaturedContentViewController: UIViewController, UITableViewDataSource, UI
         Location.sharedInstance.latitude = currentLocation.coordinate.latitude
         Location.sharedInstance.longitude = currentLocation.coordinate.longitude
 //        print("Location: \(Location.sharedInstance.latitude!),\(Location.sharedInstance.longitude!)")
-        if shouldReloadData && updateLocationCount == 3 {
+        if shouldReloadData && updateLocationCount == 1 {
             // we only load the intial data once
             downloadPlaces()
             shouldReloadData = false // change the flag to not update data

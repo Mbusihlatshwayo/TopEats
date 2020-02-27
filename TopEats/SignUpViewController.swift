@@ -27,7 +27,8 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
         confirmPasswordTextField.delegate = self
         emailTextField.delegate = self
         usernameTextField.delegate = self
-        
+        self.navigationController?.navigationBar.isHidden = true
+
         
     }
     
