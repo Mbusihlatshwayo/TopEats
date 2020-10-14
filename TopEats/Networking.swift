@@ -34,7 +34,7 @@ class NetworkingFunctionality {
                                 var place_rating: Float?
                                 var place_address: String!
                                 var place_location: CLLocation!
-                                var place_id: String!
+                                var place_id: String?
                                 var place_attributions: String?
                                 
                                 if let name = object["name"] as? String {
@@ -72,7 +72,7 @@ class NetworkingFunctionality {
                                     place_id = id
                                 }
                                 
-                                placeInstance = Place(name: place_name, open: place_open_or_not, photoRef: place_photo_ref, rating: place_rating, address: place_address, animated: true, location: place_location, id: place_id, attributes: place_attributions)
+                                placeInstance = Place(name: place_name, open: place_open_or_not, photoRef: place_photo_ref, rating: place_rating, address: place_address, animated: true, location: place_location, id: place_id ?? "0", attributes: place_attributions)
                                 places.append(placeInstance)
                                 }
                         }
